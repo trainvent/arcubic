@@ -1076,7 +1076,7 @@ body input.prompt-input::placeholder { font-family:inherit; font-weight:inherit;
 
 /* Document tabs join the page; compact sidebar tabs keep their own treatment. */
 body .mod-root .workspace-tab-header-container {
-  border-bottom:1px solid var(--gray-6); padding-bottom:0; align-items:flex-end;
+  border-bottom:0; box-shadow:none; padding-bottom:0; align-items:flex-end;
 }
 body .mod-root .workspace-tab-header.is-active {
   position:relative; z-index:1;
@@ -1136,6 +1136,10 @@ body .search-input-container input:focus {
   outline:none!important; box-shadow:none!important;
   border-width:1px; border-color:var(--teal-8);
 }
+
+/* Let file tabs, navigation and document content form one continuous surface. */
+body .mod-root .workspace-tab-header-container-inner { border-bottom:0; box-shadow:none; }
+body .mod-root .view-header { border-bottom:0; box-shadow:none; }
 
 /* Optional plugin integrations, kept out of the platform-independent core. */
 .sports-dashboard :is(.sports-dash-workout,.sports-dash-review,.sports-performance,.sports-dash-badge) { border-radius:0; }

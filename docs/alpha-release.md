@@ -1,12 +1,12 @@
-# Arcubic 0.1.3 — Alpha
+# Arcubic 0.1.4 — Alpha
 
 Updated alpha of Arcubic's shared design system and Obsidian adapter.
 
-## Changes in 0.1.3
+## Changes in 0.1.4
 
-- Inactive document tabs use subdued Sage 7 bevel edges, matching the button treatment.
-- Hover subtly brightens the whole tab; tab labels have no separate background or shadow.
-- The selected tab keeps its connection to the page, and close icons retain their icon-only red hover state.
+- Removed the horizontal divider below the document tabs.
+- Removed the divider between file navigation and document content.
+- Tabs, navigation and the document now form a more continuous surface, preserving the existing tab and button treatments.
 
 ## Included
 
@@ -18,7 +18,7 @@ Updated alpha of Arcubic's shared design system and Obsidian adapter.
 
 ## Install in Obsidian
 
-1. Download `arcubic-obsidian-0.1.3.zip` from this release.
+1. Download `arcubic-obsidian-0.1.4.zip` from this release.
 2. Extract its `Arcubic` folder into `<vault>/.obsidian/themes/`.
 3. Select **Arcubic** in **Settings → Appearance → Themes**.
 
@@ -32,7 +32,7 @@ For websites, use `arcubic-tokens.css` with the instructions in `packages/core/R
 - Sports has a small integration stylesheet; other plugins may retain their own styling.
 - The build bundles Chakra Petch, Lora and Geist Mono under the OFL. No separate font download is required.
 - Manual installation is available now. Community-directory listing is subject to Obsidian’s submission and review process.
-- This is an alpha build. Its release tag and Obsidian manifest both use `0.1.3`, as required by the community directory.
+- This is an alpha build. Its release tag and Obsidian manifest both use `0.1.4`, as required by the community directory.
 
 Report problems at https://github.com/Trainvent/arcubic/issues with the mode, Obsidian version and a screenshot without private note content.
 
