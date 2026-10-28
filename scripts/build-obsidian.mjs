@@ -44,5 +44,9 @@ css+='\n'+readFileSync(root+'ports/obsidian/src/plugins.css','utf8');
 writeFileSync(output+'theme.css',css);
 const manifest={name:'Arcubic',version:'0.1.0',minAppVersion:'1.8.0',author:'Trainvent',authorUrl:'https://github.com/Trainvent'};
 writeFileSync(output+'manifest.json',JSON.stringify(manifest,null,2)+'\n');
+// Obsidian's community directory reads these from the repository root.
+writeFileSync(root+'manifest.json',JSON.stringify(manifest,null,2)+'\n');
+writeFileSync(root+'theme.css',css);
+writeFileSync(root+'versions.json',JSON.stringify({[manifest.version]:manifest.minAppVersion},null,2)+'\n');
 for(const [pkg,name] of [['lora','Lora'],['geist-mono','Geist-Mono'],['chakra-petch','Chakra-Petch']])copyFileSync(root+`node_modules/@fontsource/${pkg}/LICENSE`,root+`ports/obsidian/licenses/${name}-OFL.txt`);
 console.log(`Built ${output}theme.css`);

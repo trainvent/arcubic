@@ -4,6 +4,8 @@ An adapter for Arcubic's shared colors, typography and tactile geometry. The web
 
 Includes light and dark Sage surfaces, Teal/Amber/Orange accents, raised buttons and tabs, recessed inputs, proportional triangle switches, explorer guides, reading typography and code styling. Native Obsidian interactions remain intact. Plugin-specific interfaces may need additional styling.
 
+The build also generates root `manifest.json`, `theme.css` and `versions.json` for Obsidian community-directory compatibility.
+
 ## Build and install
 
 Requires Node 24+ and Python 3.

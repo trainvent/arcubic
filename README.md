@@ -6,7 +6,9 @@ Teal, amber and burnt orange on Sage. A reusable design system with square panel
 
 ## Alpha release
 
-Download the [v0.1.0-alpha.1 prerelease](https://github.com/Trainvent/arcubic/releases/tag/v0.1.0-alpha.1) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). That first release uses optional Alliance; the current working build instead bundles Chakra Petch under the OFL.
+Download the [0.1.0 alpha release](https://github.com/Trainvent/arcubic/releases/tag/0.1.0) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). The current build bundles Chakra Petch, Lora and Geist Mono under the OFL.
+
+The root `manifest.json`, `theme.css` and `versions.json` are generated Obsidian distribution files. Native source stays in `ports/obsidian/`; shared web tokens and components stay independent. Rebuild with `npm run build:obsidian` after changing the adapter.
 
 Arcubic's code is [MIT licensed](LICENSE). Bundled fonts retain their included OFL licenses.
 

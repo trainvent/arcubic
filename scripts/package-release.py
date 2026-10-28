@@ -2,8 +2,8 @@
 """Package explicitly allowlisted public artifacts; never the personal font build."""
 import hashlib, json, pathlib, shutil, zipfile
 root = pathlib.Path(__file__).resolve().parents[1]
-version = json.loads((root / 'package.json').read_text())['version']
-tag = f'v{version}'
+version = json.loads((root / 'manifest.json').read_text())['version']
+tag = version
 out = root / 'dist/releases'
 out.mkdir(parents=True, exist_ok=True)
 source = root / 'ports/obsidian'
