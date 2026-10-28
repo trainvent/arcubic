@@ -18,16 +18,7 @@ Then select **Arcubic** under **Settings → Appearance → Themes**. Alternativ
 
 The installer backs up the existing Arcubic theme and appearance settings under `.obsidian/arcubic-backups/`. It does not activate the theme or modify notes.
 
-Lora (regular, bold and italic) and Geist Mono are embedded, with their OFL licenses in `licenses/`. Alliance No.2 is loaded from the user's installed fonts, with a system sans-serif fallback. Alliance is not redistributed.
-
-For a personal build using your licensed local `public/fonts/alliance-no2-light.otf`:
-
-```sh
-node scripts/build-obsidian.mjs --local-fonts
-python3 scripts/install-obsidian.py --vault /absolute/path/to/vault --personal
-```
-
-That build stays in ignored `.local/`. Obsidian's font overrides can still replace these defaults.
+Chakra Petch Regular (interface), Lora regular/bold/italic (reading), and Geist Mono (code) are embedded in the public theme. Their OFL copyright notices and licenses are included in the stylesheet and `licenses/`. No personal build or separate font installation is required. Obsidian's font overrides can still replace these defaults.
 
 ## Source
 

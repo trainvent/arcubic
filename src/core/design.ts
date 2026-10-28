@@ -1,6 +1,6 @@
 /** Platform-independent Arcubic defaults. Adapters map these roles to their UI. */
 export const typography = {
- interface: "'Alliance No.2', ui-sans-serif, sans-serif",
+ interface: "'Chakra Petch', ui-sans-serif, sans-serif",
  reading: "'Lora', Georgia, serif",
  code: "'Geist Mono', ui-monospace, monospace",
  caption: 11, ui: 13, body: 15, noteHeading: 24,

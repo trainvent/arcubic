@@ -1,4 +1,4 @@
-/* custom_1 — Alliance-based type roles; colors and component geometry are separate. */
+/* custom_1 — Chakra Petch-based type roles; colors and component geometry are separate. */
 .arcubic-ui {
   --type-style: custom_1;
   --font-ui: var(--arc-font-interface);
@@ -14,48 +14,48 @@
   --leading-body: var(--arc-leading-body);
   font-family: var(--font-ui);
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: var(--leading-body);
   letter-spacing: 0;
   font-synthesis: none;
 }
-.arcubic-ui :is(.intro h1,.terminal-intro h1,.style-studies-intro h1){font:300 var(--text-title)/1.15 var(--font-ui);letter-spacing:-.025em}
-.arcubic-ui :is(.intro p,.terminal-intro p,.style-studies-intro>p){font:300 var(--text-body)/var(--leading-body) var(--font-content)}
-.arcubic-ui :is(.panel h3,.study>h2){font:300 21px/1.3 var(--font-ui);letter-spacing:-.015em}
-.arcubic-ui :is(.section-heading h2,.comparison h2){font:300 var(--text-body)/1.4 var(--font-ui);letter-spacing:0}
-.arcubic-ui :is(.rt-Button,.port-nav a,.tabs button,.terminal-download,.terminal-actions a,.accent-picker button){font-family:var(--font-ui);font-size:var(--text-ui);font-weight:300;line-height:var(--leading-ui);letter-spacing:0}
-.arcubic-ui :is(.field-label,.toggle-row strong,.checkbox-row,.color-label,.aside-heading){font:300 var(--text-ui)/var(--leading-ui) var(--font-ui)}
-.arcubic-ui :is(.section-label,.eyebrow,.study-label){font-family:var(--font-ui);font-size:var(--text-caption);font-weight:300;line-height:1.4;letter-spacing:.08em}
+.arcubic-ui :is(.intro h1,.terminal-intro h1,.style-studies-intro h1){font:400 var(--text-title)/1.15 var(--font-ui);letter-spacing:-.025em}
+.arcubic-ui :is(.intro p,.terminal-intro p,.style-studies-intro>p){font:400 var(--text-body)/var(--leading-body) var(--font-content)}
+.arcubic-ui :is(.panel h3,.study>h2){font:400 21px/1.3 var(--font-ui);letter-spacing:-.015em}
+.arcubic-ui :is(.section-heading h2,.comparison h2){font:400 var(--text-body)/1.4 var(--font-ui);letter-spacing:0}
+.arcubic-ui :is(.rt-Button,.port-nav a,.tabs button,.terminal-download,.terminal-actions a,.accent-picker button){font-family:var(--font-ui);font-size:var(--text-ui);font-weight:400;line-height:var(--leading-ui);letter-spacing:0}
+.arcubic-ui :is(.field-label,.toggle-row strong,.checkbox-row,.color-label,.aside-heading){font:400 var(--text-ui)/var(--leading-ui) var(--font-ui)}
+.arcubic-ui :is(.section-label,.eyebrow,.study-label){font-family:var(--font-ui);font-size:var(--text-caption);font-weight:400;line-height:1.4;letter-spacing:.08em}
 .arcubic-ui :is(.aside-intro,.aside-note p,.toggle-row p,.detail-note,.curve-description,.curve-footnote,.section-heading>span){font-size:var(--text-caption);line-height:1.6;letter-spacing:0}
 .arcubic-ui .rt-TextFieldInput{font-family:var(--font-ui);font-size:var(--text-ui);line-height:var(--leading-ui)}
 .arcubic-ui .scale-title{font-size:var(--text-ui);line-height:1.4}
 .arcubic-ui .scale-title code{font-family:var(--font-code);font-size:var(--text-caption)}
-.arcubic-ui .study-description{font:300 var(--text-ui)/1.6 var(--font-ui)}
+.arcubic-ui .study-description{font:400 var(--text-ui)/1.6 var(--font-ui)}
 .arcubic-ui .study-content{padding:24px;min-height:300px}
-.arcubic-ui .study-content h3{font:300 var(--text-heading)/1.25 var(--font-content);letter-spacing:-.015em;margin-bottom:18px}
-.arcubic-ui .study-content>p{font:300 var(--text-body)/var(--leading-body) var(--font-content);max-width:65ch;margin-bottom:13px}
-.arcubic-ui .study-breadcrumb{font:300 var(--text-caption)/1.5 var(--font-ui);letter-spacing:0;margin-bottom:20px;flex-wrap:wrap}
-.arcubic-ui .study-search input{font:300 var(--text-ui)/1.4 var(--font-ui)}
+.arcubic-ui .study-content h3{font:400 var(--text-heading)/1.25 var(--font-content);letter-spacing:-.015em;margin-bottom:18px}
+.arcubic-ui .study-content>p{font:400 var(--text-body)/var(--leading-body) var(--font-content);max-width:65ch;margin-bottom:13px}
+.arcubic-ui .study-breadcrumb{font:400 var(--text-caption)/1.5 var(--font-ui);letter-spacing:0;margin-bottom:20px;flex-wrap:wrap}
+.arcubic-ui .study-search input{font:400 var(--text-ui)/1.4 var(--font-ui)}
 .arcubic-ui .study-search input::placeholder{font:inherit}
 .arcubic-ui .study-search{min-height:33px;padding:6px 8px;margin-bottom:21px}
-.arcubic-ui .arc-explorer{font:300 var(--text-ui)/var(--leading-ui) var(--font-ui);--tree-row:31px}
-.arcubic-ui .arc-explorer-row.is-folder{font-weight:300!important}
+.arcubic-ui .arc-explorer{font:400 var(--text-ui)/var(--leading-ui) var(--font-ui);--tree-row:31px}
+.arcubic-ui .arc-explorer-row.is-folder{font-weight:400!important}
 .arcubic-ui .study-tabs{height:41px}
-.arcubic-ui .study-tabs button{font:300 var(--text-ui)/1.4 var(--font-ui)}
+.arcubic-ui .study-tabs button{font:400 var(--text-ui)/1.4 var(--font-ui)}
 .arcubic-ui .study-settings{padding:18px 24px 22px}
-.arcubic-ui :is(.study-settings-title,.study-setting-row){font:300 var(--text-ui)/1.4 var(--font-ui)}
-.arcubic-ui .study-settings-title strong{font-weight:300}
-.arcubic-ui .study-buttons button{font:300 var(--text-ui)/1.4 var(--font-ui);min-height:33px}
+.arcubic-ui :is(.study-settings-title,.study-setting-row){font:400 var(--text-ui)/1.4 var(--font-ui)}
+.arcubic-ui .study-settings-title strong{font-weight:400}
+.arcubic-ui .study-buttons button{font:400 var(--text-ui)/1.4 var(--font-ui);min-height:33px}
 .arcubic-ui .study-callout{padding:14px 12px}
-.arcubic-ui .study-callout strong{font:300 var(--text-ui)/1.4 var(--font-content)}
-.arcubic-ui .study-callout p{font:300 var(--text-ui)/1.6 var(--font-content)}
-.arcubic-ui .study-callout>span{font:300 var(--text-caption)/1.5 var(--font-code)}
-.arcubic-ui .study-tags span{font:300 var(--text-caption)/1.4 var(--font-ui);padding:3px 7px}
-.arcubic-ui .study-preview-note>p{font:300 var(--text-lead)/1.7 var(--font-content);letter-spacing:0}
+.arcubic-ui .study-callout strong{font:400 var(--text-ui)/1.4 var(--font-content)}
+.arcubic-ui .study-callout p{font:400 var(--text-ui)/1.6 var(--font-content)}
+.arcubic-ui .study-callout>span{font:400 var(--text-caption)/1.5 var(--font-code)}
+.arcubic-ui .study-tags span{font:400 var(--text-caption)/1.4 var(--font-ui);padding:3px 7px}
+.arcubic-ui .study-preview-note>p{font:400 var(--text-lead)/1.7 var(--font-content);letter-spacing:0}
 .arcubic-ui .study-preview-note>span:last-child{font-size:var(--text-caption)}
 .arcubic-ui :is(.study-specs,.study-status,.study-caption,.study-workspace-label){font-size:var(--text-caption);line-height:1.4}
 .arcubic-ui .study-workspace-label{letter-spacing:.04em}
-.arcubic-ui .study-logotype{font:300 16px/1.4 var(--font-ui);letter-spacing:-.015em}
+.arcubic-ui .study-logotype{font:400 16px/1.4 var(--font-ui);letter-spacing:-.015em}
 .arcubic-ui .study-sidebar-footer{font-size:10px;line-height:1.4;letter-spacing:.025em}
 .arcubic-ui .project-hero h3{font-size:19px;line-height:1.3}
 .arcubic-ui .project-hero p{font-size:var(--text-ui);line-height:1.6}
@@ -63,15 +63,15 @@
 .type-specimen-top{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:20px}
 .type-specimen-top code{font:11px/1.5 var(--font-code);color:var(--gray-11)}
 .type-specimen-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px}
-.type-specimen .type-sample-title{font:300 24px/1.25 var(--font-content);letter-spacing:-.015em;margin:0 0 12px}
-.type-specimen .type-sample-body{font:300 15px/1.65 var(--font-content);color:var(--gray-11);margin:0}
-.type-specimen .type-sample-glyphs{font:300 17px/1.8 var(--font-ui);color:var(--gray-12);letter-spacing:.035em;margin:0 0 12px;overflow-wrap:anywhere}
-.type-specimen dl{margin:0;color:var(--gray-11);font:300 13px/1.8 var(--font-ui)}
+.type-specimen .type-sample-title{font:400 24px/1.25 var(--font-content);letter-spacing:-.015em;margin:0 0 12px}
+.type-specimen .type-sample-body{font:400 15px/1.65 var(--font-content);color:var(--gray-11);margin:0}
+.type-specimen .type-sample-glyphs{font:400 17px/1.8 var(--font-ui);color:var(--gray-12);letter-spacing:.035em;margin:0 0 12px;overflow-wrap:anywhere}
+.type-specimen dl{margin:0;color:var(--gray-11);font:400 13px/1.8 var(--font-ui)}
 .type-specimen dl>div{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid var(--gray-5);padding:3px 0}
 .type-specimen dd{margin:0;font:11px/1.8 var(--font-code)}
 @media(max-width:600px){.arcubic-ui .study-body{grid-template-columns:150px minmax(0,1fr)}.arcubic-ui .study-content{padding:18px 14px}.arcubic-ui .study-settings{padding:16px 14px}.arcubic-ui .study-caption{flex-wrap:wrap}.arcubic-ui .study-workspace-label{font-size:10px}.arcubic-ui .arc-explorer{font-size:12px}.arcubic-ui .study-content h3{font-size:22px}.arcubic-ui .study-buttons{flex-wrap:wrap}.arcubic-ui .type-specimen{padding:18px}.type-specimen-grid{grid-template-columns:1fr}.arcubic-ui .study-specs{flex-wrap:wrap}}
 
-/* Three font roles: Alliance for controls, Lora for reading, Geist Mono for code. */
+/* Three font roles: Chakra Petch for controls, Lora for reading, Geist Mono for code. */
 
 .arcubic-ui{--font-content:var(--arc-font-reading);--font-code:var(--arc-font-code);--code-font-family:var(--font-code);--font-terminal:ui-monospace,SFMono-Regular,Consolas,monospace}
 .arcubic-ui .radix-themes{--code-font-family:var(--font-code)}

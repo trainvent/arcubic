@@ -9,6 +9,7 @@ import {Theme,Button,Badge,Slider,Checkbox,TextField,Progress,Dialog,Flex,Text} 
 import {Sun,Moon,ArrowUpRight,Download,RotateCcw,Check,Copy,ArrowRight,Palette,SlidersHorizontal,Code2,Info} from 'lucide-react';
 import '@radix-ui/themes/styles.css';
 import '@fontsource/geist-mono/latin-400.css';
+import '@fontsource/chakra-petch/latin-400.css';
 import '@fontsource/lora/latin-400.css';
 import '@fontsource/lora/latin-400-italic.css';
 import '@fontsource/lora/latin-700.css';

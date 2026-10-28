@@ -1,10 +1,7 @@
-# Local preview fonts
+# Fonts
 
-Font binaries in this folder are excluded from Git. The current preview uses
-`alliance-no2-light.otf`, supplied locally by the user. It is not redistributed.
+The current preview loads Chakra Petch, Lora and Geist Mono from Fontsource
+npm dependencies. Their OFL licenses permit bundling with Arcubic.
 
-Lora and Geist Mono are installed through Fontsource dependencies. Old local
-font experiments are not needed to build the public theme.
-
-The portable Obsidian build embeds only the OFL-licensed Lora and Geist Mono
-faces. Alliance is embedded only by the ignored personal build.
+Earlier local font experiments are archived outside the public assets in
+ignored `.local/fonts/` and are not used by the web or Obsidian builds.

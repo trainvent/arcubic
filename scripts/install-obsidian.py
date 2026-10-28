@@ -3,15 +3,12 @@
 import argparse, datetime, pathlib, shutil
 parser = argparse.ArgumentParser()
 parser.add_argument('--vault', required=True, type=pathlib.Path)
-parser.add_argument('--personal', action='store_true')
 args = parser.parse_args()
 root = pathlib.Path(__file__).resolve().parents[1]
 vault = args.vault.expanduser().resolve()
 if not (vault / '.obsidian').is_dir():
     parser.error('The selected folder must contain an existing .obsidian directory.')
 source = root / 'ports/obsidian'
-if args.personal:
-    source = source / '.local'
 if not (source / 'theme.css').is_file():
     parser.error('Build the theme before installing it.')
 stamp = datetime.datetime.now().strftime('%Y%m%d-%H%M%S-%f')

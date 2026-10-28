@@ -155,11 +155,10 @@
 .study-breadcrumb>span{display:inline-flex;align-items:center;gap:3px;min-width:0}
 @media(max-width:600px){.arcubic-ui .study-body{grid-template-columns:145px minmax(0,1fr)}.arcubic-ui .study-sidebar{padding:12px 8px}.arc-explorer{--tree-indent:11px;--tree-row:28px;--tree-marker-x:7px;font-size:9px}.arc-explorer-row{padding:6px;gap:6px}.study-breadcrumb{flex-wrap:wrap;line-height:1.6}}
 
-@font-face{font-family:'Alliance No.2';src:url('/fonts/alliance-no2-light.otf') format('opentype');font-style:normal;font-weight:300;font-display:swap}
-.arcubic-ui{--default-font-family:'Alliance No.2',ui-sans-serif,sans-serif;--heading-font-family:var(--default-font-family);font-family:var(--default-font-family);font-weight:300;font-synthesis:none}
-.arcubic-ui .radix-themes{--default-font-family:'Alliance No.2',ui-sans-serif,sans-serif;--heading-font-family:var(--default-font-family);font-family:var(--default-font-family)}
+.arcubic-ui{--default-font-family:'Chakra Petch',ui-sans-serif,sans-serif;--heading-font-family:var(--default-font-family);font-family:var(--default-font-family);font-weight:400;font-synthesis:none}
+.arcubic-ui .radix-themes{--default-font-family:'Chakra Petch',ui-sans-serif,sans-serif;--heading-font-family:var(--default-font-family);font-family:var(--default-font-family)}
 .arcubic-ui :where(button,input,textarea,select){font-family:var(--default-font-family)}
-.arcubic-ui :where(.study-content h3,.study>h2,.intro h1,.terminal-intro h1,.style-studies-intro h1){font-family:var(--default-font-family);font-weight:300}
+.arcubic-ui :where(.study-content h3,.study>h2,.intro h1,.terminal-intro h1,.style-studies-intro h1){font-family:var(--default-font-family);font-weight:400}
 
 /* Direction switch — all geometry derives from --direction-switch-height. */
 .arcubic-ui .rt-SwitchRoot,.arcubic-ui .study-switch{

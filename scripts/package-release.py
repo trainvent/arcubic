@@ -8,8 +8,8 @@ out = root / 'dist/releases'
 out.mkdir(parents=True, exist_ok=True)
 source = root / 'ports/obsidian'
 css = (source / 'theme.css').read_text()
-if 'font/opentype;base64' in css:
-    raise SystemExit('Refusing to package a private Alliance font.')
+if 'font/opentype;base64' in css or "font-family:'Nippo';font-weight:200 700" in css:
+    raise SystemExit('Refusing to package a private interface font.')
 archive = out / f'arcubic-obsidian-{tag}.zip'
 files = {
     'Arcubic/theme.css': source / 'theme.css',

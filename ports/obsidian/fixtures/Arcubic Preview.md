@@ -1,6 +1,6 @@
 # Arcubic
 
-A quiet reading surface with tactile controls. This paragraph uses **Lora bold**, *Lora italic* and regular text. The interface uses Alliance No.2 and code uses Geist Mono.
+A quiet reading surface with tactile controls. This paragraph uses **Lora bold**, *Lora italic* and regular text. The interface uses Chakra Petch and code uses Geist Mono.
 
 ## A small palette
 
@@ -33,7 +33,7 @@ Inline `code` uses a fixed-pitch font.
 
 | Role | Typeface |
 | --- | --- |
-| Interface | Alliance No.2 |
+| Interface | Chakra Petch |
 | Reading | Lora |
 | Code | Geist Mono |
 

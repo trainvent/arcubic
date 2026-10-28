@@ -57,7 +57,7 @@ body.theme-light, body.theme-dark {
   --link-color: var(--teal-text-on-page); --link-color-hover: var(--teal-12);
   --link-external-color: var(--orange-text-on-page); --link-external-color-hover: var(--orange-12);
   --link-unresolved-color: var(--amber-text-on-page);
-  --nav-item-size: var(--arc-type-ui); --nav-item-weight: 300;
+  --nav-item-size: var(--arc-type-ui); --nav-item-weight: 400;
   --nav-item-color: var(--gray-11); --nav-item-color-hover: var(--gray-12);
   --nav-item-color-active: var(--teal-text-on-panel);
   --nav-item-background-hover: var(--gray-3); --nav-item-background-active: var(--gray-4);
@@ -68,7 +68,7 @@ body.theme-light, body.theme-dark {
   --tab-text-color: var(--gray-11); --tab-text-color-active: var(--teal-text-on-panel);
   --tab-text-color-focused-active: var(--teal-text-on-panel);
   --tab-text-color-focused-active-current: var(--teal-text-on-panel);
-  --tab-font-size: var(--arc-type-ui); --tab-font-weight: 300;
+  --tab-font-size: var(--arc-type-ui); --tab-font-weight: 400;
   --tab-divider-color: transparent;
   --code-background: var(--gray-2); --code-normal: var(--gray-12);
   --code-comment: var(--gray-11); --code-function: var(--amber-text-on-panel);
@@ -99,7 +99,7 @@ body.theme-light, body.theme-dark {
   font-synthesis: none;
 }
 body, button, input, select, textarea { font-family: var(--font-interface); }
-body { font-weight: 300; }
+body { font-weight: 400; }
 .markdown-source-view, .markdown-preview-view { font-family: var(--font-text); font-weight:400; }
 .cm-s-obsidian .cm-inline-code, .cm-s-obsidian .HyperMD-codeblock, code, pre { font-family:var(--font-monospace); }
 .workspace, .workspace-split, .workspace-leaf, .view-content { border-radius:0; }
@@ -117,13 +117,13 @@ body { font-weight: 300; }
 .workspace-tab-header:hover { filter:brightness(1.06); }
 .workspace-tab-header::before, .workspace-tab-header::after { display:none; }
 .workspace-tab-header-inner { background:transparent; box-shadow:none; }
-.workspace-tab-header-inner-title { font-weight:300; }
+.workspace-tab-header-inner-title { font-weight:400; }
 .workspace-tab-header-inner-close-button { border-radius:0; }
 button:not(.clickable-icon):not(.checkbox-container):where(:not([aria-pressed="true"]):not(.is-active):not(.is-selected):not(.mod-active)), select, .dropdown {
   border-radius:0; border:1px solid;
   border-color:var(--arc-edge-high) var(--arc-edge-low) var(--arc-edge-low) var(--arc-edge-high);
   background-color:var(--arc-control-face); color:var(--text-normal); box-shadow:var(--arc-raised);
-  font-size:var(--arc-type-ui); font-weight:300; transition:filter .12s ease;
+  font-size:var(--arc-type-ui); font-weight:400; transition:filter .12s ease;
 }
 /* Keep the native dropdown indicator in one reserved slot. Never reset its image. */
 select.dropdown, select {
@@ -202,7 +202,7 @@ body .checkbox-container input { position:absolute; opacity:0; width:100%; heigh
 .nav-files-container { --arc-tree-guide:var(--teal-7); --arc-tree-marker:var(--teal-9); }
 .nav-folder.mod-root>.nav-folder-children>.nav-folder:nth-child(3n+2) { --arc-tree-guide:var(--amber-7); --arc-tree-marker:var(--amber-9); }
 .nav-folder.mod-root>.nav-folder-children>.nav-folder:nth-child(3n) { --arc-tree-guide:var(--orange-7); --arc-tree-marker:var(--orange-9); }
-.nav-folder-title,.nav-file-title { border-radius:0; font-family:var(--font-interface); font-size:var(--arc-type-ui); font-weight:300; }
+.nav-folder-title,.nav-file-title { border-radius:0; font-family:var(--font-interface); font-size:var(--arc-type-ui); font-weight:400; }
 .nav-folder-title:hover,.nav-file-title:hover { background:var(--gray-3); }
 .nav-file-title.is-active,.nav-folder-title.is-active { background:var(--gray-4); color:var(--teal-text-on-panel); }
 .nav-folder-title .collapse-icon svg { display:none; }
@@ -212,7 +212,7 @@ body .checkbox-container input { position:absolute; opacity:0; width:100%; heigh
 .nav-folder-children { position:relative; border-left:0; }
 .nav-folder:not(.is-collapsed):not(.mod-root)>.nav-folder-children::after { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:var(--arc-tree-guide); z-index:2; pointer-events:none; }
 .nav-file-title::before { display:none; }
-.nav-file-title-content { font-weight:300; }
+.nav-file-title-content { font-weight:400; }
 .menu,.modal,.prompt,.suggestion-container { border-radius:0; border:1px solid var(--gray-7); background:var(--gray-2); }
 .menu-item,.suggestion-item,.search-result-file-title { border-radius:0; }
 .menu-item.selected:not(.is-disabled),.suggestion-item.is-selected { background:var(--teal-3); color:var(--teal-text-on-panel); }
@@ -223,7 +223,7 @@ body .checkbox-container input { position:absolute; opacity:0; width:100%; heigh
 .callout { border-radius:0; }
 .callout-title { font-family:var(--font-interface); }
 .markdown-rendered table { border-collapse:collapse; }
-.markdown-rendered th { background:var(--gray-3); font-family:var(--font-interface); font-weight:300; }
+.markdown-rendered th { background:var(--gray-3); font-family:var(--font-interface); font-weight:400; }
 .markdown-rendered td,.markdown-rendered th { border-color:var(--gray-6); }
 .tag { font-family:var(--font-interface); }
 .search-result-file-matches { border-radius:0; }
@@ -286,11 +286,11 @@ body .checkbox-container:focus-visible { outline:0; background:var(--teal-11); }
 .markdown-rendered .callout a.external-link { color:var(--orange-12); }
 .markdown-rendered :is(mark,.search-result-file-matched-text) { background:var(--amber-5); color:var(--amber-12); }
 .cm-s-obsidian .cm-highlight { background:var(--amber-5); color:var(--amber-12); }
-/* Alliance's descenders need more than the native one-em clipped pill line. */
+/* Keep breathing room around clipped property labels. */
 body .metadata-container .multi-select-pill { line-height:1.5; padding-block:2px; }
 body .metadata-container .multi-select-pill-content { line-height:1.5; padding-block:1px; }
 body .metadata-property-key-input { line-height:1.5; }
-/* Settings labels are ellipsized; reserve ink space below Alliance's baseline. */
+/* Settings labels retain horizontal ellipsis with room below the baseline. */
 body .vertical-tab-nav-item { padding-block:2px; align-items:center; }
 body .vertical-tab-nav-item-title {
   line-height:1.5; padding-block:1px 3px; box-sizing:border-box;
@@ -299,10 +299,9 @@ body .setting-search-container input[type=search] {
   min-height:32px; line-height:1.5; padding-block:4px;
 }
 
-/* Native search inputs also clip to the font's internal single-line metrics. */
+/* Search typography follows the shared interface role. */
 body input[type=search], body .search-input-container input, body input.prompt-input {
-  font-family:var(--font-interface-override,""),'Alliance No.2 Input',var(--arc-font-interface);
-  font-weight:300;
+  font-family:var(--font-interface); font-weight:400;
 }
 body input[type=search]::placeholder,
 body .search-input-container input::placeholder,

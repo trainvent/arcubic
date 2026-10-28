@@ -6,7 +6,7 @@ Teal, amber and burnt orange on Sage. A reusable design system with square panel
 
 ## Alpha release
 
-Download the [v0.1.0-alpha.1 prerelease](https://github.com/Trainvent/arcubic/releases/tag/v0.1.0-alpha.1) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). Alliance is not bundled; the public interface uses a system-font fallback when Alliance is unavailable.
+Download the [v0.1.0-alpha.1 prerelease](https://github.com/Trainvent/arcubic/releases/tag/v0.1.0-alpha.1) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). That first release uses optional Alliance; the current working build instead bundles Chakra Petch under the OFL.
 
 Arcubic's code is [MIT licensed](LICENSE). Bundled fonts retain their included OFL licenses.
 
@@ -51,12 +51,12 @@ Samples at 0, 0.5 and 1 give 169.88°, 36.80125° and 17.79°. The current UI us
 
 ## Typography
 
-- Interface: Alliance No.2 Light, with system sans-serif fallback.
+- Interface: Chakra Petch Regular.
 - Reading: Lora, including real bold and italic faces.
 - Code and terminal: Geist Mono.
 
-Lora and Geist Mono are installed through Fontsource. Alliance is a locally supplied licensed font, excluded from Git. To use it in the preview, place your font at `public/fonts/alliance-no2-light.otf`. It is not included in the public Obsidian build.
+Chakra Petch, Lora and Geist Mono are installed through Fontsource and included under their OFL licenses. The Obsidian theme embeds all three; no separate font download is needed.
 
 ## Use elsewhere
 
-For framework-free websites, see [shared CSS tokens](packages/core/README.md). For Obsidian installation and personal font builds, see [the adapter instructions](ports/obsidian/README.md). Terminal export instructions are in [ports/terminal](ports/terminal/).
+For framework-free websites, see [shared CSS tokens](packages/core/README.md). For Obsidian installation, see [the adapter instructions](ports/obsidian/README.md). Terminal export instructions are in [ports/terminal](ports/terminal/).
