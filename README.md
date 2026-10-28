@@ -21,7 +21,7 @@ The guiding principle is restraint: geometry gives Arcubic its character, while 
 
 ## Alpha release
 
-Download the [0.1.1 alpha release](https://github.com/Trainvent/arcubic/releases/tag/0.1.1) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). The current build bundles Chakra Petch, Lora and Geist Mono under the OFL.
+Download the [0.1.2 alpha release](https://github.com/Trainvent/arcubic/releases/tag/0.1.2) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). The current build bundles Chakra Petch, Lora and Geist Mono under the OFL.
 
 The root `manifest.json`, `theme.css` and `versions.json` are generated Obsidian distribution files. Native source stays in `ports/obsidian/`; shared web tokens and components stay independent. Rebuild with `npm run build:obsidian` after changing the adapter.
 

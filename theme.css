@@ -756,7 +756,7 @@ body{
 --arc-callout-tomato-text:#ff977d;
 --arc-callout-gray-text:#adb5b2;
 --arc-control-face:var(--gray-3);
---arc-edge-high:#69746f;
+--arc-edge-high:var(--gray-7);
 --arc-edge-low:#070a09;
 --arc-inset-high:#070a09;
 --arc-inset-low:#47504b;

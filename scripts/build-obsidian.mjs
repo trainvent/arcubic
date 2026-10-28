@@ -30,7 +30,7 @@ for(const mode of ['light','dark']){
  css+=block(`.theme-${mode}`,{
  ...tokens,...calloutText,
  '--arc-control-face':'var(--gray-3)',
- '--arc-edge-high':mode==='dark'?'#69746f':'#ffffff',
+ '--arc-edge-high':mode==='dark'?'var(--gray-7)':'#ffffff',
  '--arc-edge-low':mode==='dark'?'#070a09':'#a8b5af',
  '--arc-inset-high':mode==='dark'?'#070a09':'#a8b5af',
  '--arc-inset-low':mode==='dark'?'#47504b':'#ffffff',

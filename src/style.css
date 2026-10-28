@@ -59,7 +59,7 @@
 .study-bold .study-range:active::-webkit-slider-thumb{background:var(--teal-9);border-color:var(--teal-11) var(--teal-6) var(--teal-6) var(--teal-11);box-shadow:inset 1px 1px 0 var(--teal-10)}
 
 /* Arcubic interface: flat square panels, raised controls, recessed inputs. */
-.arcubic-ui{--ui-high:var(--gray-8);--ui-low:var(--gray-1);--ui-face:var(--gray-4);--ui-inset-high:var(--gray-7);--ui-inset-low:var(--gray-3);--ui-accent-high:var(--accent-11);--ui-accent-low:var(--accent-7);--ui-bevel:inset 1px 1px 0 var(--ui-high),inset -1px -1px 0 var(--ui-low)}
+.arcubic-ui{--ui-high:var(--gray-7);--ui-low:var(--gray-1);--ui-face:var(--gray-4);--ui-inset-high:var(--gray-7);--ui-inset-low:var(--gray-3);--ui-accent-high:var(--accent-11);--ui-accent-low:var(--accent-7);--ui-bevel:inset 1px 1px 0 var(--ui-high),inset -1px -1px 0 var(--ui-low)}
 .arcubic-ui.light{--ui-high:#fff;--ui-low:var(--gray-8);--ui-face:var(--gray-3);--ui-inset-high:var(--gray-7);--ui-inset-low:#fff;--ui-accent-high:var(--accent-6);--ui-accent-low:var(--accent-10)}
 .arcubic-ui :where(.panel,.palette-panel,.logo-card,.comparison,.terminal-screen,.terminal-foundation,.terminal-color-card,.terminal-matrix,.color-input,.rt-DialogContent){border-radius:0;box-shadow:none}
 .arcubic-ui :where(.rt-Button,.mode-button,.terminal-download){border-radius:0;border:1px solid;border-color:var(--ui-high) var(--ui-low) var(--ui-low) var(--ui-high);background:var(--ui-face);box-shadow:var(--ui-bevel);color:var(--gray-12);font-weight:550;transition:filter .12s}
