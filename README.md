@@ -4,9 +4,24 @@
 
 Teal, amber and burnt orange on Sage. A reusable design system with square panels, raised controls, inset fields and a sliding triangle switch.
 
+## Styling guidelines
+
+Arcubic aims for a precise, technical interface with a tactile feel. Clear structure, restrained color and deliberate geometry should make the controls feel coherent across websites and applications.
+
+- **Use depth where interaction benefits from it.** Raised buttons suggest pressing; inset fields and tracks suggest input. Keep content panels quiet and flat. A thin bevel is usually enough, especially on compact controls; preserve space for their text and icons.
+- **Keep the structure geometric.** Favor square edges, aligned boundaries and consistent spacing. Active document tabs should connect to their page, while inactive tabs recede into the surrounding surface.
+- **Make triangles functional.** Use them for direction, state and progress: the switch slides left/down when off and right/up when on, and the loader follows a triangular path. Keep angles, proportions and internal spacing consistent as these elements scale.
+- **Keep hover, selection and focus distinct.** Hover is a small change in brightness or text color. Selection persists after the pointer leaves. Keyboard focus stays visible with a light, single outline. Avoid stacked focus rings, heavy hover boxes and separate highlights around button text.
+- **Give color a clear role.** Sage provides the surfaces; teal, amber and burnt orange establish the identity. Use accents selectively. Green and red communicate success and error, rather than becoming additional decorative accents.
+- **Let typography do its job.** Use a technical interface face, a comfortable reading face and a true monospace for code. Keep labels legible at small sizes and leave enough room for descenders, including in placeholders, tags and truncated labels.
+- **Make motion explain a change.** Keep transitions short and purposeful: a button depresses, a switch travels and rotates, a loader indicates progress. Respect reduced-motion preferences.
+- **Adapt to the host without losing the system.** Preserve native behavior and keyboard interaction. Test normal, hovered, pressed, selected, focused and disabled states in context, in both light and dark modes. Check contrast against the actual surface behind the text.
+
+The guiding principle is restraint: geometry gives Arcubic its character, while depth and color help people understand what they can do.
+
 ## Alpha release
 
-Download the [0.1.0 alpha release](https://github.com/Trainvent/arcubic/releases/tag/0.1.0) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). The current build bundles Chakra Petch, Lora and Geist Mono under the OFL.
+Download the [0.1.1 alpha release](https://github.com/Trainvent/arcubic/releases/tag/0.1.1) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). The current build bundles Chakra Petch, Lora and Geist Mono under the OFL.
 
 The root `manifest.json`, `theme.css` and `versions.json` are generated Obsidian distribution files. Native source stays in `ports/obsidian/`; shared web tokens and components stay independent. Rebuild with `npm run build:obsidian` after changing the adapter.
 

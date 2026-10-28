@@ -306,3 +306,59 @@ body input[type=search], body .search-input-container input, body input.prompt-i
 body input[type=search]::placeholder,
 body .search-input-container input::placeholder,
 body input.prompt-input::placeholder { font-family:inherit; font-weight:inherit; }
+
+/* Document tabs join the page; compact sidebar tabs keep their own treatment. */
+body .mod-root .workspace-tab-header-container {
+  border-bottom:1px solid var(--gray-6); padding-bottom:0; align-items:flex-end;
+}
+body .mod-root .workspace-tab-header.is-active {
+  position:relative; z-index:1;
+  background:var(--gray-1); border-color:var(--gray-6); border-bottom-color:var(--gray-1);
+  box-shadow:none; filter:none;
+  --tab-text-color-active:var(--teal-text-on-page);
+  --tab-text-color-focused-active:var(--teal-text-on-page);
+  --tab-text-color-focused-active-current:var(--teal-text-on-page);
+}
+body .mod-root .workspace-tab-header.is-active::after {
+  content:''; display:block; position:absolute; inset:auto 0 -2px; height:2px;
+  background:var(--gray-1); pointer-events:none; box-shadow:none; border-radius:0;
+}
+body .mod-root .workspace-tab-header-inner-close-button {
+  display:flex; opacity:0; visibility:hidden; pointer-events:none;
+}
+body .mod-root .workspace-tab-header:is(.is-active,:hover,:focus-within) .workspace-tab-header-inner-close-button {
+  opacity:1; visibility:visible; pointer-events:auto;
+}
+body .mod-root .workspace-tab-header-inner-close-button:hover {
+  background:transparent!important; color:var(--tomato-11)!important; border-radius:0;
+  box-shadow:none;
+  --icon-color:var(--tomato-11); --icon-color-hover:var(--tomato-11);
+}
+
+/* Inactive document tabs recede into the strip without a raised or hover box. */
+body .mod-root .workspace-tab-header:not(.is-active) {
+  background:transparent; border-color:transparent; box-shadow:none; filter:none;
+  --tab-text-color:var(--gray-11);
+}
+body .mod-root .workspace-tab-header:not(.is-active):hover {
+  background:transparent; border-color:transparent; box-shadow:none; filter:none;
+  --tab-text-color:var(--gray-12);
+}
+body .mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+  background:transparent; box-shadow:none;
+}
+
+/* Give the document tab strip enough height for a comfortable selected tab. */
+body .mod-root .workspace-tab-header {
+  min-height:32px;
+}
+body .mod-root .workspace-tab-header-inner {
+  min-height:30px; padding-block:4px; align-items:center;
+}
+
+/* Search focus uses one colored border, without a stacked outer focus ring. */
+body .search-input-container:focus-within { outline:none!important; box-shadow:none!important; }
+body .search-input-container input:focus {
+  outline:none!important; box-shadow:none!important;
+  border-width:1px; border-color:var(--teal-8);
+}
