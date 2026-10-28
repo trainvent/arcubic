@@ -1,16 +1,25 @@
 import Color from 'colorjs.io';
-import { gray, grayDark } from '@radix-ui/colors';
+import { gray, grayDark, orange as radixOrange, amber as radixAmber, teal as radixTeal } from '@radix-ui/colors';
 export type Mode = 'dark' | 'light';
-export function generateHuePalette(count = 3, exponent = 3): string[] {
+// Hue follows the cubic curve; S/L come from the installed Radix step-9 colors.
+const radixAnchors = [radixTeal.teal9, radixAmber.amber9, radixOrange.orange9]
+  .map(value => new Color(value).to('hsl').coords);
+export function hueForI(i: number): number {
+  return 17.79 + 152.09 * (1 - i) ** 3;
+}
+export function generateHuePalette(count = 3): string[] {
   if (!Number.isInteger(count) || count < 2) throw new RangeError('Use at least two colors.');
-  if (!Number.isFinite(exponent) || exponent <= 0) throw new RangeError('Use a positive exponent.');
-  return Array.from({length: count}, (_, i) => {
-    const t = i / (count - 1);
-    const hue = 17.79 + (169.88 - 17.79) * t ** exponent;
-    return new Color(`hsl(${hue} 75% 45%)`).to('srgb').toString({format: 'hex'}).toUpperCase();
+  return Array.from({length: count}, (_, index) => {
+    const t = index / (count - 1);
+    const hue = hueForI(t);
+    const segment = t <= 0.5 ? 0 : 1;
+    const weight = (t - segment * 0.5) * 2;
+    const saturation = radixAnchors[segment][1] * (1 - weight) + radixAnchors[segment + 1][1] * weight;
+    const lightness = radixAnchors[segment][2] * (1 - weight) + radixAnchors[segment + 1][2] * weight;
+    return new Color(`hsl(${hue} ${saturation}% ${lightness}%)`).to('srgb').toString({format: 'hex'}).toUpperCase();
   });
 }
-const [orange, amber, teal] = generateHuePalette();
+const [teal, amber, orange] = generateHuePalette();
 export const defaults = { teal, amber, orange };
 export type Seeds = typeof defaults;
 export const names = { teal: 'Teal', amber: 'Amber', orange: 'Burnt orange' };
@@ -63,5 +72,5 @@ export function themeTokens(seeds: Seeds, mode: Mode) {
   return tokens;
 }
 export function exportCSS(seeds: Seeds) {
-  return '/* Prism · Logo palette · Radix Themes overrides\n   Import after @radix-ui/themes/styles.css. Use accentColor="teal".\n   Custom OKLCH scales; review contrast for your intended usage. */\n\n' + (['light','dark'] as const).map(mode=>`${mode === 'light' ? ':root, .light, .light-theme' : '.dark, .dark-theme'} {\n${Object.entries(themeTokens(seeds,mode)).map(([k,v])=>`  ${k}: ${v};`).join('\n')}\n}`).join('\n\n');
+  return '/* Arcubic · Logo palette · Radix Themes overrides\n   Import after @radix-ui/themes/styles.css. Use accentColor="teal".\n   Custom OKLCH scales; review contrast for your intended usage. */\n\n' + (['light','dark'] as const).map(mode=>`${mode === 'light' ? ':root, .light, .light-theme' : '.dark, .dark-theme'} {\n${Object.entries(themeTokens(seeds,mode)).map(([k,v])=>`  ${k}: ${v};`).join('\n')}\n}`).join('\n\n');
 }
