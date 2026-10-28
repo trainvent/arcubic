@@ -1,0 +1,70 @@
+/* Shared Arcubic treatment for the remaining Radix component families. */
+.arcubic-ui :is(.rt-IconButton,.rt-SelectTrigger){border-radius:0;border:1px solid;border-color:var(--ui-high) var(--ui-low) var(--ui-low) var(--ui-high);background:var(--ui-face);box-shadow:var(--ui-bevel);color:var(--gray-12)}
+.arcubic-ui :is(.rt-IconButton,.rt-SelectTrigger):active{transform:translateY(1px);box-shadow:inset 1px 1px 0 var(--ui-low),inset -1px -1px 0 var(--ui-high)}
+.arcubic-ui .rt-IconButton.rt-variant-solid{background:var(--accent-9);color:var(--accent-contrast)}
+.arcubic-ui .rt-IconButton.rt-variant-ghost{background:transparent;border-color:transparent;box-shadow:none;color:var(--accent-12)}
+.arcubic-ui :is(.rt-IconButton,.rt-Button,.rt-SelectTrigger)[disabled]{opacity:.45;filter:none;transform:none;cursor:not-allowed;box-shadow:none}
+.arcubic-ui .rt-SwitchRoot[data-disabled]{opacity:.4;cursor:not-allowed}
+.arcubic-ui .rt-Button.rt-variant-ghost{background:transparent;border-color:transparent;box-shadow:none;color:var(--accent-12)}
+.arcubic-ui .rt-Button.rt-variant-surface{background:var(--accent-2);color:var(--accent-12)}
+.arcubic-ui .rt-Button.rt-variant-classic{background:var(--accent-9);color:var(--accent-contrast);border-color:var(--ui-accent-high) var(--ui-accent-low) var(--ui-accent-low) var(--ui-accent-high);box-shadow:inset 1px 1px 0 var(--ui-accent-high),inset -1px -1px 0 var(--ui-accent-low)}
+.arcubic-ui :is(.rt-TextArea,.rt-Card,.rt-CheckboxCardsItem,.rt-RadioCardsItem,.rt-TableRoot,.rt-AvatarRoot,.rt-Code,.rt-Kbd,.rt-Skeleton,.rt-SelectContent,.rt-BaseMenuContent,.rt-PopoverContent,.rt-HoverCardContent,.rt-TooltipContent,.rt-AlertDialogContent){border-radius:0}
+.arcubic-ui .rt-TextArea{border:1px solid;border-color:var(--ui-inset-high) var(--ui-inset-low) var(--ui-inset-low) var(--ui-inset-high);background:var(--gray-1);box-shadow:inset 1px 1px 0 var(--gray-3);font:300 var(--text-ui)/1.6 var(--font-ui)}
+.arcubic-ui :is(.rt-CheckboxCardsItem,.rt-RadioCardsItem){background:var(--gray-2);box-shadow:inset 0 0 0 1px var(--gray-6);transition:background .12s}
+.arcubic-ui :is(.rt-CheckboxCardsItem,.rt-RadioCardsItem):hover{background:var(--gray-3)}
+.arcubic-ui :is(.rt-CheckboxCardsItem,.rt-RadioCardsItem)[data-state=checked]{background:var(--accent-3);box-shadow:inset 0 0 0 1px var(--accent-8),inset 3px 0 0 var(--accent-9)}
+.arcubic-ui :is(.rt-CheckboxCardsItem,.rt-RadioCardsItem)[data-disabled]{opacity:.45;cursor:not-allowed}
+.arcubic-ui .rt-BaseCheckboxRoot{border-radius:0}
+.arcubic-ui .rt-SegmentedControlRoot{border-radius:0;background:var(--gray-2);box-shadow:inset 1px 1px 0 var(--ui-low),inset -1px -1px 0 var(--ui-high);padding:3px;gap:4px}
+.arcubic-ui .rt-SegmentedControlItem{border-radius:0;font:300 var(--text-ui)/1.4 var(--font-ui);box-shadow:var(--ui-bevel);background:var(--ui-face)}
+.arcubic-ui .rt-SegmentedControlItem[data-state=on]{box-shadow:inset 1px 1px 0 var(--ui-low),inset -1px -1px 0 var(--ui-high);background:var(--accent-3);color:var(--accent-12)}
+.arcubic-ui .rt-SegmentedControlIndicator{border-radius:0;box-shadow:none;background:transparent}
+.arcubic-ui :is(.rt-TabsList,.rt-TabNavRoot){box-shadow:inset 0 -1px var(--gray-6);gap:4px;padding:5px 0}
+.arcubic-ui :is(.rt-TabsTrigger,.rt-TabNavLink){border-radius:0;border:1px solid;border-color:var(--ui-high) var(--ui-low) var(--ui-low) var(--ui-high);background:var(--ui-face);box-shadow:var(--ui-bevel);font:300 var(--text-ui)/1.4 var(--font-ui);padding:8px 13px}
+.arcubic-ui :is(.rt-TabsTrigger,.rt-TabNavLink)::before{display:none}
+.arcubic-ui .rt-TabsTrigger[data-state=active],.arcubic-ui .rt-TabNavLink[data-active]{background:var(--accent-3);color:var(--accent-12);box-shadow:inset 1px 1px 0 var(--ui-low),inset -1px -1px 0 var(--ui-high)}
+.arcubic-ui :is(.rt-BaseMenuContent,.rt-SelectContent,.rt-PopoverContent,.rt-HoverCardContent,.rt-DialogContent,.rt-AlertDialogContent){border:1px solid var(--gray-7);background:var(--gray-2);box-shadow:0 5px 15px #00000018}
+.arcubic-ui :is(.rt-BaseMenuItem,.rt-SelectItem){border-radius:0;font:300 var(--text-ui)/1.4 var(--font-ui);min-height:30px}
+.arcubic-ui :is(.rt-BaseMenuItem,.rt-SelectItem)[data-highlighted]{background:var(--accent-3);color:var(--accent-12)}
+.arcubic-ui .rt-BaseMenuLabel,.arcubic-ui .rt-SelectLabel{font:300 var(--text-caption)/1.5 var(--font-ui);letter-spacing:.04em;color:var(--gray-11)}
+.arcubic-ui .rt-TooltipContent{background:var(--gray-12);color:var(--gray-1);font:300 var(--text-caption)/1.5 var(--font-ui)}
+.arcubic-ui .rt-Card{background:var(--gray-2);box-shadow:inset 0 0 0 1px var(--gray-6)}
+.arcubic-ui .rt-Card.rt-variant-ghost{background:transparent;box-shadow:none}
+.arcubic-ui .rt-CalloutRoot{border-radius:0;border:1px solid var(--accent-6);border-left:3px solid var(--accent-9);box-shadow:none}
+.arcubic-ui .rt-ScrollAreaScrollbar{border-radius:0;background:var(--gray-3)}
+.arcubic-ui .rt-ScrollAreaThumb{border-radius:0;background:var(--gray-8)}
+.arc-code-block{border:1px solid var(--gray-6);background:var(--gray-1);min-width:0}
+.arc-code-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 13px;background:var(--gray-2);border-bottom:1px solid var(--gray-5);color:var(--gray-11);font:11px/1.5 var(--font-code)}
+.arc-code-block pre{font:12px/1.8 var(--font-code);padding:16px 13px;color:var(--gray-12);overflow:auto;margin:0;tab-size:2}
+.arc-code-line{display:flex;min-width:max-content;white-space:pre}
+.arc-line-number{display:inline-block;width:28px;flex:0 0 28px;color:var(--gray-10);user-select:none}
+@media(prefers-reduced-motion:reduce){.arcubic-ui :is(.rt-CheckboxCardsItem,.rt-RadioCardsItem){transition:none}}
+
+.arc-triangle-spinner{--spinner-size:20px;display:inline-flex;flex:none;width:var(--spinner-size);height:var(--spinner-size);vertical-align:middle;align-items:center;justify-content:center;color:inherit}
+.arc-triangle-spinner svg{display:block;width:100%;height:100%;overflow:visible;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.arc-spinner-guide{stroke-width:32;opacity:.2}
+.arc-spinner-fuse{stroke-width:52;stroke-dasharray:26 74;stroke-dashoffset:100;animation:arcubic-fuse 1.8s linear infinite}
+.arc-spinner-size-1,.arc-spinner-initial-1{--spinner-size:16px}.arc-spinner-size-2,.arc-spinner-initial-2{--spinner-size:20px}.arc-spinner-size-3,.arc-spinner-initial-3{--spinner-size:28px}
+.arc-spinner-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}.arc-spinner-cover,.arc-button-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.arc-icon-reserve{display:block;width:16px;height:16px}
+@keyframes arcubic-fuse{to{stroke-dashoffset:0}}
+@media(min-width:520px){.arc-spinner-xs-1{--spinner-size:16px}.arc-spinner-xs-2{--spinner-size:20px}.arc-spinner-xs-3{--spinner-size:28px}}
+@media(min-width:768px){.arc-spinner-sm-1{--spinner-size:16px}.arc-spinner-sm-2{--spinner-size:20px}.arc-spinner-sm-3{--spinner-size:28px}}
+@media(min-width:1024px){.arc-spinner-md-1{--spinner-size:16px}.arc-spinner-md-2{--spinner-size:20px}.arc-spinner-md-3{--spinner-size:28px}}
+@media(min-width:1280px){.arc-spinner-lg-1{--spinner-size:16px}.arc-spinner-lg-2{--spinner-size:20px}.arc-spinner-lg-3{--spinner-size:28px}}
+@media(min-width:1640px){.arc-spinner-xl-1{--spinner-size:16px}.arc-spinner-xl-2{--spinner-size:20px}.arc-spinner-xl-3{--spinner-size:28px}}
+@media(prefers-reduced-motion:reduce){.arc-spinner-fuse{animation:none;stroke-dasharray:none;stroke-dashoffset:0}}
+.arc-spinner-guide{stroke-width:44;opacity:.35}
+.arc-spinner-fuse{stroke-width:60}
+.arcubic-ui .rt-Button[aria-busy=true],.arcubic-ui .rt-IconButton[aria-busy=true]{opacity:1;cursor:progress}
+
+/* Tabs behave as whole buttons, without Radix's separate label hover/focus box. */
+.arcubic-ui .rt-BaseTabListTrigger{color:var(--gray-11);transition:filter .12s ease}
+.arcubic-ui .rt-BaseTabListTrigger:where([data-state=active],[data-active]){color:var(--accent-12)}
+.arcubic-ui .rt-BaseTabListTriggerInner,.arcubic-ui .rt-BaseTabListTriggerInnerHidden{background:transparent;outline:none;box-shadow:none;border:0;border-radius:0;font:inherit;letter-spacing:inherit;word-spacing:inherit;color:inherit}
+.arcubic-ui .rt-BaseTabListTrigger::before{display:none}
+.arcubic-ui .rt-BaseTabListTrigger:hover{filter:brightness(1.06)}
+.arcubic-ui .rt-BaseTabListTrigger:focus:not(:focus-visible){outline:none}
+.arcubic-ui .rt-BaseTabListTrigger:focus-visible{outline:2px solid var(--teal-9);outline-offset:3px}
+.arcubic-ui :is(.study-tabs button,.tabs button,.port-nav a,.terminal-sample-tabs button):hover{filter:brightness(1.06)}
+@media(prefers-reduced-motion:reduce){.arcubic-ui .rt-BaseTabListTrigger{transition:none}}

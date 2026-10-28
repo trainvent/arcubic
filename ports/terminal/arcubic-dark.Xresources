@@ -1,0 +1,24 @@
+! Arcubic Dark — Radix accents on Sage
+! Slots 0–7: normal ANSI; 8–15: bright ANSI
+! Orange occupies normal yellow; amber occupies bright yellow.
+*.background: #101211
+*.foreground: #eceeed
+*.cursorColor: #0bd8b6
+*.selectionBackground: #023b37
+*.selectionForeground: #adf0dd
+*.color0: #2e3130
+*.color1: #ec6142
+*.color2: #33b074
+*.color3: #ff801f
+*.color4: #3b9eff
+*.color5: #d19dff
+*.color6: #0eb39e
+*.color7: #adb5b2
+*.color8: #adb5b2
+*.color9: #ff977d
+*.color10: #3dd68c
+*.color11: #ffca16
+*.color12: #70b8ff
+*.color13: #d19dff
+*.color14: #0bd8b6
+*.color15: #eceeed

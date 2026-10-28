@@ -3,3 +3,10 @@ dist/
 *.local
 
 *.tsbuildinfo
+
+__pycache__/
+
+# Local typography preview asset
+public/fonts/*.otf
+public/fonts/*.woff2
+public/fonts/*.ttf

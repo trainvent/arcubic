@@ -1,0 +1,11 @@
+import {writeFileSync} from 'node:fs';
+import Color from 'colorjs.io';
+import {sageDark as sage,tealDark as teal,amberDark as amber,orangeDark as orange,greenDark as green,tomatoDark as tomato,blueDark as blue,purpleDark as purple} from '@radix-ui/colors';
+const background=sage.sage1;
+const ratio=value=>Color.contrast(new Color(value),new Color(background),'WCAG21');
+const normal=(scale,name)=>ratio(scale[name+10])>=4.5?scale[name+10]:scale[name+11];
+const colors=[sage.sage5,normal(tomato,'tomato'),normal(green,'green'),normal(orange,'orange'),normal(blue,'blue'),normal(purple,'purple'),normal(teal,'teal'),sage.sage11,sage.sage11,tomato.tomato11,green.green11,amber.amber11,blue.blue11,purple.purple11,teal.teal11,sage.sage12];
+const text=['! Arcubic Dark — Radix accents on Sage','! Slots 0–7: normal ANSI; 8–15: bright ANSI','! Orange occupies normal yellow; amber occupies bright yellow.',`*.background: ${background}`,`*.foreground: ${sage.sage12}`,`*.cursorColor: ${teal.teal11}`,`*.selectionBackground: ${teal.teal4}`,`*.selectionForeground: ${teal.teal12}`,...colors.map((c,i)=>`*.color${i}: ${c}`)].join('\n')+'\n';
+writeFileSync(new URL('../ports/terminal/arcubic-dark.Xresources',import.meta.url),text);
+for(let i=1;i<16;i++)if(ratio(colors[i])<4.5)throw new Error(`ANSI ${i} fails text contrast`);
+console.log(text);

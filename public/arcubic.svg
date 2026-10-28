@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" fill="none">
+  <title>Arcubic</title>
+  <desc>A thick cubic hue arc with teal, amber, and orange sample points.</desc>
+  <defs><linearGradient id="hue" x1="12" y1="0" x2="116" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="hsl(169.88 75% 45%)"/>
+      <stop offset="3.125%" stop-color="hsl(156.06249725341797 75% 45%)"/>
+      <stop offset="6.25%" stop-color="hsl(143.10829833984374 75% 45%)"/>
+      <stop offset="9.375%" stop-color="hsl(130.98955474853517 75% 45%)"/>
+      <stop offset="12.5%" stop-color="hsl(119.67841796875001 75% 45%)"/>
+      <stop offset="15.625%" stop-color="hsl(109.1470394897461 75% 45%)"/>
+      <stop offset="18.75%" stop-color="hsl(99.36757080078124 75% 45%)"/>
+      <stop offset="21.875%" stop-color="hsl(90.31216339111327 75% 45%)"/>
+      <stop offset="25%" stop-color="hsl(81.95296875 75% 45%)"/>
+      <stop offset="28.125%" stop-color="hsl(74.26213836669922 75% 45%)"/>
+      <stop offset="31.25%" stop-color="hsl(67.21182373046875 75% 45%)"/>
+      <stop offset="34.375%" stop-color="hsl(60.774176330566405 75% 45%)"/>
+      <stop offset="37.5%" stop-color="hsl(54.92134765625 75% 45%)"/>
+      <stop offset="40.625%" stop-color="hsl(49.625489196777345 75% 45%)"/>
+      <stop offset="43.75%" stop-color="hsl(44.85875244140625 75% 45%)"/>
+      <stop offset="46.875%" stop-color="hsl(40.593288879394535 75% 45%)"/>
+      <stop offset="50%" stop-color="hsl(36.801249999999996 75% 45%)"/>
+      <stop offset="53.125%" stop-color="hsl(33.45478729248047 75% 45%)"/>
+      <stop offset="56.25%" stop-color="hsl(30.526052246093748 75% 45%)"/>
+      <stop offset="59.375%" stop-color="hsl(27.987196350097655 75% 45%)"/>
+      <stop offset="62.5%" stop-color="hsl(25.81037109375 75% 45%)"/>
+      <stop offset="65.625%" stop-color="hsl(23.967727966308594 75% 45%)"/>
+      <stop offset="68.75%" stop-color="hsl(22.43141845703125 75% 45%)"/>
+      <stop offset="71.875%" stop-color="hsl(21.17359405517578 75% 45%)"/>
+      <stop offset="75%" stop-color="hsl(20.166406249999998 75% 45%)"/>
+      <stop offset="78.125%" stop-color="hsl(19.382006530761718 75% 45%)"/>
+      <stop offset="81.25%" stop-color="hsl(18.792546386718747 75% 45%)"/>
+      <stop offset="84.375%" stop-color="hsl(18.370177307128905 75% 45%)"/>
+      <stop offset="87.5%" stop-color="hsl(18.08705078125 75% 45%)"/>
+      <stop offset="90.625%" stop-color="hsl(17.915318298339844 75% 45%)"/>
+      <stop offset="93.75%" stop-color="hsl(17.82713134765625 75% 45%)"/>
+      <stop offset="96.875%" stop-color="hsl(17.79464141845703 75% 45%)"/>
+      <stop offset="100%" stop-color="hsl(17.79 75% 45%)"/>
+  </linearGradient></defs>
+  <path d="M12 12 C46.6667 84 81.3333 84 116 84" stroke="url(#hue)" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="12" cy="12" r="8" fill="#1dc9ac"/>
+  <circle cx="64" cy="75" r="8" fill="#c9861d"/>
+  <circle cx="116" cy="84" r="8" fill="#c9501d"/>
+</svg>

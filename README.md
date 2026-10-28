@@ -1,5 +1,7 @@
 # Arcubic theme lab
 
+<img src="public/arcubic.svg" alt="Arcubic cubic curve with three colored sample points" width="128"/>
+
 A local Radix Themes playground for a cubic palette inspired by the logo.
 
 ## The formula
@@ -98,3 +100,67 @@ The light page canvas is `#FEFFFF`; filled tiles use Sage step 2 (`#F7F9F8`). Da
 Teal is the primary accent, amber handles warnings, and orange remains a secondary accent. Success uses the full Radix Green scale; errors use the full Tomato scale. Both include native solid and alpha steps in the CSS export.
 
 `--color-success-*`, `--color-warning-*`, and `--color-error-*` expose `background`, `border`, `text`, and `solid` roles. Text uses step 11 when it meets 4.5:1 against the status background, otherwise step 12. `--color-selection-background`, `--color-selection-text`, and `--color-overlay` cover selection and modal backdrops.
+
+## Terminal palette
+
+The first terminal port is dark-only: [arcubic-dark.Xresources](ports/terminal/arcubic-dark.Xresources). Regenerate with `npm run build:terminal`.
+
+Sage provides the background and foreground. ANSI cyan uses Teal, normal yellow uses Orange, and bright yellow uses Amber. Tomato and Green provide error/success colors; Radix Blue and Purple fill the conventional ANSI slots. Normal text accents use step 10 when it reaches 4.5:1 against the background, otherwise step 11; bright accents use step 11. ANSI black is a low-contrast utility color and is excluded from the text check. Cursor and selection colors are also declared; terminal.sexy previews the background, foreground, and 16 ANSI colors.
+
+[Preview Arcubic Dark in terminal.sexy](https://terminal.sexy/#EBIR7O7tLjEw7GFCM7B0_4AfO57_0Z3_DrOerbWyrbWy_5d9PdaM_8oWcLj_0Z3_C9i27O7t)
+
+### GNOME Terminal installation
+
+Run `python3 scripts/install-gnome-terminal.py` to create an Arcubic Dark profile and make it the default. Existing profiles are retained; a dconf backup is saved under `~/.config/arcubic/`. Open a new terminal window to use it, or select Arcubic Dark in an existing window's profile menu. This changes terminal colors, not the zsh prompt layout.
+
+### Terminal preview page
+
+Open `/#terminal` in the local preview. The page imports `ports/terminal/arcubic-dark.Xresources` directly, so the swatches, shell/Git/code samples, download, contrast matrix, and terminal.sexy link all use the same palette as the installer. The web page's appearance switch changes the surrounding interface; the terminal preview remains the fixed dark terminal port. Click any ANSI card to copy its hex value and inspect its source step.
+
+## Interface direction
+
+The preview uses tactile geometry: square, flat Sage panels with raised beveled controls and inset fields/tracks. Buttons reverse their bevel when pressed; slider thumbs and switches use rectangular raised surfaces. Light and dark modes use separate edge highlights/shadows. The Interface page (`/#styles`) is the selected workspace reference. Terminal output and ANSI swatches keep the canonical terminal colors.
+
+The CSS export currently contains color tokens; the preview's component geometry and bevel rules live in `src/style.css`.
+
+### Typography preview
+
+Interface and content text currently use Alliance No.2 Light (weight 300). Code and terminal output keep their monospace fonts. Place the local font at `public/fonts/alliance-no2-light.otf`; the binary is ignored by Git. The current local source is `~/Bibliothek/alliance-font-family/Alliance Font Family/Degarism Studio - Alliance No.2 Light.otf`. Without it, the preview falls back to the system sans serif. Synthetic bold is disabled while testing this single weight.
+
+### custom_1 text style
+
+`src/custom_1.css` defines the first typography profile, independently of the font file and interface geometry. It uses Alliance No.2 Light at its actual 300 weight without synthetic bold. Core roles: captions 11px/1.4, UI 13px/1.4, reading text 15px/1.65, note headings 24px/1.25. Page titles scale from 30–40px. Code and terminal output remain monospace. The Interface page includes a specimen with role sizes and representative Latin/German glyphs.
+
+## Component library
+
+Open `/#components` for the searchable catalog. Fifteen collections cover buttons and icon buttons; text fields and form validation; checkbox groups/cards; radio groups/cards; direction switches and sliders; select and segmented controls; dropdown/context menus and submenus; dialogs, alert dialogs, popovers and hover cards; tabs and navigation; cards, avatars, aspect ratios and insets; typography and copyable code blocks; badges, callouts and loading states; tables/data lists; layout/scroll helpers; and disclosure/accordion examples.
+
+`src/components/index.ts` is the reusable entry point. It re-exports Radix Themes and adds Arcubic's `DirectionSwitch` (also exported as `Switch`), `CodeBlock`, and theme-aware overlay wrappers. The Arcubic `Theme` hosts portal content within the current theme so dialogs, menus, tooltips and popovers inherit the active accent and typography. Interaction and accessibility behavior come from Radix; native details elements handle disclosure examples. The catalog's demo mutations are browser-local and do not send data.
+
+```tsx
+import type { CSSProperties } from 'react';
+import { Theme, Button, CheckboxCards, Switch, CodeBlock } from './components';
+import { defaults, themeTokens } from './palette';
+
+<Theme className="arcubic-ui" appearance="dark" accentColor="teal" radius="none"
+  style={themeTokens(defaults, 'dark') as CSSProperties}>
+  <Button>Save changes</Button>
+  <Switch aria-label="Focus mode" />
+</Theme>
+```
+
+The current preview imports Radix's CSS first, followed by `src/style.css`, `src/custom_1.css`, and `src/components/arcubic.css`. `src/component-library.css` contains the catalog layout only. This is a source library inside the project, not a published npm package. The CSS token download remains a color export; it does not yet bundle the component library.
+
+### Triangle loader
+
+`Spinner` and the loading states of `Button`/`IconButton` use a continuous stroke through the nested-triangle motif from `Zeta_Reusables/logo_animations/fuse/fuse-animation.js`. The surrounding circle is omitted for clarity at icon size. The route is rendered as inline SVG, inherits `currentColor`, and loops with CSS; GSAP is not required. Sizes are 16, 20, and 28px. Reduced-motion mode displays a static complete motif.
+
+### Current font pairing
+
+`custom_1` now assigns Alliance No.2 Light (300) to interface text, Lora Regular (400) to reading text, and Nippo Regular (400) to code examples. Nippo is proportional, so its code examples do not preserve fixed-width character columns. Terminal output uses Geist Mono Regular, self-hosted through `@fontsource/geist-mono`; installing the terminal palette does not change terminal fonts. Font binaries remain local and excluded from Git. Lora is sourced from Google Fonts, Nippo from Fontshare’s official CDN.
+
+- Alliance: `public/fonts/alliance-no2-light.otf`
+- Reading: `public/fonts/lora-regular.ttf` — https://fonts.google.com/specimen/Lora
+- Code: `public/fonts/nippo-regular.woff2` — https://www.fontshare.com/fonts/nippo
+
+Code and terminal text now both use Geist Mono Regular. Nippo has been replaced and is no longer loaded.
