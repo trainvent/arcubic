@@ -1,17 +1,17 @@
 /* custom_1 — Alliance-based type roles; colors and component geometry are separate. */
 .arcubic-ui {
   --type-style: custom_1;
-  --font-ui: 'Alliance No.2', ui-sans-serif, sans-serif;
+  --font-ui: var(--arc-font-interface);
   --font-content: var(--font-ui);
   --font-code: ui-monospace, SFMono-Regular, Consolas, monospace;
-  --text-caption: 11px;
-  --text-ui: 13px;
-  --text-body: 15px;
+  --text-caption: var(--arc-type-caption);
+  --text-ui: var(--arc-type-ui);
+  --text-body: var(--arc-type-body);
   --text-lead: 17px;
-  --text-heading: 24px;
+  --text-heading: var(--arc-type-heading);
   --text-title: clamp(30px, 3vw, 40px);
-  --leading-ui: 1.4;
-  --leading-body: 1.65;
+  --leading-ui: var(--arc-leading-ui);
+  --leading-body: var(--arc-leading-body);
   font-family: var(--font-ui);
   font-size: 14px;
   font-weight: 300;
@@ -72,8 +72,8 @@
 @media(max-width:600px){.arcubic-ui .study-body{grid-template-columns:150px minmax(0,1fr)}.arcubic-ui .study-content{padding:18px 14px}.arcubic-ui .study-settings{padding:16px 14px}.arcubic-ui .study-caption{flex-wrap:wrap}.arcubic-ui .study-workspace-label{font-size:10px}.arcubic-ui .arc-explorer{font-size:12px}.arcubic-ui .study-content h3{font-size:22px}.arcubic-ui .study-buttons{flex-wrap:wrap}.arcubic-ui .type-specimen{padding:18px}.type-specimen-grid{grid-template-columns:1fr}.arcubic-ui .study-specs{flex-wrap:wrap}}
 
 /* Three font roles: Alliance for controls, Lora for reading, Geist Mono for code. */
-@font-face{font-family:'Lora';src:url('/fonts/lora-regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
-.arcubic-ui{--font-content:'Lora',Georgia,serif;--font-code:'Geist Mono',ui-monospace,monospace;--code-font-family:var(--font-code);--font-terminal:ui-monospace,SFMono-Regular,Consolas,monospace}
+
+.arcubic-ui{--font-content:var(--arc-font-reading);--font-code:var(--arc-font-code);--code-font-family:var(--font-code);--font-terminal:ui-monospace,SFMono-Regular,Consolas,monospace}
 .arcubic-ui .radix-themes{--code-font-family:var(--font-code)}
 .arcubic-ui :is(pre,code,.rt-Code,.rt-Kbd){font-family:var(--font-code);font-weight:400;font-variant-ligatures:none}
 .arcubic-ui :is(.study-content h3,.study-content>p,.study-preview-note>p,.type-sample-title,.type-sample-body){font-family:var(--font-content);font-weight:400}

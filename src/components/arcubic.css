@@ -68,3 +68,48 @@
 .arcubic-ui .rt-BaseTabListTrigger:focus-visible{outline:2px solid var(--teal-9);outline-offset:3px}
 .arcubic-ui :is(.study-tabs button,.tabs button,.port-nav a,.terminal-sample-tabs button):hover{filter:brightness(1.06)}
 @media(prefers-reduced-motion:reduce){.arcubic-ui .rt-BaseTabListTrigger{transition:none}}
+
+/* Persistent selection stays visible after pointer and keyboard focus leave. */
+.arcubic-ui .rt-Button[aria-pressed="true"]{
+  background:var(--accent-3);color:var(--accent-12);border-color:var(--accent-8);border-radius:0;
+  box-shadow:inset 1px 1px 0 var(--ui-low),inset -1px -1px 0 var(--ui-high);
+}
+.arcubic-ui .arc-native-select{
+  appearance:none;min-height:32px;max-width:100%;padding:5px 30px 5px 10px;
+  font:300 var(--text-ui)/var(--leading-ui) var(--font-ui);color:var(--gray-12);
+  border:1px solid;border-color:var(--ui-high) var(--ui-low) var(--ui-low) var(--ui-high);border-radius:0;
+  background-color:var(--ui-face);box-shadow:var(--ui-bevel);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23818b87' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 7px center;background-size:16px 16px;
+}
+.arcubic-ui .arc-native-select:hover:not(:disabled){filter:brightness(1.06)}
+.arcubic-ui .arc-native-select:focus-visible{outline:2px solid var(--accent-8);outline-offset:3px}
+.arcubic-ui .arc-native-select:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.arcubic-ui .arc-native-select option{background:var(--gray-2);color:var(--gray-12)}
+.arcubic-ui mark{background:var(--amber-5);color:var(--amber-12);padding:0 .12em}
+
+/* Compact controls paint their shallow edge inside the existing hit area. */
+.arcubic-ui :is(.rt-IconButton,.rt-Button).rt-r-size-1{
+  border:0;box-shadow:inset 0 1px 0 var(--ui-high);
+}
+.arcubic-ui :is(.rt-IconButton,.rt-Button).rt-r-size-1:active{
+  transform:none;box-shadow:inset 0 1px 0 var(--ui-low);
+}
+.arcubic-ui :is(.rt-IconButton,.rt-Button).rt-r-size-1[aria-pressed=true]{
+  background:var(--accent-3);color:var(--accent-12);box-shadow:inset 0 -1px 0 var(--accent-8);
+}
+.arcubic-ui :is(.rt-IconButton,.rt-Button).rt-r-size-1[disabled]{box-shadow:none}
+
+/* Chromium forces single-line placeholders to normal line-height. Give only
+   that font face enough descent space; entered text keeps its existing metrics. */
+@font-face{
+  font-family:'Alliance No.2 Placeholder';
+  src:url('/fonts/alliance-no2-light.otf') format('opentype');
+  font-style:normal;font-weight:300;font-display:swap;
+  ascent-override:100%;descent-override:30%;line-gap-override:0%;
+}
+.arcubic-ui .rt-TextFieldInput::placeholder,
+.arcubic-ui .rt-TextArea::placeholder{
+  font-family:'Alliance No.2 Placeholder',var(--font-ui);
+  font-size:inherit;font-weight:300;letter-spacing:inherit;
+}

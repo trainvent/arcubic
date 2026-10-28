@@ -8,3 +8,5 @@ export {Theme,Dialog,AlertDialog,Popover,HoverCard,Select,DropdownMenu,ContextMe
 export {Spinner} from './Spinner';
 export type {SpinnerProps} from './Spinner';
 export {Button,IconButton} from './LoadingButton';
+export {NativeSelect} from './NativeSelect';
+export type {NativeSelectProps} from './NativeSelect';

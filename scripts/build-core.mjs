@@ -1,0 +1,10 @@
+import {mkdirSync,writeFileSync,readFileSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import {defaults,themeTokens} from '../src/palette.ts';
+import {designTokens} from '../src/core/design.ts';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const block=(selector,tokens)=>`${selector} {\n${Object.entries(tokens).map(([key,value])=>`  ${key}: ${value};`).join('\n')}\n}`;
+export const coreCSS='/* Arcubic shared tokens — generated with npm run build:core. */\n'+'/* Radix color scale license:\n'+readFileSync(root+'node_modules/@radix-ui/colors/LICENSE','utf8')+'\n*/\n'+block('.arcubic-theme',designTokens())+'\n\n'+['light','dark'].map(mode=>block(`.arcubic-theme[data-mode="${mode}"]`,themeTokens(defaults,mode))).join('\n\n')+'\n';
+mkdirSync(root+'packages/core',{recursive:true});
+writeFileSync(root+'packages/core/arcubic-tokens.css',coreCSS);
+console.log('Built packages/core/arcubic-tokens.css');

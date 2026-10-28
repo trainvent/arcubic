@@ -9,6 +9,11 @@ import {Theme,Button,Badge,Slider,Checkbox,TextField,Progress,Dialog,Flex,Text} 
 import {Sun,Moon,ArrowUpRight,Download,RotateCcw,Check,Copy,ArrowRight,Palette,SlidersHorizontal,Code2,Info} from 'lucide-react';
 import '@radix-ui/themes/styles.css';
 import '@fontsource/geist-mono/latin-400.css';
+import '@fontsource/lora/latin-400.css';
+import '@fontsource/lora/latin-400-italic.css';
+import '@fontsource/lora/latin-700.css';
+import '@fontsource/lora/latin-700-italic.css';
+import {designTokens} from './core/design';
 import './style.css';
 import './custom_1.css';
 import './components/arcubic.css';
@@ -28,7 +33,7 @@ function App(){
  const [tab,setTab]=useState('Overview');
  const [notice,setNotice]=useState(false);
  const p=createPalette(seeds,mode);
- const tokens=themeTokens(seeds,mode);
+ const tokens={...designTokens(),...themeTokens(seeds,mode)};
  const update=(key:keyof Seeds,value:string)=>{setProfile('custom');setSeeds(old=>{const next={...old,[key]:value.toUpperCase()};localStorage.setItem('arcubic-seeds',JSON.stringify(next));return next;});};
  async function copy(value:string){try{await navigator.clipboard.writeText(value);setCopied(value);setTimeout(()=>setCopied(''),1800);}catch{setCopied('Clipboard unavailable; use Export CSS.');}}
  function download(){const url=URL.createObjectURL(new Blob([exportCSS(seeds)],{type:'text/css'}));const a=document.createElement('a');a.href=url;a.download='arcubic-theme.css';a.click();URL.revokeObjectURL(url);}

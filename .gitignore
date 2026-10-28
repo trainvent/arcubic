@@ -10,3 +10,6 @@ __pycache__/
 public/fonts/*.otf
 public/fonts/*.woff2
 public/fonts/*.ttf
+
+# Personal Obsidian build may embed the user-provided Alliance font.
+ports/obsidian/.local/

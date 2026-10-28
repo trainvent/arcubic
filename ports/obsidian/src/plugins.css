@@ -1,0 +1,15 @@
+/* Optional plugin integrations, kept out of the platform-independent core. */
+.sports-dashboard :is(.sports-dash-workout,.sports-dash-review,.sports-performance,.sports-dash-badge) { border-radius:0; }
+.sports-dashboard :is(.sports-dash-workout,.sports-dash-review,.sports-performance) { border:1px solid var(--gray-6); }
+.sports-dashboard .sports-dash-daily { border-left:3px solid var(--teal-8); }
+.sports-dashboard .sports-dash-badge { font-family:var(--font-interface); }
+/* Settings is a regular raised toolbar button, matching Sync. */
+.sports-dashboard button.sports-dash-settings {
+  width:30px; min-width:30px; height:30px; padding:6px; border:1px solid; border-radius:0;
+  border-color:var(--arc-edge-high) var(--arc-edge-low) var(--arc-edge-low) var(--arc-edge-high);
+  background:var(--arc-control-face); color:var(--text-normal);
+  box-shadow:var(--arc-raised);
+}
+.sports-dashboard button.sports-dash-settings:hover { background:var(--arc-control-face); filter:brightness(1.06); }
+.sports-dashboard button.sports-dash-settings:active { transform:translateY(1px); box-shadow:var(--arc-pressed); }
+.sports-dashboard button.sports-dash-settings .svg-icon { width:16px; height:16px; }

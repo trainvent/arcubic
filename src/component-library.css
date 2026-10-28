@@ -57,3 +57,8 @@
 @media(max-width:700px){.component-library{padding:28px 18px 0}.component-layout{display:block}.component-index{position:static;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;max-height:none;margin-bottom:20px;padding-bottom:8px}.component-index button{flex-shrink:0;white-space:nowrap;font-size:11px;padding:8px 10px}.component-toolbar{flex-direction:column;align-items:stretch;gap:14px}.component-toolbar>.rt-TextFieldRoot{width:100%}.component-library-intro{align-items:flex-start}.component-library-intro>.rt-Badge{display:none}.component-library-intro h1{font-size:30px}.component-demo{padding:18px}.component-variant-row{grid-template-columns:55px 1fr 1fr;gap:9px}.component-variant-row>.rt-Button:nth-of-type(3){grid-column:2}.component-variant-row>.rt-IconButton{grid-column:3}.component-demo-heading h2{font-size:18px}.component-variants{gap:22px}.component-live-status{font-size:11px;bottom:6px}.arc-code-block pre{font-size:11px}.component-demo .rt-RadioCardsRoot{grid-template-columns:1fr}}
 
 .arcubic-ui .port-nav{overflow-y:hidden}
+.component-day-picker{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.component-day-picker .rt-Button{height:62px;min-width:0;padding:6px 0;display:flex;flex-direction:column;gap:4px}
+.component-day-picker .rt-Button span{font-size:11px;color:var(--gray-11)}
+.component-day-picker .rt-Button strong{font-size:18px;font-weight:300}
+.component-highlight-sample{font:400 var(--text-body)/1.8 var(--font-content);margin:20px 0}

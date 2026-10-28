@@ -163,17 +163,17 @@
 
 /* Direction switch — all geometry derives from --direction-switch-height. */
 .arcubic-ui .rt-SwitchRoot,.arcubic-ui .study-switch{
-  --direction-switch-height:22px;
-  --ds-width:calc(var(--direction-switch-height) * 1.9090909091);
-  --ds-rim:calc(var(--direction-switch-height) * .0909090909);
-  --ds-thumb:calc(var(--direction-switch-height) * .8181818182);
-  --ds-inset:calc(var(--direction-switch-height) * .1818181818);
-  --ds-travel:calc(var(--direction-switch-height) * .7272727273);
-  --ds-slant:calc(var(--direction-switch-height) * .5773502692);
+  --direction-switch-height:var(--arc-switch-height,22px);
+  --ds-width:calc(var(--direction-switch-height) * var(--arc-switch-width-ratio,1.9090909091));
+  --ds-rim:calc(var(--direction-switch-height) * var(--arc-switch-rim-ratio,.0909090909));
+  --ds-thumb:calc(var(--direction-switch-height) * var(--arc-switch-thumb-ratio,.8181818182));
+  --ds-inset:calc(var(--direction-switch-height) * var(--arc-switch-inset-ratio,.1818181818));
+  --ds-travel:calc(var(--direction-switch-height) * var(--arc-switch-travel-ratio,.7272727273));
+  --ds-slant:calc(var(--direction-switch-height) * var(--arc-switch-slant-ratio,.5773502692));
   --ds-inner-height:calc(var(--direction-switch-height) - var(--ds-rim) * 2);
   --ds-inner-slant:calc(var(--ds-inner-height) * .5773502692);
-  --ds-triangle-width:calc(var(--direction-switch-height) * .5909090909);
-  --ds-triangle-height:calc(var(--direction-switch-height) * .5);
+  --ds-triangle-width:calc(var(--direction-switch-height) * var(--arc-switch-triangle-width-ratio,.5909090909));
+  --ds-triangle-height:calc(var(--direction-switch-height) * var(--arc-switch-triangle-height-ratio,.5));
   width:var(--ds-width);min-width:var(--ds-width);height:var(--direction-switch-height);
   position:relative;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;vertical-align:middle;
   border:0!important;border-radius:0;padding:0;overflow:visible;isolation:isolate;box-shadow:none!important;
