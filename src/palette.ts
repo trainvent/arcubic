@@ -7,21 +7,27 @@ const radixAnchors = [radixTeal.teal9, radixAmber.amber9, radixOrange.orange9]
 export function hueForI(i: number): number {
   return 17.79 + 152.09 * (1 - i) ** 3;
 }
-export function generateHuePalette(count = 3): string[] {
+export function generateHuePalette(count = 3, profile: 'radix' | 'original' | 'soft' = 'soft'): string[] {
   if (!Number.isInteger(count) || count < 2) throw new RangeError('Use at least two colors.');
   return Array.from({length: count}, (_, index) => {
     const t = index / (count - 1);
     const hue = hueForI(t);
     const segment = t <= 0.5 ? 0 : 1;
     const weight = (t - segment * 0.5) * 2;
-    const saturation = radixAnchors[segment][1] * (1 - weight) + radixAnchors[segment + 1][1] * weight;
-    const lightness = radixAnchors[segment][2] * (1 - weight) + radixAnchors[segment + 1][2] * weight;
+    const anchors = profile === 'soft' ? [[0, 70, 42], [0, 90, 58], [0, 82, 51]] : radixAnchors;
+    const saturation = profile === 'original' ? 75 : anchors[segment][1] * (1 - weight) + anchors[segment + 1][1] * weight;
+    const lightness = profile === 'original' ? 45 : anchors[segment][2] * (1 - weight) + anchors[segment + 1][2] * weight;
     return new Color(`hsl(${hue} ${saturation}% ${lightness}%)`).to('srgb').toString({format: 'hex'}).toUpperCase();
   });
 }
 const [teal, amber, orange] = generateHuePalette();
 export const defaults = { teal, amber, orange };
 export type Seeds = typeof defaults;
+const [originalTeal, originalAmber, originalOrange] = generateHuePalette(3, 'original');
+export const softSeeds: Seeds = defaults;
+const [radixTealSeed, radixAmberSeed, radixOrangeSeed] = generateHuePalette(3, 'radix');
+export const radixSeeds: Seeds = {teal: radixTealSeed, amber: radixAmberSeed, orange: radixOrangeSeed};
+export const originalSeeds: Seeds = {teal: originalTeal, amber: originalAmber, orange: originalOrange};
 export const names = { teal: 'Teal', amber: 'Amber', orange: 'Burnt orange' };
 export const keys = Object.keys(defaults) as (keyof Seeds)[];
 const hex = (c: Color) => c.to('srgb').toGamut({method: 'css'}).toString({format: 'hex'});

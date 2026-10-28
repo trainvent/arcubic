@@ -26,7 +26,7 @@ export function hueForI(i: number): number {
 }
 ```
 
-Hue follows this curve. Saturation and lightness come from each corresponding Radix step-9 color. Supporting shades are generated separately in OKLCH.
+Hue follows this curve. The default Soft profile uses teal S70/L42, amber S90/L58, and orange S82/L51. The Radix comparison profile uses saturation and lightness from the corresponding Radix step-9 colors. Supporting shades are generated separately in OKLCH.
 
 ## Run
 
@@ -36,6 +36,8 @@ npm run dev
 ```
 
 `npm run build` checks TypeScript and creates the production build in `dist/`.
+
+Compare Original (75% saturation / 45% lightness), Radix anchor values, and Soft (teal S70/L42, amber S90/L58, orange S82/L51) using the profile toggle. All three use the same cubic hues. The selected profile drives the palette, component preview, and CSS export. Soft is the default; reset returns to Soft. Manual color edits switch the profile label to Custom.
 
 Edit the three seed colors, switch appearance, click swatches to copy, and export both appearances as `arcubic-theme.css`. Source edits persist in browser local storage. Reset restores the experimental palette.
 
