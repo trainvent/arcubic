@@ -1102,17 +1102,24 @@ body .mod-root .workspace-tab-header-inner-close-button:hover {
   --icon-color:var(--tomato-11); --icon-color-hover:var(--tomato-11);
 }
 
-/* Inactive document tabs recede into the strip without a raised or hover box. */
+/* Inactive document tabs use the same subdued Sage bevel as buttons. */
 body .mod-root .workspace-tab-header:not(.is-active) {
-  background:transparent; border-color:transparent; box-shadow:none; filter:none;
+  background:var(--arc-control-face);
+  border-color:var(--gray-7) var(--arc-edge-low) var(--arc-edge-low) var(--gray-7);
+  box-shadow:var(--arc-raised); filter:none;
   --tab-text-color:var(--gray-11);
 }
 body .mod-root .workspace-tab-header:not(.is-active):hover {
-  background:transparent; border-color:transparent; box-shadow:none; filter:none;
+  background:var(--arc-control-face); filter:brightness(1.06);
   --tab-text-color:var(--gray-12);
 }
-body .mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
-  background:transparent; box-shadow:none;
+/* Hover and focus belong to the whole tab, never a separate text tile. */
+body .mod-root .workspace-tab-header-inner,
+body .mod-root .workspace-tab-header-inner-title {
+  background:transparent!important; box-shadow:none!important;
+}
+body .mod-root .workspace-tab-header:focus-visible {
+  outline:1px solid var(--teal-8); outline-offset:-2px;
 }
 
 /* Give the document tab strip enough height for a comfortable selected tab. */
