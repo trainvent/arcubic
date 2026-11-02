@@ -14,7 +14,7 @@ Arcubic aims for a precise, technical interface with a tactile feel. Clear struc
 - **Keep the structure geometric.** Favor square edges, aligned boundaries and consistent spacing. Active document tabs should connect to their page, while inactive tabs recede into the surrounding surface.
 - **Make triangles functional.** Use them for direction, state and progress: the switch slides left/down when off and right/up when on, and the loader follows a triangular path. Keep angles, proportions and internal spacing consistent as these elements scale.
 - **Keep hover, selection and focus distinct.** Hover is a small change in brightness or text color. Selection persists after the pointer leaves. Keyboard focus stays visible with a light, single outline. Avoid stacked focus rings, heavy hover boxes and separate highlights around button text.
-- **Give color a clear role.** The greenish family provides subtly tinted surfaces and body text. Teal marks titles, selection and primary controls; greenish marks subheadings; amber marks sections; golden orange remains a secondary accent; burnt orange marks links. Semantic success Green and error Tomato remain separate.
+- **Give color a clear role.** The greenish family provides subtly tinted surfaces and body text. Each adapter assigns roles centrally. In Obsidian, Amber marks titles, selection and primary controls; Teal marks links; Greenish marks subheadings; Golden orange marks emphasis; Burnt orange marks section headings. Semantic success Green and error Tomato remain separate.
 - **Let typography do its job.** Use a technical interface face, a comfortable reading face and a true monospace for code. Keep labels legible at small sizes and leave enough room for descenders, including in placeholders, tags and truncated labels.
 - **Make motion explain a change.** Keep transitions short and purposeful: a button depresses, a switch travels and rotates, a loader indicates progress. Respect reduced-motion preferences.
 - **Adapt to the host without losing the system.** Preserve native behavior and keyboard interaction. Test normal, hovered, pressed, selected, focused and disabled states in context, in both light and dark modes. Check contrast against the actual surface behind the text.
@@ -23,7 +23,7 @@ The guiding principle is restraint: geometry gives Arcubic its character, while 
 
 ## Alpha release
 
-Download the [0.1.4 alpha release](https://github.com/Trainvent/arcubic/releases/tag/0.1.4) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). The current build bundles Chakra Petch, Lora and Geist Mono under the OFL.
+Download the [0.2.0 alpha release](https://github.com/Trainvent/arcubic/releases/tag/0.2.0) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). The current build bundles Chakra Petch, Lora and Geist Mono under the OFL.
 
 The root `manifest.json`, `theme.css` and `versions.json` are generated Obsidian distribution files. Native source stays in `ports/obsidian/`; shared web tokens and components stay independent. Rebuild with `npm run build:obsidian` after changing the adapter.
 
@@ -63,11 +63,11 @@ The official palette has five families in curve order:
 
 | Family / token | Role | Default seed |
 | --- | --- | --- |
-| Teal / `--teal-*` | Titles, selection and primary controls | `#12A594` |
+| Teal / `--teal-*` | Links and tags in Obsidian | `#12A594` |
 | Greenish / `--lime-*` | Subheadings; hue of subtle surfaces and body text | `#3BED0C` |
-| Amber / `--amber-*` | Section headings | `#FFC53D` |
-| Golden orange / `--gold-*` | Secondary accent | `#FB9B29` |
-| Burnt orange / `--orange-*` | Links | `#F76B15` |
+| Amber / `--amber-*` | Titles, selection and controls in Obsidian | `#FFC53D` |
+| Golden orange / `--gold-*` | Emphasis and H4 in Obsidian | `#FB9B29` |
+| Burnt orange / `--orange-*` | Section headings in Obsidian | `#F76B15` |
 
 The vivid seed is the accent anchor, not the background or body-text shade. Every family exports 12 solid and alpha steps plus foreground roles. Native Radix Teal, Amber and Orange scales are preserved; Greenish and Golden orange use generated OKLCH scales. Semantic success Green and error Tomato remain independent.
 

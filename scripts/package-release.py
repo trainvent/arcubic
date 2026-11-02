@@ -4,7 +4,7 @@ import hashlib, json, pathlib, shutil, zipfile
 root = pathlib.Path(__file__).resolve().parents[1]
 version = json.loads((root / 'manifest.json').read_text())['version']
 tag = version
-out = root / 'dist/releases'
+out = root / 'dist/releases' / version
 out.mkdir(parents=True, exist_ok=True)
 source = root / 'ports/obsidian'
 css = (source / 'theme.css').read_text()

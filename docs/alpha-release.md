@@ -1,39 +1,34 @@
-# Arcubic 0.1.4 — Alpha
+# Arcubic 0.2.0 — Five-color Alpha
 
-Historical release notes for Arcubic 0.1.4. Current development uses the official five-family palette described in the repository README; publishing a new release is a separate step.
+Arcubic now has five color families: Teal, Greenish, Amber, Golden orange and Burnt orange, with subtle greenish surfaces in light and dark modes.
 
-## Changes in 0.1.4
+## Changes
 
-- Removed the horizontal divider below the document tabs.
-- Removed the divider between file navigation and document content.
-- Tabs, navigation and the document now form a more continuous surface, preserving the existing tab and button treatments.
-
-## Included
-
-- The published 0.1.4 release contains the earlier three-family palette. The current source has five families and subtle greenish surfaces; it has not been published as a new release.
-- Square panels, raised buttons, recessed fields and a sliding triangle switch.
-- Explorer guides, persistent selection, native menus, settings, properties and semantic callouts.
-- Chakra Petch Regular for the interface, Lora for reading and Geist Mono for code; all three are embedded with OFL licenses.
-- A React component preview, framework-free CSS tokens and the Arcubic Dark terminal palette.
+- Expand the shared palette, web examples, CSS exports, terminal theme, curve icon and title artwork to five families.
+- Give Obsidian its own centralized color-role map: Amber titles and selection, Teal links and tags, Orange section headings, Greenish details, and Golden orange emphasis.
+- Make links consistent in reading mode, Live Preview, metadata and callouts, including nested bold text and hover states.
+- Unify active navigation, menus, tabs and pressed controls through the same primary role.
+- Reduce ordinary `!important` overrides and font/CSS duplication. Keep all three font families embedded for offline use, including variable Lora regular/bold/italic.
+- Preserve the tactile square controls, sliding triangle switches and native Obsidian behavior.
 
 ## Install in Obsidian
 
-1. Download `arcubic-obsidian-0.1.4.zip` from this release.
+1. Download `arcubic-obsidian-0.2.0.zip` from this release.
 2. Extract its `Arcubic` folder into `<vault>/.obsidian/themes/`.
-3. Select **Arcubic** in **Settings → Appearance → Themes**.
+3. Select **Arcubic** under **Settings → Appearance → Themes**.
 
-No plugin, Node installation or web server is required for the packaged theme. Back up any previous Arcubic folder before replacing it. To uninstall, select another theme and remove the Arcubic folder.
+Back up an existing Arcubic folder before replacing it. No plugin, Node installation, separate font download or web server is required. To uninstall, select another theme and remove its theme folder.
 
-For websites, use `arcubic-tokens.css` with the instructions in `packages/core/README.md`. For terminals, `arcubic-dark.Xresources` supplies the ANSI colors; terminal-specific configuration may be needed.
+Community-theme release assets `theme.css` and `manifest.json` are also attached separately. `arcubic-tokens.css` contains framework-free shared tokens; `arcubic-dark.Xresources` contains the terminal colors. `SHA256SUMS` covers the release assets.
 
-## Alpha limitations
+## Validation and limitations
 
-- Tested on Linux desktop with Obsidian 1.14.5. Mobile, Canvas, Bases and all third-party plugin interfaces have not had a complete coverage pass.
-- Sports has a small integration stylesheet; other plugins may retain their own styling.
-- The build bundles Chakra Petch, Lora and Geist Mono under the OFL. No separate font download is required.
-- Manual installation is available now. Community-directory listing is subject to Obsidian’s submission and review process.
-- This is an alpha build. Its release tag and Obsidian manifest both use `0.1.4`, as required by the community directory.
+- Palette and color-role contrast tests pass in light and dark modes.
+- 728 browser color checks cover reading/editor links, nested callouts, metadata, headings, tags, menus, selected controls, keyboard focus and Sports integration. Tests use actual Obsidian native CSS with plugin styles before and after the theme, in desktop/mobile CSS contexts.
+- Tested live on Linux desktop with Obsidian 1.14.5. Mobile devices, Canvas, Bases and all third-party plugin interfaces have not had a complete visual coverage pass.
+- Five documented CSS lint warnings remain: three polygon `clip-path` compatibility warnings and two reduced-motion accessibility overrides. Font-embedded CSS can still exceed the reviewer's recommended file size.
+- Minimum Obsidian version remains 1.8.0. This is an alpha release; community-directory listing is subject to Obsidian's review process.
 
-Report problems at https://github.com/Trainvent/arcubic/issues with the mode, Obsidian version and a screenshot without private note content.
+Arcubic is MIT licensed. Chakra Petch, Lora and Geist Mono retain their included OFL licenses. Restricted local font experiments are excluded from release assets.
 
-Arcubic's own code is MIT licensed. Bundled fonts retain their separate OFL licenses, included in the archive. Restricted font experiments are excluded from the repository and release assets.
+Report issues at https://github.com/Trainvent/arcubic/issues with the appearance mode, Obsidian version and a screenshot without private note content.
