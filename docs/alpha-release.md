@@ -1,19 +1,17 @@
-# Arcubic 0.2.0 — Five-color Alpha
+# Arcubic 0.2.1 — Native Typography
 
-Arcubic now has five color families: Teal, Greenish, Amber, Golden orange and Burnt orange, with subtle greenish surfaces in light and dark modes.
+This patch restores native Obsidian typography sizing while retaining Arcubic's fonts, five-color palette and subtle greenish surfaces.
 
 ## Changes
 
-- Expand the shared palette, web examples, CSS exports, terminal theme, curve icon and title artwork to five families.
-- Give Obsidian its own centralized color-role map: Amber titles and selection, Teal links and tags, Orange section headings, Greenish details, and Golden orange emphasis.
-- Make links consistent in reading mode, Live Preview, metadata and callouts, including nested bold text and hover states.
-- Unify active navigation, menus, tabs and pressed controls through the same primary role.
-- Reduce ordinary `!important` overrides and font/CSS duplication. Keep all three font families embedded for offline use, including variable Lora regular/bold/italic.
-- Preserve the tactile square controls, sliding triangle switches and native Obsidian behavior.
+- Stop applying the web demo's compact font sizes to Obsidian.
+- Restore native sizes for reading text, headings, code, navigation, tabs, controls, metadata, status text and labels.
+- Respect Obsidian's reading-size setting and native mobile sizing instead of exporting web typography metrics into the adapter.
+- Keep Chakra Petch, Lora and Geist Mono, the Amber-primary/Teal-link color mapping, and existing label-clipping fixes.
 
 ## Install in Obsidian
 
-1. Download `arcubic-obsidian-0.2.0.zip` from this release.
+1. Download `arcubic-obsidian-0.2.1.zip` from this release.
 2. Extract its `Arcubic` folder into `<vault>/.obsidian/themes/`.
 3. Select **Arcubic** under **Settings → Appearance → Themes**.
 
@@ -23,7 +21,8 @@ Community-theme release assets `theme.css` and `manifest.json` are also attached
 
 ## Validation and limitations
 
-- Palette and color-role contrast tests pass in light and dark modes.
+- Palette, color-role and typography-guard tests pass.
+- 128 computed font-size comparisons match native Obsidian at 16px and 22px reading settings across light/dark and desktop/mobile CSS contexts. A live-vault check confirmed the reading setting changes font size and was restored afterward.
 - 728 browser color checks cover reading/editor links, nested callouts, metadata, headings, tags, menus, selected controls, keyboard focus and Sports integration. Tests use actual Obsidian native CSS with plugin styles before and after the theme, in desktop/mobile CSS contexts.
 - Tested live on Linux desktop with Obsidian 1.14.5. Mobile devices, Canvas, Bases and all third-party plugin interfaces have not had a complete visual coverage pass.
 - Five documented CSS lint warnings remain: three polygon `clip-path` compatibility warnings and two reduced-motion accessibility overrides. Font-embedded CSS can still exceed the reviewer's recommended file size.
