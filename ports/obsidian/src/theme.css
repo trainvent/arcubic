@@ -150,7 +150,7 @@ body:is(.theme-light,.theme-dark) button.mod-cta {
   border-color:var(--arc-accent-high) var(--arc-accent-low) var(--arc-accent-low) var(--arc-accent-high);
   box-shadow:inset 1px 1px 0 var(--arc-accent-high),inset -1px -1px 0 var(--arc-accent-low);
 }
-body:is(.theme-light,.theme-dark) button.mod-warning { background:var(--tomato-9); color:white; }
+body:is(.theme-light,.theme-dark) button.mod-warning { background:var(--tomato-9); color:#fff; }
 button:not(.clickable-icon):not(.checkbox-container):hover { filter:brightness(1.06); }
 button:not(.clickable-icon):not(.checkbox-container):active { transform:translateY(1px); box-shadow:var(--arc-pressed); }
 button:disabled, .dropdown:disabled { opacity:.45; cursor:not-allowed; filter:none; }
@@ -167,17 +167,28 @@ input:focus-visible,textarea:focus-visible,button:focus-visible,select:focus-vis
 input[type=range] { height:5px; border-radius:0; background:var(--gray-1); border:1px solid; border-color:var(--arc-inset-high) var(--arc-inset-low) var(--arc-inset-low) var(--arc-inset-high); }
 input[type=range]::-webkit-slider-thumb { border-radius:0; height:18px; width:12px; border:1px solid; border-color:var(--arc-edge-high) var(--arc-edge-low) var(--arc-edge-low) var(--arc-edge-high); background:var(--arc-control-face); box-shadow:var(--arc-raised); }
 input[type=checkbox]:not(.checkbox-container input) { border-radius:0; }
-/* Lock only thumb geometry against native modal/list/pressed knob overrides. */
+/* Polygon shapes are supported; the clip-path partial-support warning concerns external SVGs. */
+/* Zero native border variables prevent pressed thumb growth. */
 /* One-element native toggle: same proportions and motion as the web switch. */
 body .checkbox-container {
   --ds-h:var(--arc-switch-height); --ds-w:calc(var(--ds-h)*var(--arc-switch-width-ratio));
   --ds-rim:calc(var(--ds-h)*var(--arc-switch-rim-ratio));
   --ds-slant:calc(var(--ds-h)*var(--arc-switch-slant-ratio));
   --ds-inner-slant:calc((var(--ds-h) - var(--ds-rim)*2)*var(--arc-switch-slant-ratio));
-  width:var(--ds-w)!important; min-width:var(--ds-w)!important; height:var(--ds-h)!important; border:0; padding:0; border-radius:0;
+  --toggle-width:var(--ds-w); --toggle-s-width:var(--ds-w);
+  --toggle-border-width:0px; --toggle-s-border-width:0px;
+  --toggle-thumb-width:calc(var(--ds-h)*var(--arc-switch-triangle-width-ratio));
+  --toggle-s-thumb-width:var(--toggle-thumb-width);
+  --toggle-thumb-height:calc(var(--ds-h)*var(--arc-switch-triangle-height-ratio));
+  --toggle-s-thumb-height:var(--toggle-thumb-height); --toggle-thumb-opacity-active:1;
+  border:0; padding:0; border-radius:0;
   position:relative; display:inline-block; overflow:visible; box-shadow:none; isolation:isolate;
   clip-path:polygon(0 0,calc(100% - var(--ds-slant)) 0,100% 100%,var(--ds-slant) 100%);
   background:linear-gradient(120deg,var(--arc-edge-high) 25%,var(--gray-6) 46%,var(--arc-edge-low) 72%);
+}
+/* Match native modal/list specificity only for geometry overrides. */
+:is(body, .modal, body:not(.is-mobile) .setting-group.mod-list) .checkbox-container {
+  width:var(--ds-w); min-width:var(--ds-w); height:var(--ds-h);
 }
 body .checkbox-container::before {
   content:''; position:absolute; inset:var(--ds-rim); z-index:-1; border:0; border-radius:0;
@@ -185,17 +196,17 @@ body .checkbox-container::before {
   background:linear-gradient(180deg,var(--gray-2),var(--gray-4));
   box-shadow:inset 0 calc(var(--ds-rim)*.5) var(--ds-rim) #0004;
 }
-body .checkbox-container::after {
-  content:''; position:absolute; margin:0!important; right:auto; bottom:auto; left:calc(var(--ds-h)*var(--arc-switch-inset-ratio) + (var(--ds-h)*var(--arc-switch-thumb-ratio) - var(--ds-h)*var(--arc-switch-triangle-width-ratio))/2);
+:is(body, .modal, body:not(.is-mobile) .setting-group.mod-list) .checkbox-container::after {
+  content:''; position:absolute; margin:0; right:auto; bottom:auto; left:calc(var(--ds-h)*var(--arc-switch-inset-ratio) + (var(--ds-h)*var(--arc-switch-thumb-ratio) - var(--ds-h)*var(--arc-switch-triangle-width-ratio))/2);
   top:calc((var(--ds-h) - var(--ds-h)*var(--arc-switch-triangle-height-ratio))/2);
-  width:calc(var(--ds-h)*var(--arc-switch-triangle-width-ratio))!important; height:calc(var(--ds-h)*var(--arc-switch-triangle-height-ratio))!important;
+  width:calc(var(--ds-h)*var(--arc-switch-triangle-width-ratio)); height:calc(var(--ds-h)*var(--arc-switch-triangle-height-ratio));
   border-radius:0; box-shadow:none; clip-path:polygon(50% 0,100% 100%,0 100%);
   background:linear-gradient(145deg,var(--gray-12),var(--gray-10));
-  transform:translateX(0) rotate(180deg)!important; transition:transform .25s cubic-bezier(.2,.8,.2,1);
+  transform:translateX(0) rotate(180deg); transition:transform .25s cubic-bezier(.2,.8,.2,1);
 }
 body .checkbox-container.is-enabled { background:linear-gradient(120deg,var(--arc-accent-high) 25%,var(--teal-8) 46%,var(--arc-accent-low) 72%); }
 body .checkbox-container.is-enabled::before { background:linear-gradient(180deg,var(--teal-2),var(--teal-4)); }
-body .checkbox-container.is-enabled::after { background:linear-gradient(145deg,var(--teal-11),var(--teal-9)); transform:translateX(calc(var(--ds-h)*var(--arc-switch-travel-ratio))) rotate(0deg)!important; }
+:is(body, .modal, body:not(.is-mobile) .setting-group.mod-list) .checkbox-container.is-enabled::after { background:linear-gradient(145deg,var(--teal-11),var(--teal-9)); transform:translateX(calc(var(--ds-h)*var(--arc-switch-travel-ratio))) rotate(0deg); }
 body .checkbox-container.is-disabled { opacity:.4; }
 body .checkbox-container input { position:absolute; opacity:0; width:100%; height:100%; margin:0; }
 /* Tree guides overlay selection paint, while labels keep their native layout. */
@@ -238,8 +249,9 @@ body .checkbox-container input { position:absolute; opacity:0; width:100%; heigh
 /***** Responsive and print modes *****/
 .is-mobile { --font-ui-medium:14px; --font-ui-small:13px; }
 .is-mobile .checkbox-container { --arc-switch-height:26px; }
+/* Intentional accessibility overrides: also stop more-specific native/plugin animations. */
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.001ms!important; transition-duration:.001ms!important; } }
-@media print { .markdown-preview-view { background:white; color:black; } .markdown-preview-view a { color:inherit; } }
+@media print { .markdown-preview-view { background:#fff; color:#000; } .markdown-preview-view a { color:inherit; } }
 
 /* Compact sidebar tabs: one painted edge, no border consuming the icon box. */
 body .mod-sidedock .workspace-tab-header {
