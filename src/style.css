@@ -214,3 +214,20 @@
 .arcubic-ui .toggle-row{gap:18px;min-height:32px}
 .arcubic-ui .study-setting-row:has(.study-switch){min-height:30px;gap:16px;margin-bottom:13px}
 @media(prefers-reduced-motion:reduce){.arcubic-ui .rt-SwitchThumb,.arcubic-ui .study-switch>span,.arcubic-ui .rt-SwitchThumb::after,.arcubic-ui .study-switch>span::after{transition:none}}
+
+.syntax-lime{color:var(--lime-text-on-panel)}.syntax-gold{color:var(--gold-text-on-panel)}
+.arcubic-ui .accent-picker{flex-wrap:wrap}
+
+/* Official text roles mirror the native theme adapters. */
+.arcubic-ui .intro h1,.arcubic-ui .terminal-intro h1{color:var(--arc-text-title)}
+.arcubic-ui .section-heading h2{color:var(--arc-text-section)}
+.arcubic-ui .preview-theme h3{color:var(--arc-text-detail)}
+.arcubic-ui .port-nav a[aria-current=page]{color:var(--arc-text-active)}
+.arcubic-ui:is(.light,.dark) .port-nav a[aria-current=page],
+.arcubic-ui :is(.study-tree,.study-tabs) button.is-active,
+.arcubic-ui .study-bold .study-tabs button.is-active,
+.arcubic-ui .tabs button.active{color:var(--arc-text-active)}
+
+.arcubic-ui .radix-link,.arcubic-ui .rt-Link,.arcubic-ui .study-note a{color:var(--arc-text-link)}
+
+.arcubic-ui .radix-link:hover,.arcubic-ui .rt-Link:hover,.arcubic-ui .study-note a:hover{color:var(--arc-text-link-hover)}

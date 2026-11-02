@@ -1,7 +1,7 @@
 /* Optional plugin integrations, kept out of the platform-independent core. */
 .sports-dashboard :is(.sports-dash-workout,.sports-dash-review,.sports-performance,.sports-dash-badge) { border-radius:0; }
 .sports-dashboard :is(.sports-dash-workout,.sports-dash-review,.sports-performance) { border:1px solid var(--gray-6); }
-.sports-dashboard .sports-dash-daily { border-left:3px solid var(--teal-8); }
+.sports-dashboard .sports-dash-daily { border-left:3px solid var(--arc-obs-primary-8); }
 .sports-dashboard .sports-dash-badge { font-family:var(--font-interface); }
 /* Settings is a regular raised toolbar button, matching Sync. */
 .sports-dashboard button.sports-dash-settings {
@@ -15,10 +15,12 @@
 .sports-dashboard button.sports-dash-settings .svg-icon { width:16px; height:16px; }
 
 /* Plugin text follows the same title / section / detail roles as native notes. */
-.sports-dashboard .sports-dash-title :is(h1,h2) { color:var(--arc-text-title); }
-.sports-dashboard .sports-dash-day-heading h3 { color:var(--arc-text-section); }
-.sports-dashboard .sports-dash-workout > :is(strong,a),
-.sports-dashboard .sports-dash-daily > :is(strong,.sports-dash-badge) { color:var(--arc-text-detail); }
-.sports-dashboard .sports-dash-day-button strong { color:var(--arc-text-detail); }
-.sports-dashboard .sports-dash-day-selected strong { color:var(--arc-text-active); }
-.sports-dashboard .sports-dash-muted { color:var(--arc-text-secondary); }
+.sports-dashboard .sports-dash-title :is(h1,h2) { color:var(--arc-obs-primary); }
+.sports-dashboard .sports-dash-day-heading h3 { color:var(--h3-color); }
+.sports-dashboard .sports-dash-workout > strong { color:var(--bold-color); }
+.sports-dashboard .sports-dash-workout > a { color:var(--link-color); }
+.sports-dashboard .sports-dash-workout > a:hover { color:var(--link-color-hover); }
+.sports-dashboard .sports-dash-daily > .sports-dash-badge { color:var(--arc-obs-muted); }
+.sports-dashboard .sports-dash-day-button strong { color:var(--arc-obs-emphasis); }
+.sports-dashboard .sports-dash-day-selected strong { color:var(--arc-obs-primary); }
+.sports-dashboard .sports-dash-muted { color:var(--arc-obs-muted); }

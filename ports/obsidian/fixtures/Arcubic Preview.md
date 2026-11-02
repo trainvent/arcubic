@@ -8,7 +8,7 @@ A quiet reading surface with tactile controls. This paragraph uses **Lora bold**
 
 > A clear hierarchy leaves room for the content.
 
-> [!note] Teal, amber, burnt orange
+> [!note] Teal, greenish, amber, golden orange, burnt orange
 > Shared foundations, adapted to native Obsidian elements.
 
 > [!success] Complete

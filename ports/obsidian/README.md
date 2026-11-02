@@ -2,7 +2,7 @@
 
 An adapter for Arcubic's shared colors, typography and tactile geometry. The website component library remains independent of Obsidian.
 
-Includes light and dark Sage surfaces, Teal/Amber/Orange accents, raised buttons and tabs, recessed inputs, proportional triangle switches, explorer guides, reading typography and code styling. Native Obsidian interactions remain intact. Plugin-specific interfaces may need additional styling.
+Includes subtle greenish surfaces in light and dark modes, five curve accents, raised buttons and tabs, recessed inputs, proportional triangle switches, explorer guides, reading typography and code styling. Native Obsidian interactions remain intact. Plugin-specific interfaces may need additional styling.
 
 The build also generates root `manifest.json`, `theme.css` and `versions.json` for Obsidian community-directory compatibility.
 
@@ -27,6 +27,8 @@ Chakra Petch Regular (interface), Lora variable regular/bold/italic (reading), a
 
 - `src/palette.ts`: shared scales and adaptive text colors.
 - `src/core/design.ts`: shared font roles and switch proportions.
+- `ports/obsidian/colors.ts`: five Obsidian-only family assignments.
+- `ports/obsidian/src/colors.css`: native color-role mapping.
 - `ports/obsidian/src/theme.css`: native Obsidian selectors.
 - `ports/obsidian/src/plugins.css`: optional plugin-specific integrations (currently Sports).
 - `ports/obsidian/fixtures/Arcubic Preview.md`: visual test note.
@@ -61,17 +63,44 @@ Distribution CSS is compacted with esbuild's whitespace-only minifier. Source CS
 remains readable; all font notices, the full shared OFL license, and the Radix
 license remain embedded in the distribution. No npm runtime is installed in a vault.
 
-## Text color hierarchy
+## Obsidian color roles
 
-Inspired by [Tokyo Night's separation of text roles](https://github.com/tcmmichaelb139/obsidian-tokyonight),
-Arcubic uses its own palette consistently: Sage-tinted body and secondary text,
-Orange titles and active navigation, Amber section headings, and Teal details,
-links, and inline emphasis. Lower-level headings remain quieter. Native notes,
-Live Preview, tabs, explorer items, settings, and the Sports adapter share these roles.
-Typography, control geometry, and surface colors remain part of Arcubic's design.
+The adapter follows [Tokyo Night's color relationships](https://github.com/tcmmichaelb139/obsidian-tokyonight/blob/main/theme.css)
+with Arcubic's five hues. It keeps the approved subtle greenish backgrounds and body text.
 
-`text-colors.ts` generates foregrounds from the existing palette for each mode.
-Accents blend toward their darker/paler palette step only as needed to maintain
-at least 4.5:1 contrast on ordinary and selected UI surfaces. `npm run test:obsidian`
-checks these roles in light and dark modes. Semantic error/success colors and
-callout-specific contrast rules remain independent of decorative heading colors.
+| Adapter variable | Native roles |
+| --- | --- |
+| `--arc-obs-primary` | Amber: H1/inline title, active files/folders/tabs, selected menus/settings/buttons, active icons |
+| `--arc-obs-section` | Burnt orange: H2 and question callouts |
+| `--arc-obs-detail` | Greenish: H3 and checked checkboxes |
+| `--arc-obs-emphasis` | Golden orange: H4, bold/italic emphasis and summary callouts |
+| `--arc-obs-link` | Teal: internal/external/unresolved links, tags, H6 and example callouts |
+
+H5 reuses the primary Amber because the reference's six heading hues map onto five Arcubic families.
+Warning, error and success callouts retain their semantic distinctions. Links use
+one normal and hover role in the same Teal family everywhere, including nested callouts, metadata and Live Preview.
+The Sports integration uses the same native heading, emphasis, link and selection roles.
+
+`obsidianAccentFamilies` in `ports/obsidian/colors.ts` assigns five semantic roles
+to palette families. This one map drives both readable foregrounds and solid/surface
+tones, so changing a primary family also updates buttons, borders and selection.
+`ports/obsidian/src/colors.css` is the single native-variable role map. Component
+styles in `theme.css` and `plugins.css` consume that namespace; they cannot reference
+shared web text roles or select raw accent families. Shared palette changes still
+supply color values, while web role reassignments cannot alter Obsidian assignments.
+
+## Color regression checks
+
+```sh
+npm run test:obsidian
+npm run build:obsidian
+npm run test:obsidian:browser -- --native-css /path/to/Obsidian/app.css --plugin-css /path/to/plugin/styles.css
+```
+
+The browser test uses an installed Chrome (`--browser /path/to/chrome` overrides the
+Linux default). It checks native reading/editor/metadata links, nested callouts,
+headings, emphasis, tags, menus, settings, selected buttons, tabs and dashboard
+labels in light/dark and desktop/mobile CSS contexts. Plugin CSS is tested before
+and after the theme. The native stylesheet is required to exercise real host specificity.
+`--plugin-css` is optional. Playwright Core is a development-only driver; no browser
+or npm package is shipped in the theme.

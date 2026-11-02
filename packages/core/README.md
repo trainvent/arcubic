@@ -7,4 +7,6 @@
 <div class="arcubic-theme" data-mode="dark">...</div>
 ```
 
-Use `--gray-*`, `--teal-*`, `--amber-*`, `--orange-*` and semantic `--color-*` properties. `--arc-*` properties define typography and geometry. This layer contains no Obsidian selectors. The web components live in `src/components`; application adapters live in `ports/`.
+Use `--gray-*`, `--teal-*`, `--lime-*` (Greenish), `--amber-*`, `--gold-*` (Golden orange), `--orange-*` and semantic `--color-*` properties. `--arc-*` properties define typography and geometry. This layer contains no Obsidian selectors. The web components live in `src/components`; application adapters live in `ports/`.
+
+`--arc-text-*` properties provide shared body, secondary, title, section, detail, active and link foregrounds. They use the five-family hierarchy and check contrast against ordinary and selected surfaces.

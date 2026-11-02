@@ -1,6 +1,6 @@
 # Arcubic 0.1.4 — Alpha
 
-Updated alpha of Arcubic's shared design system and Obsidian adapter.
+Historical release notes for Arcubic 0.1.4. Current development uses the official five-family palette described in the repository README; publishing a new release is a separate step.
 
 ## Changes in 0.1.4
 
@@ -10,7 +10,7 @@ Updated alpha of Arcubic's shared design system and Obsidian adapter.
 
 ## Included
 
-- Full Radix Teal, Amber and Orange scales on Sage, in light and dark modes.
+- The published 0.1.4 release contains the earlier three-family palette. The current source has five families and subtle greenish surfaces; it has not been published as a new release.
 - Square panels, raised buttons, recessed fields and a sliding triangle switch.
 - Explorer guides, persistent selection, native menus, settings, properties and semantic callouts.
 - Chakra Petch Regular for the interface, Lora for reading and Geist Mono for code; all three are embedded with OFL licenses.

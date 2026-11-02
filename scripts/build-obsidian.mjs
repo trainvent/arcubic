@@ -2,14 +2,13 @@ import {readFileSync,writeFileSync,mkdirSync,copyFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {defaults,themeTokens} from '../src/palette.ts';
 import {designTokens} from '../src/core/design.ts';
-import Color from 'colorjs.io';
-import {textColorTokens} from '../ports/obsidian/text-colors.ts';
+import {obsidianColors} from '../ports/obsidian/colors.ts';
 import {transformSync} from 'esbuild';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const output=root+'ports/obsidian/';
 mkdirSync(output,{recursive:true});
 const block=(selector,tokens)=>`${selector}{\n${Object.entries(tokens).map(([k,v])=>`${k}:${v};`).join('\n')}\n}\n`;
-const adapterCss=readFileSync(root+'ports/obsidian/src/theme.css','utf8')+'\n'+readFileSync(root+'ports/obsidian/src/plugins.css','utf8');
+const adapterCss=readFileSync(root+'ports/obsidian/src/colors.css','utf8')+'\n'+readFileSync(root+'ports/obsidian/src/theme.css','utf8')+'\n'+readFileSync(root+'ports/obsidian/src/plugins.css','utf8');
 const sharedDesign=designTokens();
 // Keep only the adapter's palette dependencies; the shared core still exports every scale.
 const variableReferences=value=>[...value.matchAll(/var\(\s*(--[\w-]+)/g)].map(match=>match[1]);
@@ -47,21 +46,14 @@ font('Chakra Petch','node_modules/@fontsource/chakra-petch/files/chakra-petch-la
 css+=block('body',sharedDesign);
 for(const mode of ['light','dark']){
  const tokens=themeTokens(defaults,mode);
- const base=new Color(tokens['--gray-1']).to('srgb').coords;
- const calloutText=Object.fromEntries(['teal','amber','orange','green','tomato','gray'].map(key=>{
-  const color=new Color(tokens[`--${key}-11`]);
-  const tinted=new Color('srgb',color.to('srgb').coords.map((value,index)=>value*.1+base[index]*.9));
-  const step=Color.contrast(color,tinted,'WCAG21')>=4.5?11:12;
-  return [`--arc-callout-${key}-text`,tokens[`--${key}-${step}`]];
- }));
  css+=block(`.theme-${mode}`,adapterTokens({
- ...tokens,...calloutText,...textColorTokens(tokens),
+ ...tokens,...obsidianColors(tokens),
  '--arc-control-face':'var(--gray-3)',
  '--arc-edge-high':mode==='dark'?'var(--gray-7)':'#ffffff',
  '--arc-edge-low':mode==='dark'?'#070a09':'#a8b5af',
  '--arc-inset-high':mode==='dark'?'#070a09':'#a8b5af',
  '--arc-inset-low':mode==='dark'?'#47504b':'#ffffff',
- '--arc-accent-high':'var(--teal-8)','--arc-accent-low':'var(--teal-6)',
+ '--arc-accent-high':'var(--arc-obs-primary-8)','--arc-accent-low':'var(--arc-obs-primary-6)',
  '--arc-raised':'inset 1px 1px 0 var(--arc-edge-high),inset -1px -1px 0 var(--arc-edge-low)',
  '--arc-pressed':'inset 1px 1px 0 var(--arc-edge-low),inset -1px -1px 0 var(--arc-edge-high)',
 }));

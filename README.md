@@ -1,8 +1,10 @@
+<img src="public/Logo_Trainvent.svg" alt="Trainvent logo" width="80" align="right"/>
+
 # Arcubic
 
-<img src="public/arcubic.svg" alt="Arcubic" width="128"/>
+<img src="public/title.svg" alt="Arcubic — five colors, one curve" width="1200"/>
 
-Teal, amber and burnt orange on Sage. A reusable design system with square panels, raised controls, inset fields and a sliding triangle switch.
+Teal, greenish, amber, golden orange and burnt orange on subtle greenish surfaces. A reusable design system with square panels, raised controls, inset fields and a sliding triangle switch.
 
 ## Styling guidelines
 
@@ -12,7 +14,7 @@ Arcubic aims for a precise, technical interface with a tactile feel. Clear struc
 - **Keep the structure geometric.** Favor square edges, aligned boundaries and consistent spacing. Active document tabs should connect to their page, while inactive tabs recede into the surrounding surface.
 - **Make triangles functional.** Use them for direction, state and progress: the switch slides left/down when off and right/up when on, and the loader follows a triangular path. Keep angles, proportions and internal spacing consistent as these elements scale.
 - **Keep hover, selection and focus distinct.** Hover is a small change in brightness or text color. Selection persists after the pointer leaves. Keyboard focus stays visible with a light, single outline. Avoid stacked focus rings, heavy hover boxes and separate highlights around button text.
-- **Give color a clear role.** Sage provides the surfaces; teal, amber and burnt orange establish the identity. Use accents selectively. Green and red communicate success and error, rather than becoming additional decorative accents.
+- **Give color a clear role.** The greenish family provides subtly tinted surfaces and body text. Teal marks titles, selection and primary controls; greenish marks subheadings; amber marks sections; golden orange remains a secondary accent; burnt orange marks links. Semantic success Green and error Tomato remain separate.
 - **Let typography do its job.** Use a technical interface face, a comfortable reading face and a true monospace for code. Keep labels legible at small sizes and leave enough room for descenders, including in placeholders, tags and truncated labels.
 - **Make motion explain a change.** Keep transitions short and purposeful: a button depresses, a switch travels and rotates, a loader indicates progress. Respect reduced-motion preferences.
 - **Adapt to the host without losing the system.** Preserve native behavior and keyboard interaction. Test normal, hovered, pressed, selected, focused and disabled states in context, in both light and dark modes. Check contrast against the actual surface behind the text.
@@ -32,6 +34,7 @@ Arcubic's code is [MIT licensed](LICENSE). Bundled fonts retain their included O
 | Part | Location | Purpose |
 | --- | --- | --- |
 | Shared colors | `src/palette.ts` | Full Radix scales, semantic roles and contrast-aware text |
+| Shared text roles | `src/core/text-colors.ts` | Contrast-checked five-color text hierarchy |
 | Shared design | `src/core/design.ts` | Typography roles and proportional switch geometry |
 | Framework-free CSS | `packages/core/arcubic-tokens.css` | Generated tokens for websites and other adapters |
 | React components | `src/components/` | Radix components with Arcubic styling |
@@ -56,15 +59,27 @@ The preview has Web, Terminal, Interface and Components pages, with light and da
 
 ## Colors
 
-The default uses complete Radix Teal, Amber, Orange and Sage scales. Success uses Green; errors use Tomato. The light page is `#FEFFFF`, with Sage panels. Dark mode uses Sage 1 (`#101211`). Accent text chooses step 11 or 12 for its actual page/panel background to meet 4.5:1 contrast. Raw scale values remain unchanged.
+The official palette has five families in curve order:
 
-The original three-color identity is described by:
+| Family / token | Role | Default seed |
+| --- | --- | --- |
+| Teal / `--teal-*` | Titles, selection and primary controls | `#12A594` |
+| Greenish / `--lime-*` | Subheadings; hue of subtle surfaces and body text | `#3BED0C` |
+| Amber / `--amber-*` | Section headings | `#FFC53D` |
+| Golden orange / `--gold-*` | Secondary accent | `#FB9B29` |
+| Burnt orange / `--orange-*` | Links | `#F76B15` |
+
+The vivid seed is the accent anchor, not the background or body-text shade. Every family exports 12 solid and alpha steps plus foreground roles. Native Radix Teal, Amber and Orange scales are preserved; Greenish and Golden orange use generated OKLCH scales. Semantic success Green and error Tomato remain independent.
+
+Surfaces use a very low-chroma version of the greenish hue. Dark mode pairs `#0d140c` with pale green-white `#e5f2e3`; light mode pairs `#f6fcf5` with green-black `#192217`. Foreground roles check contrast against their actual surfaces.
+
+The five stops sample positions `0, 0.25, 0.5, 0.75, 1`. The default profile inserts two samples between the established Radix anchors. The original profile retains the cubic formula:
 
 ```text
 hue(i) = 17.79 + (1 − i)³ × 152.09,  0 ≤ i ≤ 1
 ```
 
-Samples at 0, 0.5 and 1 give 169.88°, 36.80125° and 17.79°. The current UI uses Radix's full scales rather than forcing every shade onto that hue curve. See [hue curves](docs/hue-curves.md) for the cubic and experimental five-point extension.
+See [hue curves](docs/hue-curves.md) for how the profiles and five samples relate. `npm run build:brand` regenerates the five-dot curve, five-color triangle and title banner from the shared defaults. SVGs are the canonical assets; PNG compatibility exports can be refreshed with `node scripts/build-brand.mjs --png` when Sharp is available.
 
 ## Typography
 

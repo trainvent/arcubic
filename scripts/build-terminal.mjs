@@ -1,11 +1,14 @@
 import {writeFileSync} from 'node:fs';
 import Color from 'colorjs.io';
+import {defaults,themeTokens} from '../src/palette.ts';
 import {sageDark as sage,tealDark as teal,amberDark as amber,orangeDark as orange,greenDark as green,tomatoDark as tomato,blueDark as blue,purpleDark as purple} from '@radix-ui/colors';
-const background=sage.sage1;
+const tokens=themeTokens(defaults,'dark');
+const background=tokens['--gray-1'];
 const ratio=value=>Color.contrast(new Color(value),new Color(background),'WCAG21');
 const normal=(scale,name)=>ratio(scale[name+10])>=4.5?scale[name+10]:scale[name+11];
-const colors=[sage.sage5,normal(tomato,'tomato'),normal(green,'green'),normal(orange,'orange'),normal(blue,'blue'),normal(purple,'purple'),normal(teal,'teal'),sage.sage11,sage.sage11,tomato.tomato11,green.green11,amber.amber11,blue.blue11,purple.purple11,teal.teal11,sage.sage12];
-const text=['! Arcubic Dark — Radix accents on Sage','! Slots 0–7: normal ANSI; 8–15: bright ANSI','! Orange occupies normal yellow; amber occupies bright yellow.',`*.background: ${background}`,`*.foreground: ${sage.sage12}`,`*.cursorColor: ${teal.teal11}`,`*.selectionBackground: ${teal.teal4}`,`*.selectionForeground: ${teal.teal12}`,...colors.map((c,i)=>`*.color${i}: ${c}`)].join('\n')+'\n';
+const textColor=hue=>ratio(tokens[`--${hue}-11`])>=4.5?tokens[`--${hue}-11`]:tokens[`--${hue}-12`];
+const colors=[tokens['--gray-5'],normal(tomato,'tomato'),textColor('lime'),textColor('gold'),normal(blue,'blue'),normal(purple,'purple'),textColor('teal'),tokens['--gray-11'],tokens['--gray-11'],textColor('orange'),tokens['--lime-12'],textColor('amber'),blue.blue11,purple.purple11,teal.teal11,tokens['--gray-12']];
+const text=['! Arcubic Dark — five accents on subtle greenish surfaces','! Slots 0–7: normal ANSI; 8–15: bright ANSI','! Greenish uses green; gold uses normal yellow; amber uses bright yellow; burnt orange uses bright red.',`*.background: ${background}`,`*.foreground: ${tokens['--gray-12']}`,`*.cursorColor: ${teal.teal11}`,`*.selectionBackground: ${teal.teal4}`,`*.selectionForeground: ${teal.teal12}`,...colors.map((c,i)=>`*.color${i}: ${c}`)].join('\n')+'\n';
 writeFileSync(new URL('../ports/terminal/arcubic-dark.Xresources',import.meta.url),text);
 for(let i=1;i<16;i++)if(ratio(colors[i])<4.5)throw new Error(`ANSI ${i} fails text contrast`);
 console.log(text);

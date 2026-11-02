@@ -1,24 +1,24 @@
-! Arcubic Dark — Radix accents on Sage
+! Arcubic Dark — five accents on subtle greenish surfaces
 ! Slots 0–7: normal ANSI; 8–15: bright ANSI
-! Orange occupies normal yellow; amber occupies bright yellow.
-*.background: #101211
-*.foreground: #eceeed
+! Greenish uses green; gold uses normal yellow; amber uses bright yellow; burnt orange uses bright red.
+*.background: #0d140c
+*.foreground: #e5f2e3
 *.cursorColor: #0bd8b6
 *.selectionBackground: #023b37
 *.selectionForeground: #adf0dd
-*.color0: #2e3130
+*.color0: #2b332a
 *.color1: #ec6142
-*.color2: #33b074
-*.color3: #ff801f
+*.color2: #8fce85
+*.color3: #f0a964
 *.color4: #3b9eff
 *.color5: #d19dff
-*.color6: #0eb39e
-*.color7: #adb5b2
-*.color8: #adb5b2
-*.color9: #ff977d
-*.color10: #3dd68c
+*.color6: #0bd8b6
+*.color7: #abb7a8
+*.color8: #abb7a8
+*.color9: #ffa057
+*.color10: #d8f0d4
 *.color11: #ffca16
 *.color12: #70b8ff
 *.color13: #d19dff
 *.color14: #0bd8b6
-*.color15: #eceeed
+*.color15: #e5f2e3
