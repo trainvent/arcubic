@@ -21,7 +21,7 @@ Then select **Arcubic** under **Settings → Appearance → Themes**. Alternativ
 
 The installer backs up the existing Arcubic theme and appearance settings under `.obsidian/arcubic-backups/`. It does not activate the theme or modify notes.
 
-Chakra Petch Regular (interface), Lora variable regular/bold/italic (reading), and Geist Mono (code) are embedded in the public theme. Their OFL copyright notices and licenses are included in the stylesheet and `licenses/`. No personal build or separate font installation is required. Obsidian's font overrides can still replace these defaults.
+Chakra Petch Regular (interface), Lora variable regular/bold/italic (reading), and Geist Mono (code) are embedded in the public theme. Their OFL copyright notices and licenses are included in the stylesheet and `licenses/`. No personal build or separate font installation is required. Obsidian's font overrides can still replace these defaults. Font sizes come from Obsidian, including its reading-size setting and mobile scale; compact web-preview sizes are not applied to this adapter.
 
 ## Source
 
@@ -104,3 +104,17 @@ labels in light/dark and desktop/mobile CSS contexts. Plugin CSS is tested befor
 and after the theme. The native stylesheet is required to exercise real host specificity.
 `--plugin-css` is optional. Playwright Core is a development-only driver; no browser
 or npm package is shipped in the theme.
+
+## Native typography sizing
+
+Arcubic supplies font families and colors while Obsidian supplies sizes for reading,
+headings, code, navigation, tabs, controls, labels and metadata. The adapter does
+not export the compact web `--arc-type-*` or `--arc-leading-*` tokens. Existing
+local line-height/padding fixes for clipped labels remain in place.
+
+```sh
+npm run test:obsidian:typography -- --native-css /path/to/Obsidian/app.css
+```
+
+This compares computed font sizes with native Obsidian in light/dark and
+desktop/mobile CSS contexts, at 16px and 22px reading settings.

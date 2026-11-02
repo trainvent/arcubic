@@ -9,7 +9,9 @@ const output=root+'ports/obsidian/';
 mkdirSync(output,{recursive:true});
 const block=(selector,tokens)=>`${selector}{\n${Object.entries(tokens).map(([k,v])=>`${k}:${v};`).join('\n')}\n}\n`;
 const adapterCss=readFileSync(root+'ports/obsidian/src/colors.css','utf8')+'\n'+readFileSync(root+'ports/obsidian/src/theme.css','utf8')+'\n'+readFileSync(root+'ports/obsidian/src/plugins.css','utf8');
-const sharedDesign=designTokens();
+// Only font families and geometry are shared; host typography metrics stay native.
+const sharedDesign=Object.fromEntries(Object.entries(designTokens()).filter(([key])=>
+ !key.startsWith('--arc-type-')&&!key.startsWith('--arc-leading-')));
 // Keep only the adapter's palette dependencies; the shared core still exports every scale.
 const variableReferences=value=>[...value.matchAll(/var\(\s*(--[\w-]+)/g)].map(match=>match[1]);
 function adapterTokens(tokens) {

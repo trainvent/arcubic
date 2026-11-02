@@ -16,7 +16,8 @@
     "test:obsidian": "node --test tests/obsidian-*.test.mjs",
     "build:brand": "node scripts/build-brand.mjs",
     "test:palette": "node --test tests/*.test.mjs",
-    "test:obsidian:browser": "node tests/obsidian-color-browser.mjs"
+    "test:obsidian:browser": "node tests/obsidian-color-browser.mjs",
+    "test:obsidian:typography": "node tests/obsidian-typography-browser.mjs"
   },
   "dependencies": {
     "@fontsource-variable/lora": "^5.3.0",
