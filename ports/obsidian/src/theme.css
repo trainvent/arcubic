@@ -145,12 +145,12 @@ body .clickable-icon.is-active { background-color:var(--teal-3); color:var(--tea
 .vertical-tab-nav-item.is-active, .horizontal-tab-nav-item.is-active {
   background:var(--teal-3); color:var(--teal-text-on-panel); border-radius:0;
 }
-button.mod-cta {
-  background:var(--teal-9)!important; color:var(--teal-contrast)!important;
-  border-color:var(--arc-accent-high) var(--arc-accent-low) var(--arc-accent-low) var(--arc-accent-high)!important;
+body:is(.theme-light,.theme-dark) button.mod-cta {
+  background:var(--teal-9); color:var(--teal-contrast);
+  border-color:var(--arc-accent-high) var(--arc-accent-low) var(--arc-accent-low) var(--arc-accent-high);
   box-shadow:inset 1px 1px 0 var(--arc-accent-high),inset -1px -1px 0 var(--arc-accent-low);
 }
-button.mod-warning { background:var(--tomato-9)!important; color:white!important; }
+body:is(.theme-light,.theme-dark) button.mod-warning { background:var(--tomato-9); color:white; }
 button:not(.clickable-icon):not(.checkbox-container):hover { filter:brightness(1.06); }
 button:not(.clickable-icon):not(.checkbox-container):active { transform:translateY(1px); box-shadow:var(--arc-pressed); }
 button:disabled, .dropdown:disabled { opacity:.45; cursor:not-allowed; filter:none; }
@@ -206,7 +206,7 @@ body .checkbox-container input { position:absolute; opacity:0; width:100%; heigh
 .nav-folder-title:hover,.nav-file-title:hover { background:var(--gray-3); }
 .nav-file-title.is-active,.nav-folder-title.is-active { background:var(--gray-4); color:var(--teal-text-on-panel); }
 .nav-folder-title .collapse-icon svg { display:none; }
-.nav-folder-title .collapse-icon { width:12px; height:16px; display:flex; align-items:center; justify-content:center; transform:none!important; }
+.nav-folder-title .collapse-icon { width:12px; height:16px; display:flex; align-items:center; justify-content:center; transform:none; }
 .nav-folder-title .collapse-icon::after { content:''; width:3px; height:12px; background:var(--arc-tree-marker); }
 .nav-folder.is-collapsed>.nav-folder-title .collapse-icon::after { width:1px; }
 .nav-folder-children { position:relative; border-left:0; }
@@ -309,6 +309,7 @@ body input.prompt-input::placeholder { font-family:inherit; font-weight:inherit;
 
 /* Document tabs join the page; compact sidebar tabs keep their own treatment. */
 body .mod-root .workspace-tab-header-container {
+  --tab-inner-background-hover:transparent; --tab-inner-background-active:transparent;
   border-bottom:0; box-shadow:none; padding-bottom:0; align-items:flex-end;
 }
 body .mod-root .workspace-tab-header.is-active {
@@ -330,7 +331,8 @@ body .mod-root .workspace-tab-header:is(.is-active,:hover,:focus-within) .worksp
   opacity:1; visibility:visible; pointer-events:auto;
 }
 body .mod-root .workspace-tab-header-inner-close-button:hover {
-  background:transparent!important; color:var(--tomato-11)!important; border-radius:0;
+  --background-modifier-hover:transparent; --background-modifier-active-hover:transparent;
+  background:transparent; color:var(--tomato-11); border-radius:0;
   box-shadow:none;
   --icon-color:var(--tomato-11); --icon-color-hover:var(--tomato-11);
 }
@@ -349,7 +351,7 @@ body .mod-root .workspace-tab-header:not(.is-active):hover {
 /* Hover and focus belong to the whole tab, never a separate text tile. */
 body .mod-root .workspace-tab-header-inner,
 body .mod-root .workspace-tab-header-inner-title {
-  background:transparent!important; box-shadow:none!important;
+  background:transparent; box-shadow:none;
 }
 body .mod-root .workspace-tab-header:focus-visible {
   outline:1px solid var(--teal-8); outline-offset:-2px;
@@ -364,9 +366,9 @@ body .mod-root .workspace-tab-header-inner {
 }
 
 /* Search focus uses one colored border, without a stacked outer focus ring. */
-body .search-input-container:focus-within { outline:none!important; box-shadow:none!important; }
+body .search-input-container:focus-within { outline:none; box-shadow:none; }
 body .search-input-container input:focus {
-  outline:none!important; box-shadow:none!important;
+  outline:none; box-shadow:none;
   border-width:1px; border-color:var(--teal-8);
 }
 
