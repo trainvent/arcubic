@@ -12,7 +12,8 @@
     "build:obsidian": "node scripts/build-obsidian.mjs",
     "build:themes": "npm run build:core && npm run build:obsidian && npm run build:terminal",
     "package:release": "python3 scripts/package-release.py",
-    "lint:obsidian": "stylelint theme.css --config .stylelintrc.obsidian.mjs"
+    "lint:obsidian": "stylelint theme.css --config .stylelintrc.obsidian.mjs",
+    "test:obsidian": "node --test tests/obsidian-text.test.mjs"
   },
   "dependencies": {
     "@fontsource-variable/lora": "^5.3.0",

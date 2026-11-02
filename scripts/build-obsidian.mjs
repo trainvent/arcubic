@@ -3,6 +3,7 @@ import {fileURLToPath} from 'node:url';
 import {defaults,themeTokens} from '../src/palette.ts';
 import {designTokens} from '../src/core/design.ts';
 import Color from 'colorjs.io';
+import {textColorTokens} from '../ports/obsidian/text-colors.ts';
 import {transformSync} from 'esbuild';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const output=root+'ports/obsidian/';
@@ -54,7 +55,7 @@ for(const mode of ['light','dark']){
   return [`--arc-callout-${key}-text`,tokens[`--${key}-${step}`]];
  }));
  css+=block(`.theme-${mode}`,adapterTokens({
- ...tokens,...calloutText,
+ ...tokens,...calloutText,...textColorTokens(tokens),
  '--arc-control-face':'var(--gray-3)',
  '--arc-edge-high':mode==='dark'?'var(--gray-7)':'#ffffff',
  '--arc-edge-low':mode==='dark'?'#070a09':'#a8b5af',

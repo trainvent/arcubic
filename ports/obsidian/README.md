@@ -60,3 +60,18 @@ replace the community directory's separate release checks.
 Distribution CSS is compacted with esbuild's whitespace-only minifier. Source CSS
 remains readable; all font notices, the full shared OFL license, and the Radix
 license remain embedded in the distribution. No npm runtime is installed in a vault.
+
+## Text color hierarchy
+
+Inspired by [Tokyo Night's separation of text roles](https://github.com/tcmmichaelb139/obsidian-tokyonight),
+Arcubic uses its own palette consistently: Sage-tinted body and secondary text,
+Orange titles and active navigation, Amber section headings, and Teal details,
+links, and inline emphasis. Lower-level headings remain quieter. Native notes,
+Live Preview, tabs, explorer items, settings, and the Sports adapter share these roles.
+Typography, control geometry, and surface colors remain part of Arcubic's design.
+
+`text-colors.ts` generates foregrounds from the existing palette for each mode.
+Accents blend toward their darker/paler palette step only as needed to maintain
+at least 4.5:1 contrast on ordinary and selected UI surfaces. `npm run test:obsidian`
+checks these roles in light and dark modes. Semantic error/success colors and
+callout-specific contrast rules remain independent of decorative heading colors.

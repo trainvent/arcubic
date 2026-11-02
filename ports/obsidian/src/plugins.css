@@ -13,3 +13,12 @@
 .sports-dashboard button.sports-dash-settings:hover { background:var(--arc-control-face); filter:brightness(1.06); }
 .sports-dashboard button.sports-dash-settings:active { transform:translateY(1px); box-shadow:var(--arc-pressed); }
 .sports-dashboard button.sports-dash-settings .svg-icon { width:16px; height:16px; }
+
+/* Plugin text follows the same title / section / detail roles as native notes. */
+.sports-dashboard .sports-dash-title :is(h1,h2) { color:var(--arc-text-title); }
+.sports-dashboard .sports-dash-day-heading h3 { color:var(--arc-text-section); }
+.sports-dashboard .sports-dash-workout > :is(strong,a),
+.sports-dashboard .sports-dash-daily > :is(strong,.sports-dash-badge) { color:var(--arc-text-detail); }
+.sports-dashboard .sports-dash-day-button strong { color:var(--arc-text-detail); }
+.sports-dashboard .sports-dash-day-selected strong { color:var(--arc-text-active); }
+.sports-dashboard .sports-dash-muted { color:var(--arc-text-secondary); }
