@@ -1,33 +1,35 @@
-# Arcubic 0.2.1 — Native Typography
+# Arcubic 0.2.2 — Three Colors, Clear Roles
 
-This patch restores native Obsidian typography sizing while retaining Arcubic's fonts, five-color palette and subtle greenish surfaces.
+Arcubic returns to Teal, Amber and Burnt orange, with neutral charcoal surfaces and white body text in dark mode.
 
 ## Changes
 
-- Stop applying the web demo's compact font sizes to Obsidian.
-- Restore native sizes for reading text, headings, code, navigation, tabs, controls, metadata, status text and labels.
-- Respect Obsidian's reading-size setting and native mobile sizing instead of exporting web typography metrics into the adapter.
-- Keep Chakra Petch, Lora and Geist Mono, the Amber-primary/Teal-link color mapping, and existing label-clipping fixes.
+- Make Teal the primary accent for controls, selection and tags.
+- Use Blue for links, Green for success and Red for errors, with readable shades in each appearance. These functional colors stay separate from the three-color identity.
+- Remove the green tint from backgrounds and ordinary text.
+- Restore the three-color web preview, curve artwork and palette controls; add a separate link-blue hint.
+- Move the switch triangle diagonally from top-left to bottom-right, with improved corner alignment.
+- Preserve native Obsidian font sizes and the bundled Chakra Petch, Lora and Geist Mono fonts.
 
 ## Install in Obsidian
 
-1. Download `arcubic-obsidian-0.2.1.zip` from this release.
+1. Download `arcubic-obsidian-0.2.2.zip` from this release.
 2. Extract its `Arcubic` folder into `<vault>/.obsidian/themes/`.
 3. Select **Arcubic** under **Settings → Appearance → Themes**.
 
 Back up an existing Arcubic folder before replacing it. No plugin, Node installation, separate font download or web server is required. To uninstall, select another theme and remove its theme folder.
 
-Community-theme release assets `theme.css` and `manifest.json` are also attached separately. `arcubic-tokens.css` contains framework-free shared tokens; `arcubic-dark.Xresources` contains the terminal colors. `SHA256SUMS` covers the release assets.
+Community-theme assets `theme.css` and `manifest.json` are attached separately. `arcubic-tokens.css` contains shared tokens; `arcubic-dark.Xresources` contains terminal colors. `SHA256SUMS` covers the release assets.
 
 ## Validation and limitations
 
-- Palette, color-role and typography-guard tests pass.
-- 128 computed font-size comparisons match native Obsidian at 16px and 22px reading settings across light/dark and desktop/mobile CSS contexts. A live-vault check confirmed the reading setting changes font size and was restored afterward.
-- 728 browser color checks cover reading/editor links, nested callouts, metadata, headings, tags, menus, selected controls, keyboard focus and Sports integration. Tests use actual Obsidian native CSS with plugin styles before and after the theme, in desktop/mobile CSS contexts.
-- Tested live on Linux desktop with Obsidian 1.14.5. Mobile devices, Canvas, Bases and all third-party plugin interfaces have not had a complete visual coverage pass.
-- Five documented CSS lint warnings remain: three polygon `clip-path` compatibility warnings and two reduced-motion accessibility overrides. Font-embedded CSS can still exceed the reviewer's recommended file size.
-- Minimum Obsidian version remains 1.8.0. This is an alpha release; community-directory listing is subject to Obsidian's review process.
+- Palette, text-role and native typography guards pass; the web production build succeeds.
+- Browser checks cover links, tags, headings, selected controls and integration styling across light/dark and desktop/mobile contexts.
+- Switch geometry was checked in native desktop, mobile, dialog and list contexts, and adjusted in the debugging vault.
+- Tested live on Linux desktop with Obsidian 1.14.5. Physical mobile devices, Canvas, Bases and every third-party plugin have not had complete visual coverage.
+- Three polygon `clip-path` compatibility warnings and two reduced-motion accessibility overrides remain. Embedded fonts can exceed the reviewer's recommended CSS size.
+- Minimum Obsidian version remains 1.8.0. This is an alpha release.
 
-Arcubic is MIT licensed. Chakra Petch, Lora and Geist Mono retain their included OFL licenses. Restricted local font experiments are excluded from release assets.
+Arcubic is MIT licensed. Bundled fonts retain their included OFL licenses.
 
 Report issues at https://github.com/Trainvent/arcubic/issues with the appearance mode, Obsidian version and a screenshot without private note content.

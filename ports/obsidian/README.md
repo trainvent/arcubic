@@ -2,7 +2,7 @@
 
 An adapter for Arcubic's shared colors, typography and tactile geometry. The website component library remains independent of Obsidian.
 
-Includes subtle greenish surfaces in light and dark modes, five curve accents, raised buttons and tabs, recessed inputs, proportional triangle switches, explorer guides, reading typography and code styling. Native Obsidian interactions remain intact. Plugin-specific interfaces may need additional styling.
+Includes neutral grayscale surfaces in light and dark modes, three curve accents, raised buttons and tabs, recessed inputs, proportional triangle switches, explorer guides, reading typography and code styling. Native Obsidian interactions remain intact. Plugin-specific interfaces may need additional styling.
 
 The build also generates root `manifest.json`, `theme.css` and `versions.json` for Obsidian community-directory compatibility.
 
@@ -27,7 +27,7 @@ Chakra Petch Regular (interface), Lora variable regular/bold/italic (reading), a
 
 - `src/palette.ts`: shared scales and adaptive text colors.
 - `src/core/design.ts`: shared font roles and switch proportions.
-- `ports/obsidian/colors.ts`: five Obsidian-only family assignments.
+- `ports/obsidian/colors.ts`: central Obsidian-only color assignments.
 - `ports/obsidian/src/colors.css`: native color-role mapping.
 - `ports/obsidian/src/theme.css`: native Obsidian selectors.
 - `ports/obsidian/src/plugins.css`: optional plugin-specific integrations (currently Sports).
