@@ -86,8 +86,8 @@ body.theme-light, body.theme-dark {
   --nav-collapse-icon-color: var(--arc-obs-faint);
   --nav-collapse-icon-color-collapsed: var(--arc-obs-faint);
   --blockquote-border-color: var(--arc-obs-primary-7);
-  --tag-background: var(--arc-obs-link-3);
-  --tag-color: var(--arc-obs-link);
+  --tag-background: var(--arc-obs-primary-3);
+  --tag-color: var(--arc-obs-primary);
   --table-border-color: var(--gray-6);
   --table-header-background: var(--gray-3);
   --slider-track-background: var(--gray-6);
@@ -104,8 +104,8 @@ body.theme-light, body.theme-dark {
   --titlebar-background: var(--gray-2);
   --status-bar-background: var(--gray-2);
   --status-bar-border-color: var(--gray-6);
-  --tag-color-hover: var(--arc-obs-link-hover);
-  --tag-background-hover: var(--arc-obs-link-4);
+  --tag-color-hover: var(--arc-obs-primary-12);
+  --tag-background-hover: var(--arc-obs-primary-4);
   --nav-item-color-selected: var(--arc-obs-primary);
   --nav-item-background-selected: var(--gray-4);
   --nav-file-tag: var(--arc-obs-section);

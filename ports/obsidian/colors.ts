@@ -3,14 +3,14 @@ import {accentTextColors} from '../../src/core/text-colors.ts';
 
 /** These five assignments control the entire Obsidian adapter, including solid tones. */
 export const obsidianAccentFamilies = {
-  primary: 'amber', section: 'orange', detail: 'lime', emphasis: 'gold', link: 'teal',
+  primary: 'teal', section: 'orange', detail: 'amber', emphasis: 'orange', link: 'blue',
 } as const;
 
 /** Obsidian owns this assignment; shared web semantic roles never enter the adapter. */
 export function obsidianColors(palette: Record<string, string>): Record<string, string> {
   const colors = accentTextColors(palette);
   const families = obsidianAccentFamilies;
-  const accent = (family: string) => colors[family === 'lime' ? 'greenish' : family];
+  const accent = (family: string) => colors[family];
   const contrast = (a: string, b: string) => Color.contrast(new Color(a), new Color(b), 'WCAG21');
   const on = (background: string) => [palette['--gray-1'], palette['--gray-12']]
     .sort((a, b) => contrast(b, background) - contrast(a, background))[0];

@@ -107,10 +107,11 @@ input[type=range]::-webkit-slider-thumb { border-radius:0; height:18px; width:12
 input[type=checkbox]:not(.checkbox-container input) { border-radius:0; }
 /* Polygon shapes are supported; the clip-path partial-support warning concerns external SVGs. */
 /* Zero native border variables prevent pressed thumb growth. */
-/* One-element native toggle: same proportions and motion as the web switch. */
+/* One-element native toggle: diagonal thumb travel, with proportional geometry. */
 body .checkbox-container {
   --ds-h:var(--arc-switch-height); --ds-w:calc(var(--ds-h)*var(--arc-switch-width-ratio));
   --ds-rim:calc(var(--ds-h)*var(--arc-switch-rim-ratio));
+  --ds-corner:calc(var(--ds-rim)*1.7320508075688772);
   --ds-slant:calc(var(--ds-h)*var(--arc-switch-slant-ratio));
   --ds-inner-slant:calc((var(--ds-h) - var(--ds-rim)*2)*var(--arc-switch-slant-ratio));
   --toggle-width:var(--ds-w); --toggle-s-width:var(--ds-w);
@@ -135,16 +136,16 @@ body .checkbox-container::before {
   box-shadow:inset 0 calc(var(--ds-rim)*.5) var(--ds-rim) #0004;
 }
 :is(body, .modal, body:not(.is-mobile) .setting-group.mod-list) .checkbox-container::after {
-  content:''; position:absolute; margin:0; right:auto; bottom:auto; left:calc(var(--ds-h)*var(--arc-switch-inset-ratio) + (var(--ds-h)*var(--arc-switch-thumb-ratio) - var(--ds-h)*var(--arc-switch-triangle-width-ratio))/2);
-  top:calc((var(--ds-h) - var(--ds-h)*var(--arc-switch-triangle-height-ratio))/2);
+  content:''; position:absolute; margin:0; right:auto; bottom:auto; left:calc(var(--ds-corner) + 1px);
+  top:var(--ds-rim);
   width:calc(var(--ds-h)*var(--arc-switch-triangle-width-ratio)); height:calc(var(--ds-h)*var(--arc-switch-triangle-height-ratio));
   border-radius:0; box-shadow:none; clip-path:polygon(50% 0,100% 100%,0 100%);
   background:linear-gradient(145deg,var(--gray-12),var(--gray-10));
-  transform:translateX(0) rotate(180deg); transition:transform .25s cubic-bezier(.2,.8,.2,1);
+  transform:rotate(180deg); transition:left .25s cubic-bezier(.2,.8,.2,1),top .25s cubic-bezier(.2,.8,.2,1),transform .25s cubic-bezier(.2,.8,.2,1);
 }
 body .checkbox-container.is-enabled { background:linear-gradient(120deg,var(--arc-accent-high) 25%,var(--arc-obs-primary-8) 46%,var(--arc-accent-low) 72%); }
 body .checkbox-container.is-enabled::before { background:linear-gradient(180deg,var(--arc-obs-primary-2),var(--arc-obs-primary-4)); }
-:is(body, .modal, body:not(.is-mobile) .setting-group.mod-list) .checkbox-container.is-enabled::after { background:linear-gradient(145deg,var(--arc-obs-primary-11),var(--arc-obs-primary-9)); transform:translateX(calc(var(--ds-h)*var(--arc-switch-travel-ratio))) rotate(0deg); }
+:is(body, .modal, body:not(.is-mobile) .setting-group.mod-list) .checkbox-container.is-enabled::after { background:linear-gradient(145deg,var(--arc-obs-primary-11),var(--arc-obs-primary-9)); left:calc(var(--ds-w) - var(--ds-corner) - var(--toggle-thumb-width)); top:calc(var(--ds-h) - var(--ds-rim) - var(--toggle-thumb-height)); transform:rotate(0deg); }
 body .checkbox-container.is-disabled { opacity:.4; }
 body .checkbox-container input { position:absolute; opacity:0; width:100%; height:100%; margin:0; }
 /* Tree guides overlay selection paint, while labels keep their native layout. */
@@ -178,6 +179,7 @@ body .checkbox-container input { position:absolute; opacity:0; width:100%; heigh
 .markdown-rendered th { background:var(--gray-3); font-family:var(--font-interface); font-weight:400; }
 .markdown-rendered td,.markdown-rendered th { border-color:var(--gray-6); }
 .tag { font-family:var(--font-interface); }
+.markdown-rendered a.tag { color:var(--tag-color); }
 .markdown-rendered a.tag:hover { color:var(--tag-color-hover); }
 .search-result-file-matches { border-radius:0; }
 .status-bar { border-radius:0; border-top:1px solid var(--gray-6); }

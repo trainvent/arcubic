@@ -21,9 +21,11 @@ for (const mode of ['light', 'dark']) {
     assert.equal(new Set(accents).size, 4, 'Distinct heading and link accents');
     assert.equal(roles['--arc-text-active'], roles['--arc-text-title'], 'Selection uses the primary Teal');
     assert.equal(roles['--arc-text-body'], palette['--gray-12']);
-    const body = new Color(roles['--arc-text-body']).to('oklch');
-    const background = new Color(palette['--gray-1']).to('oklch');
-    assert.ok(Math.abs(body.coords[2] - background.coords[2]) < 5, 'Body and background share the greenish hue');
+    for (let step = 1; step <= 12; step++) {
+      const channels = new Color(palette[`--gray-${step}`]).to('srgb').coords;
+      assert.ok(Math.max(...channels) - Math.min(...channels) < .00001, 'Neutral ramp is achromatic');
+    }
+    if (mode === 'dark') assert.equal(palette['--gray-12'], '#fff');
 
   });
 }

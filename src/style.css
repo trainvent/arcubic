@@ -231,3 +231,10 @@
 .arcubic-ui .radix-link,.arcubic-ui .rt-Link,.arcubic-ui .study-note a{color:var(--arc-text-link)}
 
 .arcubic-ui .radix-link:hover,.arcubic-ui .rt-Link:hover,.arcubic-ui .study-note a:hover{color:var(--arc-text-link-hover)}
+
+.link-blue-hint{margin:20px 0;padding:14px 0;border-top:1px solid var(--gray-6);border-bottom:1px solid var(--gray-6)}
+.link-blue-hint p{display:flex;align-items:center;gap:8px;color:var(--arc-text-body);margin:10px 0 6px}
+.link-blue-hint i{width:12px;height:12px;background:var(--arc-text-link)}
+.link-blue-hint a{display:inline-flex;align-items:center;gap:5px;color:var(--arc-text-link)}
+.link-blue-hint a:hover{color:var(--arc-text-link-hover)}
+.link-blue-hint small{display:block;margin-top:8px;color:var(--arc-text-secondary);font-size:11px}

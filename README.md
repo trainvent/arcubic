@@ -2,9 +2,9 @@
 
 # Arcubic
 
-<img src="public/title.svg" alt="Arcubic — five colors, one curve" width="1200"/>
+<img src="public/title.svg" alt="Arcubic — three colors, one curve" width="1200"/>
 
-Teal, greenish, amber, golden orange and burnt orange on subtle greenish surfaces. A reusable design system with square panels, raised controls, inset fields and a sliding triangle switch.
+Teal, amber and burnt orange on neutral grayscale surfaces. A reusable design system with square panels, raised controls, inset fields and a sliding triangle switch.
 
 ## Styling guidelines
 
@@ -12,9 +12,9 @@ Arcubic aims for a precise, technical interface with a tactile feel. Clear struc
 
 - **Use depth where interaction benefits from it.** Raised buttons suggest pressing; inset fields and tracks suggest input. Keep content panels quiet and flat. A thin bevel is usually enough, especially on compact controls; preserve space for their text and icons.
 - **Keep the structure geometric.** Favor square edges, aligned boundaries and consistent spacing. Active document tabs should connect to their page, while inactive tabs recede into the surrounding surface.
-- **Make triangles functional.** Use them for direction, state and progress: the switch slides left/down when off and right/up when on, and the loader follows a triangular path. Keep angles, proportions and internal spacing consistent as these elements scale.
+- **Make triangles functional.** Use them for direction, state and progress: the switch moves from top-left when off to bottom-right when on, and the loader follows a triangular path. Keep angles, proportions and internal spacing consistent as these elements scale.
 - **Keep hover, selection and focus distinct.** Hover is a small change in brightness or text color. Selection persists after the pointer leaves. Keyboard focus stays visible with a light, single outline. Avoid stacked focus rings, heavy hover boxes and separate highlights around button text.
-- **Give color a clear role.** The greenish family provides subtly tinted surfaces and body text. Each adapter assigns roles centrally. In Obsidian, Amber marks titles, selection and primary controls; Teal marks links; Greenish marks subheadings; Golden orange marks emphasis; Burnt orange marks section headings. Semantic success Green and error Tomato remain separate.
+- **Give color a clear role.** Surfaces and body text use neutral grays. Each adapter assigns roles centrally. Teal is the primary accent and marks tags; Amber and Burnt orange provide secondary emphasis. Reserve green for success, red for errors or destructive actions, and blue for links. These functional colors sit outside the three-color identity palette.
 - **Let typography do its job.** Use a technical interface face, a comfortable reading face and a true monospace for code. Keep labels legible at small sizes and leave enough room for descenders, including in placeholders, tags and truncated labels.
 - **Make motion explain a change.** Keep transitions short and purposeful: a button depresses, a switch travels and rotates, a loader indicates progress. Respect reduced-motion preferences.
 - **Adapt to the host without losing the system.** Preserve native behavior and keyboard interaction. Test normal, hovered, pressed, selected, focused and disabled states in context, in both light and dark modes. Check contrast against the actual surface behind the text.
@@ -34,7 +34,7 @@ Arcubic's code is [MIT licensed](LICENSE). Bundled fonts retain their included O
 | Part | Location | Purpose |
 | --- | --- | --- |
 | Shared colors | `src/palette.ts` | Full Radix scales, semantic roles and contrast-aware text |
-| Shared text roles | `src/core/text-colors.ts` | Contrast-checked five-color text hierarchy |
+| Shared text roles | `src/core/text-colors.ts` | Contrast-checked text roles and blue links |
 | Shared design | `src/core/design.ts` | Typography roles and proportional switch geometry |
 | Framework-free CSS | `packages/core/arcubic-tokens.css` | Generated tokens for websites and other adapters |
 | React components | `src/components/` | Radix components with Arcubic styling |
@@ -59,27 +59,35 @@ The preview has Web, Terminal, Interface and Components pages, with light and da
 
 ## Colors
 
-The official palette has five families in curve order:
+The official palette has three families in curve order:
 
 | Family / token | Role | Default seed |
 | --- | --- | --- |
-| Teal / `--teal-*` | Links and tags in Obsidian | `#12A594` |
-| Greenish / `--lime-*` | Subheadings; hue of subtle surfaces and body text | `#3BED0C` |
-| Amber / `--amber-*` | Titles, selection and controls in Obsidian | `#FFC53D` |
-| Golden orange / `--gold-*` | Emphasis and H4 in Obsidian | `#FB9B29` |
+| Teal / `--teal-*` | Titles, selection and controls in Obsidian | `#12A594` |
+| Amber / `--amber-*` | Secondary accent | `#FFC53D` |
 | Burnt orange / `--orange-*` | Section headings in Obsidian | `#F76B15` |
 
-The vivid seed is the accent anchor, not the background or body-text shade. Every family exports 12 solid and alpha steps plus foreground roles. Native Radix Teal, Amber and Orange scales are preserved; Greenish and Golden orange use generated OKLCH scales. Semantic success Green and error Tomato remain independent.
+The vivid seed is the accent anchor, not the background or body-text shade. Every family exports 12 solid and alpha steps plus foreground roles. Native Radix Teal, Amber and Orange scales are preserved; edited anchors use generated OKLCH scales.
 
-Surfaces use a very low-chroma version of the greenish hue. Dark mode pairs `#0d140c` with pale green-white `#e5f2e3`; light mode pairs `#f6fcf5` with green-black `#192217`. Foreground roles check contrast against their actual surfaces.
+Special cases use a separate RGB rule:
 
-The five stops sample positions `0, 0.25, 0.5, 0.75, 1`. The default profile inserts two samples between the established Radix anchors. The original profile retains the cubic formula:
+| Color | Purpose |
+| --- | --- |
+| Green | Success and positive status |
+| Red | Errors and destructive actions |
+| Blue | Links that navigate to a page or resource |
+
+Use strong, recognizable hues with readable shades for each appearance, rather than literal pure RGB values for text. Tags stay teal. These functional colors do not add stops to the identity curve.
+
+Backgrounds and ordinary text stay achromatic: charcoal `#111111` and white body text in dark mode, with neutral grayscale surfaces and text in light mode. Foreground roles check contrast against their actual surfaces.
+
+The three stops sample positions `0, 0.5, 1`. The default profile uses the established Radix anchors. The original profile retains the cubic formula:
 
 ```text
 hue(i) = 17.79 + (1 − i)³ × 152.09,  0 ≤ i ≤ 1
 ```
 
-See [hue curves](docs/hue-curves.md) for how the profiles and five samples relate. `npm run build:brand` regenerates the five-dot curve, five-color triangle and title banner from the shared defaults. SVGs are the canonical assets; PNG compatibility exports can be refreshed with `node scripts/build-brand.mjs --png` when Sharp is available.
+See [hue curves](docs/hue-curves.md) for how the profiles and curve samples relate. `npm run build:brand` regenerates the three-dot curve, three-color triangle and title banner from the shared defaults. SVGs are the canonical assets; PNG compatibility exports can be refreshed with `node scripts/build-brand.mjs --png` when Sharp is available.
 
 ## Typography
 

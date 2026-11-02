@@ -1,7 +1,7 @@
 import Color from 'colorjs.io';
 import {textColorTokens} from './core/text-colors.ts';
 import * as radix from '@radix-ui/colors';
-import { sage, sageDark, orange as radixOrange, amber as radixAmber, teal as radixTeal } from '@radix-ui/colors';
+import { gray, grayDark, orange as radixOrange, amber as radixAmber, teal as radixTeal } from '@radix-ui/colors';
 export type Mode = 'dark' | 'light';
 // Original and Soft use the cubic hue curve; Radix uses its own HSL anchors.
 const radixAnchors = [radixTeal.teal9, radixAmber.amber9, radixOrange.orange9]
@@ -9,7 +9,7 @@ const radixAnchors = [radixTeal.teal9, radixAmber.amber9, radixOrange.orange9]
 export function hueForI(i: number): number {
   return 17.79 + 152.09 * (1 - i) ** 3;
 }
-export function generateHuePalette(count = 5, profile: 'radix' | 'original' | 'soft' = 'radix'): string[] {
+export function generateHuePalette(count = 3, profile: 'radix' | 'original' | 'soft' = 'radix'): string[] {
   if (!Number.isInteger(count) || count < 2) throw new RangeError('Use at least two colors.');
   return Array.from({length: count}, (_, index) => {
     const t = index / (count - 1);
@@ -24,21 +24,22 @@ export function generateHuePalette(count = 5, profile: 'radix' | 'original' | 's
     return new Color(`hsl(${hue} ${saturation}% ${lightness}%)`).to('srgb').toString({format: 'hex'}).toUpperCase();
   });
 }
-const [teal, lime, amber, gold, orange] = generateHuePalette();
-export const defaults = { teal, lime, amber, gold, orange };
+const [teal, amber, orange] = generateHuePalette();
+export const defaults = { teal, amber, orange };
 export type Seeds = typeof defaults;
-const [originalTeal, originalLime, originalAmber, originalGold, originalOrange] = generateHuePalette(5, 'original');
-const [softTeal, softLime, softAmber, softGold, softOrange] = generateHuePalette(5, 'soft');
-export const softSeeds: Seeds = {teal: softTeal, lime: softLime, amber: softAmber, gold: softGold, orange: softOrange};
-const [radixTealSeed, radixLimeSeed, radixAmberSeed, radixGoldSeed, radixOrangeSeed] = generateHuePalette(5, 'radix');
-export const radixSeeds: Seeds = {teal: radixTealSeed, lime: radixLimeSeed, amber: radixAmberSeed, gold: radixGoldSeed, orange: radixOrangeSeed};
-export const originalSeeds: Seeds = {teal: originalTeal, lime: originalLime, amber: originalAmber, gold: originalGold, orange: originalOrange};
-export const names = { teal: 'Teal', lime: 'Greenish', amber: 'Amber', gold: 'Golden orange', orange: 'Burnt orange' };
+const [originalTeal, originalAmber, originalOrange] = generateHuePalette(3, 'original');
+const [softTeal, softAmber, softOrange] = generateHuePalette(3, 'soft');
+export const softSeeds: Seeds = {teal: softTeal, amber: softAmber, orange: softOrange};
+const [radixTealSeed, radixAmberSeed, radixOrangeSeed] = generateHuePalette(3, 'radix');
+export const radixSeeds: Seeds = {teal: radixTealSeed, amber: radixAmberSeed, orange: radixOrangeSeed};
+export const originalSeeds: Seeds = {teal: originalTeal, amber: originalAmber, orange: originalOrange};
+export const names = { teal: 'Teal', amber: 'Amber', orange: 'Burnt orange' };
 export const keys = Object.keys(defaults) as (keyof Seeds)[];
 const nativeScales = {
+  blue: [radix.blue, radix.blueDark, radix.blueA, radix.blueDarkA],
   green: [radix.green, radix.greenDark, radix.greenA, radix.greenDarkA],
   tomato: [radix.tomato, radix.tomatoDark, radix.tomatoA, radix.tomatoDarkA],
-  sage: [radix.sage, radix.sageDark, radix.sageA, radix.sageDarkA],
+  gray: [radix.gray, radix.grayDark, radix.grayA, radix.grayDarkA],
   teal: [radix.teal, radix.tealDark, radix.tealA, radix.tealDarkA],
   amber: [radix.amber, radix.amberDark, radix.amberA, radix.amberDarkA],
   orange: [radix.orange, radix.orangeDark, radix.orangeA, radix.orangeDarkA],
@@ -46,7 +47,7 @@ const nativeScales = {
 function nativeScale(key: keyof typeof nativeScales, mode: Mode, alpha = false): string[] {
   return Object.values(nativeScales[key][(mode === 'dark' ? 1 : 0) + (alpha ? 2 : 0)]);
 }
-function isRadixSeed(key: keyof Seeds, seeds: Seeds): key is 'teal' | 'amber' | 'orange' {
+function isRadixSeed(key: keyof Seeds, seeds: Seeds): boolean {
   return (key === 'teal' || key === 'amber' || key === 'orange') && seeds[key].toLowerCase() === radixSeeds[key].toLowerCase();
 }
 const hex = (c: Color) => c.to('srgb').toGamut({method: 'css'}).toString({format: 'hex'});
@@ -56,14 +57,9 @@ export function contrast(a: string, b: string) {
 export function foreground(bg: string) { return contrast(bg, '#ffffff') > contrast(bg, '#101615') ? '#ffffff' : '#101615'; }
 export function createPalette(seeds: Seeds, mode: Mode) {
   const dark = mode === 'dark';
-  const seedHue = new Color(seeds.lime).to('oklch').coords[2];
-  const surfaceHue = Number.isFinite(seedHue) ? seedHue : new Color(defaults.lime).to('oklch').coords[2];
-  const neutrals = Object.values(dark ? sageDark : sage).map((value, index) => {
-    const original = new Color(value).to('oklch');
-    const lightness = !dark && index === 0 ? .985 : original.coords[0];
-    const chroma = index >= 10 ? .025 : dark ? .018 : .012;
-    return hex(new Color('oklch', [lightness, chroma, surfaceHue]));
-  });
+  // Achromatic surfaces: charcoal in dark mode, white in light mode.
+  const neutrals = Object.values(dark ? grayDark : gray);
+  if (dark) neutrals[11] = '#fff';
   const scales = Object.fromEntries(keys.map(key => {
     if (isRadixSeed(key, seeds)) return [key, nativeScale(key, mode)];
     const seed = new Color(seeds[key]).to('oklch');
@@ -87,18 +83,18 @@ function alphaColor(value: string, background: string) {
 export function themeTokens(seeds: Seeds, mode: Mode) {
   const p = createPalette(seeds,mode);
   const tokens: Record<string,string> = {'--color-background':p.neutrals[0]};
-  const groups = {gray:p.neutrals,...p.scales,green:nativeScale('green',mode),tomato:nativeScale('tomato',mode)};
+  const groups = {gray:p.neutrals,...p.scales,green:nativeScale('green',mode),tomato:nativeScale('tomato',mode),blue:nativeScale('blue',mode)};
   for (const [key,scale] of Object.entries(groups)) {
-    const native = key === 'gray' || key === 'green' || key === 'tomato' || isRadixSeed(key as keyof Seeds, seeds);
-    const alpha = native ? nativeScale(key === 'gray' ? 'sage' : key as keyof typeof nativeScales, mode, true) : null;
+    const native = key === 'gray' || key === 'green' || key === 'tomato' || key === 'blue' || isRadixSeed(key as keyof Seeds, seeds);
+    const alpha = native ? nativeScale(key === 'gray' ? 'gray' : key as keyof typeof nativeScales, mode, true) : null;
     scale.forEach((value,i)=> {tokens[`--${key}-${i+1}`]=value; tokens[`--${key}-a${i+1}`]=alpha?.[i] ?? alphaColor(value,p.neutrals[0]);});
     tokens[`--${key}-contrast`]=native ? (key === 'amber' ? '#21201c' : '#ffffff') : foreground(scale[8]);
-    const surfaces: Record<string, [string, string]> = {gray:['#ffffffcc','#1e201f80'],teal:['#f0faf8cc','#13272580'],amber:['#fefae4cc','#271f1380'],orange:['#fff5e9cc','#271d1380'],green:['#f1faf4cc','#15251d80'],tomato:['#fff6f5cc','#2d191580']};
+    const surfaces: Record<string, [string, string]> = {gray:['#ffffffcc','#20202080'],blue:['#f0f8ffcc','#10243e80'],teal:['#f0faf8cc','#13272580'],amber:['#fefae4cc','#271f1380'],orange:['#fff5e9cc','#271d1380'],green:['#f1faf4cc','#15251d80'],tomato:['#fff6f5cc','#2d191580']};
     tokens[`--${key}-surface`]=native ? surfaces[key][mode === 'dark' ? 1 : 0] : scale[1];
     tokens[`--${key}-indicator`]=scale[8];
     tokens[`--${key}-track`]=scale[8];
   }
-  // Select foregrounds per Sage surface; preserve the underlying Radix steps.
+  // Select foregrounds per neutral surface; preserve the underlying Radix steps.
   for (const key of keys) {
     const scale = p.scales[key];
     for (const [surface, background] of [['page', p.neutrals[0]], ['panel', p.neutrals[1]]] as const) {
@@ -123,5 +119,5 @@ export function themeTokens(seeds: Seeds, mode: Mode) {
   return {...tokens,...textColorTokens(tokens)};
 }
 export function exportCSS(seeds: Seeds) {
-  return '/* Arcubic · Logo palette · Radix Themes overrides\n   Import after @radix-ui/themes/styles.css. Use accentColor="teal".\n   Five accent families with greenish surfaces. Edited anchors use custom OKLCH scales. */\n\n' + (['light','dark'] as const).map(mode=>`${mode === 'light' ? ':root, .light, .light-theme' : '.dark, .dark-theme'} {\n${Object.entries(themeTokens(seeds,mode)).map(([k,v])=>`  ${k}: ${v};`).join('\n')}\n}`).join('\n\n');
+  return '/* Arcubic · Logo palette · Radix Themes overrides\n   Import after @radix-ui/themes/styles.css. Use accentColor="teal".\n   Accent families with achromatic surfaces. Edited anchors use custom OKLCH scales. */\n\n' + (['light','dark'] as const).map(mode=>`${mode === 'light' ? ':root, .light, .light-theme' : '.dark, .dark-theme'} {\n${Object.entries(themeTokens(seeds,mode)).map(([k,v])=>`  ${k}: ${v};`).join('\n')}\n}`).join('\n\n');
 }

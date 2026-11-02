@@ -19,19 +19,6 @@ export function accentTextColors(palette: Record<string, string>): Record<string
     }
     return palette[`--${hue}-12`];
   };
-  const intermediate = (seed: string, left: string, right: string) => {
-    const color = new Color(seed).to('oklch');
-    const neighbors = [left, right].map(hue => new Color(palette[`--${hue}-11`]).to('oklch'));
-    // Sample the existing hue path; match its neighbors' text brightness and chroma.
-    color.coords[0] = (neighbors[0].coords[0] + neighbors[1].coords[0]) / 2;
-    color.coords[1] = Math.min(color.coords[1], (neighbors[0].coords[1] + neighbors[1].coords[1]) / 2);
-    const target = new Color(palette['--gray-12']);
-    for (let step = 0; step <= 50; step++) {
-      const candidate = color.mix(target, step / 50, {space: 'oklch'}).toGamut({space: 'srgb'});
-      if (readable(new Color(hex(candidate)))) return hex(candidate);
-    }
-    return hex(target);
-  };
   const primaryTeal = () => {
     const base = new Color(accent('teal'));
     const dark = new Color(palette['--gray-1']).to('oklch').coords[0] < .5;
@@ -44,14 +31,13 @@ export function accentTextColors(palette: Record<string, string>): Record<string
     }
     return hex(base);
   };
-  const greenish = palette['--lime-9'];
   return {
     body: safe(new Color(palette['--gray-12']), '--gray-12'),
     muted: safe(new Color(palette['--gray-11']), '--gray-12'),
     teal: primaryTeal(),
+    blue: accent('blue'),
+    blueHover: palette['--blue-12'],
     amber: accent('amber'),
-    greenish: intermediate(greenish, 'teal', 'amber'),
-    gold: intermediate(palette['--gold-9'], 'amber', 'orange'),
     orange: accent('orange'),
     orangeHover: palette['--orange-12'],
   };
@@ -66,9 +52,9 @@ export function textColorTokens(palette: Record<string, string>): Record<string,
     '--arc-text-quiet': colors.muted,
     '--arc-text-title': colors.teal,
     '--arc-text-section': colors.amber,
-    '--arc-text-detail': colors.greenish,
+    '--arc-text-detail': colors.orange,
     '--arc-text-active': colors.teal,
-    '--arc-text-link': colors.orange,
-    '--arc-text-link-hover': colors.orangeHover,
+    '--arc-text-link': colors.blue,
+    '--arc-text-link-hover': colors.blueHover,
   };
 }

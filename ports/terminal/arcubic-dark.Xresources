@@ -1,24 +1,24 @@
-! Arcubic Dark — five accents on subtle greenish surfaces
+! Arcubic Dark — three accents on neutral charcoal surfaces
 ! Slots 0–7: normal ANSI; 8–15: bright ANSI
-! Greenish uses green; gold uses normal yellow; amber uses bright yellow; burnt orange uses bright red.
-*.background: #0d140c
-*.foreground: #e5f2e3
+! Green and red are status colors; blue is for links; teal, amber and orange carry the identity.
+*.background: #111111
+*.foreground: #ffffff
 *.cursorColor: #0bd8b6
 *.selectionBackground: #023b37
 *.selectionForeground: #adf0dd
-*.color0: #2b332a
+*.color0: #313131
 *.color1: #ec6142
-*.color2: #8fce85
-*.color3: #f0a964
+*.color2: #33b074
+*.color3: #ffca16
 *.color4: #3b9eff
 *.color5: #d19dff
 *.color6: #0bd8b6
-*.color7: #abb7a8
-*.color8: #abb7a8
+*.color7: #b4b4b4
+*.color8: #b4b4b4
 *.color9: #ffa057
-*.color10: #d8f0d4
+*.color10: #b1f1cb
 *.color11: #ffca16
 *.color12: #70b8ff
 *.color13: #d19dff
 *.color14: #0bd8b6
-*.color15: #e5f2e3
+*.color15: #ffffff

@@ -66,19 +66,19 @@ license remain embedded in the distribution. No npm runtime is installed in a va
 ## Obsidian color roles
 
 The adapter follows [Tokyo Night's color relationships](https://github.com/tcmmichaelb139/obsidian-tokyonight/blob/main/theme.css)
-with Arcubic's five hues. It keeps the approved subtle greenish backgrounds and body text.
+with Arcubic's three hues. Surfaces use neutral grays, with charcoal backgrounds and white body text in dark mode.
 
 | Adapter variable | Native roles |
 | --- | --- |
-| `--arc-obs-primary` | Amber: H1/inline title, active files/folders/tabs, selected menus/settings/buttons, active icons |
+| `--arc-obs-primary` | Teal: H1/inline title, active files/folders/tabs, selected menus/settings/buttons, active icons, tags |
 | `--arc-obs-section` | Burnt orange: H2 and question callouts |
-| `--arc-obs-detail` | Greenish: H3 and checked checkboxes |
-| `--arc-obs-emphasis` | Golden orange: H4, bold/italic emphasis and summary callouts |
-| `--arc-obs-link` | Teal: internal/external/unresolved links, tags, H6 and example callouts |
+| `--arc-obs-detail` | Amber: H3 and checked checkboxes |
+| `--arc-obs-emphasis` | Burnt orange: H4, bold/italic emphasis and summary callouts |
+| `--arc-obs-link` | Blue: internal/external/unresolved links, H6 and example callouts |
 
-H5 reuses the primary Amber because the reference's six heading hues map onto five Arcubic families.
+H5 reuses the primary Teal because the reference's six heading hues map onto three Arcubic families and link blue.
 Warning, error and success callouts retain their semantic distinctions. Links use
-one normal and hover role in the same Teal family everywhere, including nested callouts, metadata and Live Preview.
+one normal and hover role in the same Blue family everywhere, including nested callouts, metadata and Live Preview.
 The Sports integration uses the same native heading, emphasis, link and selection roles.
 
 `obsidianAccentFamilies` in `ports/obsidian/colors.ts` assigns five semantic roles
