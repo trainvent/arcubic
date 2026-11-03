@@ -15,7 +15,7 @@ The public package is `@trainvent/arcubic`. Its source stays in this public GitH
    - Environment: leave empty
    - Allow direct `npm publish`.
 
-The workflow is prepared now; registry publishing remains pending until the npm account, scope and trusted publisher are configured. Do not trigger a new version tag before completing setup.
+The `trainvent` organization and trusted publisher are configured. Version 0.3.0 was bootstrapped from the existing release archive; future numeric tags publish through GitHub OIDC.
 
 ## Releases
 
