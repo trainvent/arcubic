@@ -16,7 +16,7 @@ The personal Next.js website is the first consumer. Its release URL stays pinned
 
 The palette and Obsidian styling remain as in 0.2.2. Download `arcubic-obsidian-0.3.0.zip`, extract its Arcubic folder into `<vault>/.obsidian/themes/`, then select Arcubic in Settings → Appearance → Themes. Minimum Obsidian version: 1.8.0.
 
-The release also includes `theme.css`, `manifest.json`, shared CSS tokens, terminal colors and `SHA256SUMS`. Arcubic is MIT licensed; bundled fonts retain their included OFL licenses. This remains an alpha release; physical mobile devices and every Obsidian plugin have not been fully validated.
+The release also includes terminal colors and the separate `theme.css` and `manifest.json` files required by Obsidian’s automatic installer. Shared CSS tokens are inside the web package as `dist/tokens.css`; GitHub displays SHA-256 hashes for each downloadable asset. Arcubic is MIT licensed; bundled fonts retain their included OFL licenses. This remains an alpha release; physical mobile devices and every Obsidian plugin have not been fully validated.
 
 ## Release process
 
