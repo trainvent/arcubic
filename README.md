@@ -6,6 +6,52 @@
 
 Teal, amber and burnt orange on neutral grayscale surfaces. A reusable design system with square panels, raised controls, inset fields and a sliding triangle switch.
 
+## React and Next.js
+
+Install the public [npm package](https://www.npmjs.com/package/@trainvent/arcubic):
+
+```sh
+npm install --save-exact @trainvent/arcubic
+```
+
+Import the stylesheet once in your application layout:
+
+```tsx
+import '@trainvent/arcubic/styles.css';
+```
+
+Use the components inside an Arcubic theme:
+
+```tsx
+'use client';
+
+import { Theme, Button } from '@trainvent/arcubic';
+
+export default function Example() {
+  return (
+    <Theme appearance="dark">
+      <Button variant="outline">Get started</Button>
+    </Theme>
+  );
+}
+```
+
+The package includes React 19 components, TypeScript declarations, light/dark tokens and bundled Chakra Petch, Lora and Geist Mono fonts. In Next.js, put a site-wide `Theme` in a client provider rendered by the root layout. See the [package guide](packages/react/README.md) for exports and integration details.
+
+[leonmarq.com](https://leonmarq.com) uses the published npm package; its [source](https://github.com/leonmarq/website) shows the layout, appearance provider and component imports.
+
+## Releases and updates
+
+Matching numeric version tags automatically publish the package to npm through GitHub trusted publishing and create the companion GitHub downloads. No npm token is stored in GitHub. See the [maintainer release guide](docs/npm-publishing.md).
+
+Consumers commit an exact package version and its lockfile. The personal website uses Dependabot to propose new Arcubic versions daily; its PR checks build the site, and merging deploys it. Other projects can use the same Dependabot setup.
+
+## Obsidian and terminal
+
+Use the [latest GitHub release](https://github.com/trainvent/arcubic/releases/latest) for the Obsidian ZIP or terminal palette. The separate `theme.css` and `manifest.json` downloads support Obsidian's automatic installer. Shared web tokens are included in the npm package as `@trainvent/arcubic/tokens.css`.
+
+See the [Obsidian guide](ports/obsidian/README.md), [terminal guide](ports/terminal/README.md), and [release notes](docs/alpha-release.md). Arcubic remains an alpha release. Its code is [MIT licensed](LICENSE); bundled fonts retain their OFL licenses.
+
 ## Styling guidelines
 
 Arcubic aims for a precise, technical interface with a tactile feel. Clear structure, restrained color and deliberate geometry should make the controls feel coherent across websites and applications.
@@ -21,14 +67,6 @@ Arcubic aims for a precise, technical interface with a tactile feel. Clear struc
 
 The guiding principle is restraint: geometry gives Arcubic its character, while depth and color help people understand what they can do.
 
-## Alpha release
-
-Download the [0.3.1 alpha release](https://github.com/Trainvent/arcubic/releases/tag/0.3.1) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). The current build bundles Chakra Petch, Lora and Geist Mono under the OFL.
-
-The root `manifest.json`, `theme.css` and `versions.json` are generated Obsidian distribution files. Native source stays in `ports/obsidian/`; shared web tokens and components stay independent. Rebuild with `npm run build:obsidian` after changing the adapter.
-
-Arcubic's code is [MIT licensed](LICENSE). Bundled fonts retain their included OFL licenses.
-
 ## Shared core and adapters
 
 | Part | Location | Purpose |
@@ -38,6 +76,7 @@ Arcubic's code is [MIT licensed](LICENSE). Bundled fonts retain their included O
 | Shared design | `src/core/design.ts` | Typography roles and proportional switch geometry |
 | Framework-free CSS | `packages/core/arcubic-tokens.css` | Generated tokens for websites and other adapters |
 | React components | `src/components/` | Radix components with Arcubic styling |
+| npm package | `packages/react/` | Published `@trainvent/arcubic` package and public exports |
 | Web preview | `src/main.tsx` | Colors, terminal, interface and component examples |
 | Obsidian | `ports/obsidian/` | Standalone native theme, built from the shared core |
 | Terminal | `ports/terminal/` | ANSI palette and terminal exports |
@@ -53,9 +92,12 @@ npm ci
 npm run dev
 npm run build
 npm run build:themes
+npm run build:react
 ```
 
-The preview has Web, Terminal, Interface and Components pages, with light and dark modes. `build:themes` regenerates the plain CSS tokens, Obsidian theme and terminal palette.
+The preview has Web, Terminal, Interface and Components pages, with light and dark modes. `build:themes` regenerates the plain CSS tokens, Obsidian theme and terminal palette; `build:react` builds the npm package. `pack:react` creates its installable archive, and `package:release` assembles the GitHub downloads.
+
+The root `manifest.json`, `theme.css` and `versions.json` are generated Obsidian distribution files. Native source stays in `ports/obsidian/`; web components stay independent.
 
 ## Colors
 
@@ -97,16 +139,6 @@ See [hue curves](docs/hue-curves.md) for how the profiles and curve samples rela
 
 Chakra Petch, Lora and Geist Mono are installed through Fontsource and included under their OFL licenses. The Obsidian theme embeds all three; no separate font download is needed.
 
-## Use elsewhere
+## Framework-free use
 
-For framework-free websites, see [shared CSS tokens](packages/core/README.md). For Obsidian installation, see [the adapter instructions](ports/obsidian/README.md). Terminal export instructions are in [ports/terminal](ports/terminal/).
-
-## React / Next.js package
-
-`npm run pack:react` builds `@trainvent/arcubic` into `packages/react/dist` and
-creates `dist/trainvent-arcubic-<version>.tgz`. The version is taken from the
-root package.json. See [the package documentation](packages/react/README.md)
-for imports, npm installation and publication. The preview and package
-share `src/components`; the package excludes preview page layouts and private fonts.
-
-For automatic npm registry publishing and the one-time account setup, see [npm publishing](docs/npm-publishing.md).
+The npm package exports tokens separately as `@trainvent/arcubic/tokens.css`. The generated source sheet and its selectors are documented in the [shared core guide](packages/core/README.md).

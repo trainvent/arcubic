@@ -1,26 +1,50 @@
-# npm publishing
+# Publishing and consumer updates
 
-The public package is `@trainvent/arcubic`. Its source stays in this public GitHub repository. Numeric release tags run `.github/workflows/publish-npm.yml`, which builds the package from the tag and publishes to the npm registry using GitHub OIDC. It requires no stored npm token. The existing GitHub release workflow independently publishes the theme-port downloads.
+Arcubic is published publicly as [`@trainvent/arcubic`](https://www.npmjs.com/package/@trainvent/arcubic). The `trainvent` npm organization and GitHub trusted publisher are configured. Version 0.3.1 verified automatic publication from GitHub Actions, including provenance.
 
-## One-time setup
+## Publish a release
 
-1. Create and verify an account at https://www.npmjs.com/signup.
-2. Create the `trainvent` organization using the free public-packages plan, or obtain publishing access if it is already owned by your organization.
-3. Run `npm login --registry=https://registry.npmjs.org` locally and complete its browser authentication. Do not paste credentials into chat or commit them.
-4. Bootstrap the package once: `npm run pack:react`, then `npm publish ./dist/trainvent-arcubic-0.3.0.tgz --access public`. Complete npm's authentication prompt if requested.
-5. In the package's npm settings, add a GitHub Actions trusted publisher:
-   - Organization/user: `trainvent`
-   - Repository: `arcubic`
-   - Workflow filename: `publish-npm.yml`
-   - Environment: leave empty
-   - Allow direct `npm publish`.
+1. Bump the root package version, for example with `npm version patch --no-git-tag-version`.
+2. Run `npm run build:themes` and `npm run build:react` to synchronize the package and Obsidian manifests.
+3. Commit the source and generated manifests, create a numeric tag matching package.json, and push the commit and tag.
 
-The `trainvent` organization and trusted publisher are configured. Version 0.3.0 was bootstrapped from the existing release archive; future numeric tags publish through GitHub OIDC.
+The tag starts two workflows:
 
-## Releases
+| Workflow | Publishes |
+| --- | --- |
+| [`publish-npm.yml`](../.github/workflows/publish-npm.yml) | The compiled React package to npm, using GitHub OIDC |
+| [`release.yml`](../.github/workflows/release.yml) | Obsidian, terminal and alternative web-package downloads to GitHub Releases |
 
-Update the root package version, build the theme ports to synchronize manifests, and commit. Push the matching numeric tag. The npm workflow checks that its tag matches package.json before publishing. Its manual Run workflow option can publish an existing release tag when recovering an interrupted release; it cannot overwrite a version already published to npm.
+Both build from the tagged source. The npm workflow checks the tag against package.json, runs the palette tests, builds the package and publishes it. No local npm login or stored GitHub npm token is needed for routine releases.
 
-Website consumers install an exact version with `npm install --save-exact @trainvent/arcubic@0.3.0`. Dependabot can then update package.json and package-lock.json in a pull request, with build checks before merging and deployment. The GitHub archive remains usable during the registry migration.
+For an interrupted npm publication, use **Actions → Publish Arcubic to npm → Run workflow** and select the existing release tag. npm versions cannot be overwritten; check the registry before retrying an accepted publish. A newly accepted package can take a few minutes to become available for installation.
 
-References: [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/), [creating an npm organization](https://docs.npmjs.com/creating-an-organization/).
+## Consumer projects
+
+```sh
+npm install --save-exact @trainvent/arcubic
+```
+
+Commit package.json and package-lock.json together. Import `@trainvent/arcubic/styles.css` once and components from `@trainvent/arcubic`. Consumers do not need a GitHub download URL, theme checkout or npm login.
+
+The [personal website](https://github.com/leonmarq/website) is configured to check for Arcubic updates daily at 08:00 Europe/Berlin. Dependabot opens a PR updating the exact version and lockfile; the PR workflow checks the preview server and production build. Merging into master deploys to [leonmarq.com](https://leonmarq.com). This flow requires reviewing and merging updates, rather than editing version files manually.
+
+Other npm projects can enable the same behavior with `.github/dependabot.yml`:
+
+```yaml
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+    allow:
+      - dependency-name: '@trainvent/arcubic'
+    versioning-strategy: increase
+```
+
+## Maintainer access
+
+The trusted publisher is restricted to GitHub repository `trainvent/arcubic`, workflow filename `publish-npm.yml`, with direct npm publishing allowed and no environment restriction. Changing that relationship requires an npm maintainer's interactive authentication; routine releases do not.
+
+For account recovery or moving the workflow, follow [npm's trusted publishing documentation](https://docs.npmjs.com/trusted-publishers/). Keep the package's repository metadata and trusted-publisher settings consistent with its GitHub repository.
