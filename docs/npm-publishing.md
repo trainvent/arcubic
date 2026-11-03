@@ -7,7 +7,7 @@ The public package is `@trainvent/arcubic`. Its source stays in this public GitH
 1. Create and verify an account at https://www.npmjs.com/signup.
 2. Create the `trainvent` organization using the free public-packages plan, or obtain publishing access if it is already owned by your organization.
 3. Run `npm login --registry=https://registry.npmjs.org` locally and complete its browser authentication. Do not paste credentials into chat or commit them.
-4. Bootstrap the package once: `npm run pack:react`, then `npm publish dist/trainvent-arcubic-0.3.0.tgz --access public`. Complete npm's authentication prompt if requested.
+4. Bootstrap the package once: `npm run pack:react`, then `npm publish ./dist/trainvent-arcubic-0.3.0.tgz --access public`. Complete npm's authentication prompt if requested.
 5. In the package's npm settings, add a GitHub Actions trusted publisher:
    - Organization/user: `trainvent`
    - Repository: `arcubic`

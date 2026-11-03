@@ -106,7 +106,7 @@ For framework-free websites, see [shared CSS tokens](packages/core/README.md). F
 `npm run pack:react` builds `@trainvent/arcubic` into `packages/react/dist` and
 creates `dist/trainvent-arcubic-<version>.tgz`. The version is taken from the
 root package.json. See [the package documentation](packages/react/README.md)
-for imports, versioned release installation and publication. The preview and package
+for imports, npm installation and publication. The preview and package
 share `src/components`; the package excludes preview page layouts and private fonts.
 
 For automatic npm registry publishing and the one-time account setup, see [npm publishing](docs/npm-publishing.md).

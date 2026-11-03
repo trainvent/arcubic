@@ -41,4 +41,4 @@ jobs:
       - name: Publish through npm trusted publishing
         env:
           RELEASE_VERSION: ${{ inputs.version || github.ref_name }}
-        run: npm publish "dist/trainvent-arcubic-${RELEASE_VERSION}.tgz" --access public
+        run: npm publish "./dist/trainvent-arcubic-${RELEASE_VERSION}.tgz" --access public
