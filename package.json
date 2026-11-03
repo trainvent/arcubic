@@ -1,7 +1,7 @@
 {
   "name": "arcubic",
   "private": true,
-  "version": "0.2.2",
+  "version": "0.3.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
@@ -11,13 +11,15 @@
     "build:core": "node scripts/build-core.mjs",
     "build:obsidian": "node scripts/build-obsidian.mjs",
     "build:themes": "npm run build:core && npm run build:obsidian && npm run build:terminal && npm run build:brand",
-    "package:release": "python3 scripts/package-release.py",
+    "package:release": "npm run pack:react && python3 scripts/package-release.py",
     "lint:obsidian": "stylelint theme.css --config .stylelintrc.obsidian.mjs",
     "test:obsidian": "node --test tests/obsidian-*.test.mjs",
     "build:brand": "node scripts/build-brand.mjs",
     "test:palette": "node --test tests/*.test.mjs",
     "test:obsidian:browser": "node tests/obsidian-color-browser.mjs",
-    "test:obsidian:typography": "node tests/obsidian-typography-browser.mjs"
+    "test:obsidian:typography": "node tests/obsidian-typography-browser.mjs",
+    "build:react": "npm run build:core && node scripts/build-react.mjs",
+    "pack:react": "npm run build:react && npm pack ./packages/react --pack-destination dist"
   },
   "dependencies": {
     "@fontsource-variable/lora": "^5.3.0",

@@ -16,3 +16,5 @@ ports/obsidian/.local/
 
 # Archived local font experiments; never public assets.
 .local/
+
+packages/react/dist/

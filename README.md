@@ -23,7 +23,7 @@ The guiding principle is restraint: geometry gives Arcubic its character, while 
 
 ## Alpha release
 
-Download the [0.2.2 alpha release](https://github.com/Trainvent/arcubic/releases/tag/0.2.2) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). The current build bundles Chakra Petch, Lora and Geist Mono under the OFL.
+Download the [0.3.0 alpha release](https://github.com/Trainvent/arcubic/releases/tag/0.3.0) for the installable Obsidian theme, shared CSS tokens and terminal palette. See [installation and known limitations](docs/alpha-release.md). The current build bundles Chakra Petch, Lora and Geist Mono under the OFL.
 
 The root `manifest.json`, `theme.css` and `versions.json` are generated Obsidian distribution files. Native source stays in `ports/obsidian/`; shared web tokens and components stay independent. Rebuild with `npm run build:obsidian` after changing the adapter.
 
@@ -100,3 +100,11 @@ Chakra Petch, Lora and Geist Mono are installed through Fontsource and included 
 ## Use elsewhere
 
 For framework-free websites, see [shared CSS tokens](packages/core/README.md). For Obsidian installation, see [the adapter instructions](ports/obsidian/README.md). Terminal export instructions are in [ports/terminal](ports/terminal/).
+
+## React / Next.js package
+
+`npm run pack:react` builds `@trainvent/arcubic` into `packages/react/dist` and
+creates `dist/trainvent-arcubic-<version>.tgz`. The version is taken from the
+root package.json. See [the package documentation](packages/react/README.md)
+for imports, versioned release installation and publication. The preview and package
+share `src/components`; the package excludes preview page layouts and private fonts.

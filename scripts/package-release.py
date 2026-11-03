@@ -29,6 +29,11 @@ with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED) as z:
         z.writestr(info, path.read_bytes())
 for file in [source / 'theme.css', source / 'manifest.json', root / 'packages/core/arcubic-tokens.css', root / 'ports/terminal/arcubic-dark.Xresources']:
     shutil.copy2(file, out / file.name)
+# Ship the independently installable React package with the same release.
+web_package = root / 'dist' / f'trainvent-arcubic-{version}.tgz'
+if not web_package.exists():
+    raise SystemExit('Build the React archive with npm run pack:react first.')
+shutil.copy2(web_package, out / web_package.name)
 assets = sorted(p for p in out.iterdir() if p.is_file() and p.name != 'SHA256SUMS')
 (out / 'SHA256SUMS').write_text(''.join(f'{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}\n' for p in assets))
 print(f'Packaged {archive.name} and {len(assets)-1} companion assets in {out}')

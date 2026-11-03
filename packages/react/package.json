@@ -1,0 +1,41 @@
+{
+  "name": "@trainvent/arcubic",
+  "version": "0.3.0",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./fonts.css": "./dist/fonts.css"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "@radix-ui/themes": "^3.2.1",
+    "lucide-react": "^0.468.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Arcubic React components, CSS tokens and bundled fonts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trainvent/arcubic.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/trainvent/arcubic/tree/main/packages/react"
+}

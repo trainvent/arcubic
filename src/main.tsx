@@ -17,6 +17,7 @@ import '@fontsource/lora/latin-700-italic.css';
 import {designTokens} from './core/design';
 import './style.css';
 import './custom_1.css';
+import './components/base.css';
 import './components/arcubic.css';
 import './component-library.css';
 import {defaults,keys,names,createPalette,themeTokens,exportCSS,contrast,foreground,type Seeds,type Mode} from './palette';

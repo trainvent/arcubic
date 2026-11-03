@@ -3,9 +3,9 @@ import * as R from '@radix-ui/themes';
 type Container = ComponentProps<typeof R.Dialog.Content>['container'];
 const OverlayHost=createContext<Container>(undefined);
 /** Keep portal content inside the active Arcubic theme so tokens and accent inherit. */
-export const Theme=forwardRef<HTMLDivElement,ComponentProps<typeof R.Theme>>(({children,...props},ref)=>{
+export const Theme=forwardRef<HTMLDivElement,ComponentProps<typeof R.Theme>>(({children,className,accentColor="teal",grayColor="gray",radius="none",...props},ref)=>{
  const [host,setHost]=useState<HTMLDivElement|null>(null);
- return <R.Theme {...props} ref={ref}><OverlayHost.Provider value={host??undefined}>{children}<div ref={setHost} className="arcubic-overlay-host"/></OverlayHost.Provider></R.Theme>;
+ return <R.Theme {...props} accentColor={accentColor} grayColor={grayColor} radius={radius} className={["arcubic-theme","arcubic-ui",className].filter(Boolean).join(" ")} ref={ref}><OverlayHost.Provider value={host??undefined}>{children}<div ref={setHost} className="arcubic-overlay-host"/></OverlayHost.Provider></R.Theme>;
 });
 Theme.displayName='ArcubicTheme';
 function portaled<P extends {container?:Container}>(Component:ForwardRefExoticComponent<P & RefAttributes<HTMLDivElement>>){
