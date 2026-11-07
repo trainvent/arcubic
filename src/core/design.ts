@@ -14,8 +14,8 @@ export const geometry = {
  switchThumbRatio: 18/22,
  switchInsetRatio: 4/22,
  switchTravelRatio: 16/22,
- switchTriangleWidthRatio: 13/22,
- switchTriangleHeightRatio: 11/22,
+ switchTriangleWidthRatio: 16/22,
+ switchTriangleHeightRatio: 16/22*Math.sqrt(3)/2,
  switchSlantRatio: Math.tan(Math.PI/6),
 };
 export function designTokens(): Record<string,string> {
