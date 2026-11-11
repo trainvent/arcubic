@@ -6,4 +6,11 @@ The theme names its fonts but doesn't ship them: embed Chakra Petch (interface) 
 
 Solid colours (primary, danger, warning, success, info) use the lightest step of their family whose text reaches 4.5:1, so they can differ between light and dark. The build fails when a main text pair drops below that.
 
-Corners are square (`radius` 0), as everywhere in Arcubic. The triangle switch is web-only; GPUI Kit draws its own switch in Arcubic colours.
+Corners are square (`radius` 0), as everywhere in Arcubic, and the base font size is the UI size (13px).
+
+Each theme also has an `arcubic` section with what GPUI Kit's format can't hold; GPUI Kit ignores it, apps that know Arcubic read it:
+
+- `type` and `leading`: the caption, UI, body and heading sizes and line heights.
+- `border`: the border width.
+- `text`: the text roles (`title`, `section`, `detail`, `active`, `secondary`, `link`, …).
+- `switch`: the triangle switch, with its height, ratios of that height, and the off and on colours (rim gradient high → mid → low, chamber top → bottom, triangle light → dark). The bevel roles come from `bevel` in `src/core/design.ts`.

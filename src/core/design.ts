@@ -27,3 +27,10 @@ export function designTokens(): Record<string,string> {
   ...Object.fromEntries(Object.entries(geometry).filter(([key])=>key.endsWith('Ratio')).map(([key,value])=>[`--arc-${key.replace(/[A-Z]/g,letter=>'-'+letter.toLowerCase())}`,String(value)])),
  };
 }
+/** Raised and sunken edges of controls such as the switch. Gray values are steps of the neutral
+ * scale; accent values are steps of the control's accent family. Mirrors `.arcubic-ui` in
+ * src/components/base.css. */
+export const bevel = {
+ dark: {high: {gray: 7}, low: {gray: 1}, face: {gray: 4}, accentHigh: 11, accentLow: 7},
+ light: {high: '#fff', low: {gray: 8}, face: {gray: 3}, accentHigh: 6, accentLow: 10},
+} as const;

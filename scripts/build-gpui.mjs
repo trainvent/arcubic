@@ -1,6 +1,7 @@
 import {mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import Color from 'colorjs.io';
 import {defaults, themeTokens} from '../src/palette.ts';
+import {bevel, geometry, typography} from '../src/core/design.ts';
 
 const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
 const out = new URL('../ports/gpui/', import.meta.url);
@@ -147,6 +148,49 @@ function gpuiColors(t) {
   return colors;
 }
 
+/** What GPUI Kit's theme format has no place for. Apps that know Arcubic read it; GPUI Kit
+ * ignores it. Sizes are in pixels; the switch's sizes are ratios of its height. */
+function arcubicExtras(t, mode) {
+  const s = (family, step) => t[`--${family}-${step}`];
+  const role = value => typeof value === 'string' ? value : s('gray', value.gray);
+  const b = bevel[mode];
+  const accent = 'teal';
+  return {
+    type: {caption: typography.caption, ui: typography.ui, body: typography.body, heading: typography.noteHeading},
+    leading: {ui: typography.uiLineHeight, body: typography.bodyLineHeight},
+    border: geometry.border,
+    text: {
+      body: t['--arc-text-body'],
+      secondary: t['--arc-text-secondary'],
+      title: t['--arc-text-title'],
+      section: t['--arc-text-section'],
+      detail: t['--arc-text-detail'],
+      active: t['--arc-text-active'],
+      link: t['--arc-text-link'],
+      link_hover: t['--arc-text-link-hover'],
+    },
+    switch: {
+      height: geometry.switchHeight,
+      width_ratio: geometry.switchWidthRatio,
+      rim_ratio: geometry.switchRimRatio,
+      slant_ratio: geometry.switchSlantRatio,
+      triangle_width_ratio: geometry.switchTriangleWidthRatio,
+      triangle_height_ratio: geometry.switchTriangleHeightRatio,
+      off: {
+        rim: [role(b.high), s('gray', 6), role(b.low)],
+        chamber: [s('gray', 2), s('gray', 4)],
+        thumb: [s('gray', 12), s('gray', 10)],
+      },
+      on: {
+        rim: [s(accent, b.accentHigh), s(accent, 8), s(accent, b.accentLow)],
+        chamber: [s(accent, 2), s(accent, 4)],
+        thumb: [s(accent, 11), s(accent, 9)],
+      },
+      focus: s(accent, 9),
+    },
+  };
+}
+
 const themeSet = {
   $schema: 'https://github.com/longbridge/gpui-kit/raw/refs/heads/main/.theme-schema.json',
   name: 'Arcubic',
@@ -158,9 +202,12 @@ const themeSet = {
     // GPUI uses these names as-is, so the app embeds the fonts (see README).
     'font.family': 'Chakra Petch',
     'mono_font.family': 'Geist Mono',
+    'font.size': typography.ui,
+    'mono_font.size': typography.ui,
     radius: 0,
     'radius.lg': 0,
     colors: gpuiColors(themeTokens(defaults, mode)),
+    arcubic: arcubicExtras(themeTokens(defaults, mode), mode),
   })),
 };
 

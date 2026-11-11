@@ -9,6 +9,8 @@
       "mode": "light",
       "font.family": "Chakra Petch",
       "mono_font.family": "Geist Mono",
+      "font.size": 13,
+      "mono_font.size": 13,
       "radius": 0,
       "radius.lg": 0,
       "colors": {
@@ -112,6 +114,68 @@
         "base.magenta.light": "#f76b15",
         "base.cyan": "#008573",
         "base.cyan.light": "#12a594"
+      },
+      "arcubic": {
+        "type": {
+          "caption": 11,
+          "ui": 13,
+          "body": 15,
+          "heading": 24
+        },
+        "leading": {
+          "ui": 1.4,
+          "body": 1.65
+        },
+        "border": 1,
+        "text": {
+          "body": "#202020",
+          "secondary": "#646464",
+          "title": "#097668",
+          "section": "#945809",
+          "detail": "#af4607",
+          "active": "#097668",
+          "link": "#0e67b9",
+          "link_hover": "#113264"
+        },
+        "switch": {
+          "height": 22,
+          "width_ratio": 1.9090909090909092,
+          "rim_ratio": 0.09090909090909091,
+          "slant_ratio": 0.5773502691896257,
+          "triangle_width_ratio": 0.7272727272727273,
+          "triangle_height_ratio": 0.6298366572977735,
+          "off": {
+            "rim": [
+              "#fff",
+              "#d9d9d9",
+              "#bbbbbb"
+            ],
+            "chamber": [
+              "#f9f9f9",
+              "#e8e8e8"
+            ],
+            "thumb": [
+              "#202020",
+              "#838383"
+            ]
+          },
+          "on": {
+            "rim": [
+              "#a1ded2",
+              "#53b9ab",
+              "#0d9b8a"
+            ],
+            "chamber": [
+              "#f3fbf9",
+              "#ccf3ea"
+            ],
+            "thumb": [
+              "#008573",
+              "#12a594"
+            ]
+          },
+          "focus": "#12a594"
+        }
       }
     },
     {
@@ -119,6 +183,8 @@
       "mode": "dark",
       "font.family": "Chakra Petch",
       "mono_font.family": "Geist Mono",
+      "font.size": 13,
+      "mono_font.size": 13,
       "radius": 0,
       "radius.lg": 0,
       "colors": {
@@ -222,6 +288,68 @@
         "base.magenta.light": "#f76b15",
         "base.cyan": "#0bd8b6",
         "base.cyan.light": "#12a594"
+      },
+      "arcubic": {
+        "type": {
+          "caption": 11,
+          "ui": 13,
+          "body": 15,
+          "heading": 24
+        },
+        "leading": {
+          "ui": 1.4,
+          "body": 1.65
+        },
+        "border": 1,
+        "text": {
+          "body": "#fff",
+          "secondary": "#b4b4b4",
+          "title": "#4ce2c6",
+          "section": "#ffca16",
+          "detail": "#ffa057",
+          "active": "#4ce2c6",
+          "link": "#70b8ff",
+          "link_hover": "#c2e6ff"
+        },
+        "switch": {
+          "height": 22,
+          "width_ratio": 1.9090909090909092,
+          "rim_ratio": 0.09090909090909091,
+          "slant_ratio": 0.5773502691896257,
+          "triangle_width_ratio": 0.7272727272727273,
+          "triangle_height_ratio": 0.6298366572977735,
+          "off": {
+            "rim": [
+              "#484848",
+              "#3a3a3a",
+              "#111111"
+            ],
+            "chamber": [
+              "#191919",
+              "#2a2a2a"
+            ],
+            "thumb": [
+              "#fff",
+              "#7b7b7b"
+            ]
+          },
+          "on": {
+            "rim": [
+              "#0bd8b6",
+              "#207e73",
+              "#1c6961"
+            ],
+            "chamber": [
+              "#111c1b",
+              "#023b37"
+            ],
+            "thumb": [
+              "#0bd8b6",
+              "#12a594"
+            ]
+          },
+          "focus": "#12a594"
+        }
       }
     }
   ]
