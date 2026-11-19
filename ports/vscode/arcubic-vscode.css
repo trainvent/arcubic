@@ -4,13 +4,21 @@
 --arc-accent-high:#a1ded2;--arc-accent-low:#0d9b8a;
 --arc-inset-face:#fcfcfc;--arc-focus:#53b9ab;
 --arc-tree-guide:#d9d9d9;--arc-tree-marker:#646464;
+--arc-page:#fcfcfc;--arc-line:#d9d9d9;--arc-tab-edge:#cecece;
+--arc-text:#202020;--arc-muted:#646464;--arc-danger:#d13415;
+--arc-selected:#e0f8f3;--arc-selected-hover:#ccf3ea;--arc-selected-edge:#53b9ab;--arc-selected-text:#097668;
 }
 .trainvent-arcubic-themes-arcubic-dark-color-theme-json{
 --arc-face:#2a2a2a;--arc-high:#484848;--arc-low:#111111;
 --arc-accent-high:#0bd8b6;--arc-accent-low:#1c6961;
 --arc-inset-face:#111111;--arc-focus:#207e73;
 --arc-tree-guide:#3a3a3a;--arc-tree-marker:#b4b4b4;
+--arc-page:#111111;--arc-line:#3a3a3a;--arc-tab-edge:#484848;
+--arc-text:#fff;--arc-muted:#b4b4b4;--arc-danger:#ff977d;
+--arc-selected:#0d2d2a;--arc-selected-hover:#023b37;--arc-selected-edge:#207e73;--arc-selected-text:#4ce2c6;
 }
+/* Square corners: VS Code sets these on .monaco-workbench, so this needs one more class. */
+.monaco-workbench:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json),:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-workbench{--vscode-cornerRadius-xSmall:0;--vscode-cornerRadius-small:0;--vscode-cornerRadius-medium:0;--vscode-cornerRadius-large:0;--vscode-cornerRadius-xLarge:0}
 .monaco-workbench:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json){font-family:'Chakra Petch', ui-sans-serif,system-ui,sans-serif}
 
 /* Raised buttons: light top-left edge, dark bottom-right edge; pressing swaps them. */
@@ -27,9 +35,40 @@ box-shadow:inset 1px 1px 0 var(--arc-edge-br),inset -1px -1px 0 var(--arc-edge-t
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-button-dropdown>.monaco-button{border-radius:0!important}
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-button-dropdown-separator{background:transparent!important}
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) :is(.monaco-button,.monaco-text-button).disabled{box-shadow:none!important;border-color:var(--arc-high)!important}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) :is(.monaco-button,.monaco-text-button,.extension-action.label):not(.disabled):hover{filter:brightness(1.06)}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) :is(.monaco-button,.monaco-text-button,.extension-action.label):not(.disabled):active{transform:translateY(1px)}
+
+/* Document tabs as in Obsidian: inactive tabs are raised keys a little apart; the active tab
+   joins the page below it. */
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab{
+margin:5px 4px 0 0;height:calc(var(--editor-group-tab-height) - 5px)!important;
+border:1px solid!important;border-color:var(--arc-tab-edge) var(--arc-low) var(--arc-low) var(--arc-tab-edge)!important;
+background:var(--arc-face)!important;color:var(--arc-muted)!important;
+box-shadow:inset 1px 1px 0 var(--arc-high),inset -1px -1px 0 var(--arc-low)}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab:first-child{margin-left:4px}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab:not(.active):hover{filter:brightness(1.06);color:var(--arc-text)!important}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab.active{
+z-index:1;background:var(--arc-page)!important;color:var(--arc-selected-text)!important;box-shadow:none;
+border-color:var(--arc-line) var(--arc-line) var(--arc-page) var(--arc-line)!important}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab :is(.tab-border-top-container,.tab-border-bottom-container){display:none!important}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab .tab-actions .action-label:hover{background:transparent!important;color:var(--arc-danger)!important}
+
+/* Panel and side bar view tabs as in Obsidian's side docks: a flat key with a light top edge;
+   the open view is teal with a teal base line. */
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .pane-composite-part>:is(.title,.header-or-footer)>.composite-bar-container .action-item:not(.icon){
+background:var(--arc-face);box-shadow:inset 0 1px 0 var(--arc-high);margin-right:2px}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .pane-composite-part>:is(.title,.header-or-footer)>.composite-bar-container .action-item:not(.icon):hover{background:var(--vscode-toolbar-hoverBackground)}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .pane-composite-part>:is(.title,.header-or-footer)>.composite-bar-container .action-item.checked:not(.icon){
+background:var(--arc-selected);box-shadow:inset 0 -1px 0 var(--arc-selected-edge)}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .pane-composite-part>:is(.title,.header-or-footer)>.composite-bar-container .action-item.checked:not(.icon) .action-label{color:var(--arc-selected-text)!important}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .pane-composite-part>:is(.title,.header-or-footer)>.composite-bar-container .action-item:not(.icon) .active-item-indicator{display:none}
+
+/* Option toggles (match case, regex, …) press in while on. */
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-custom-toggle.checked{background:var(--arc-selected)!important;color:var(--arc-selected-text)!important;
+border-color:var(--arc-low) var(--arc-selected-edge) var(--arc-selected-edge) var(--arc-low)!important}
 
 /* Inset fields: dark top-left edge, light bottom-right edge. */
-:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) :is(.monaco-inputbox,.monaco-select-box,.monaco-custom-toggle.monaco-checkbox){
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) :is(.monaco-inputbox,.monaco-select-box,.monaco-custom-toggle.monaco-checkbox:not(.checked)){
 border-radius:0!important;border:1px solid!important;
 border-color:var(--arc-low) var(--arc-high) var(--arc-high) var(--arc-low)!important}
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-inputbox.synthetic-focus,.monaco-select-box:focus{outline:1px solid var(--arc-focus)!important;outline-offset:-1px}
