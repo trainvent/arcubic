@@ -25,7 +25,8 @@ const cornerSizes = ['xSmall', 'small', 'medium', 'large', 'xLarge'].map(size =>
   .concat(['--modern-ui-window-corner-radius', '--modern-ui-connected-tab-radius']);
 const squareCorners = cornerSizes.map(name => `${name}:0!important`).join(';');
 
-// Space above the document tabs, so inactive tabs read as separate keys.
+// Document tabs: their height including the 1px edges, and the space above them.
+const TAB_HEIGHT = 28;
 const TAB_GAP = 5;
 
 const contrast = (a, b) => Color.contrast(new Color(a), new Color(b), 'WCAG21');
@@ -517,15 +518,17 @@ ${any(':is(.monaco-button,.monaco-text-button,.extension-action.label):not(.disa
 /* Document tabs as in Obsidian: inactive tabs are raised keys a little apart; the active tab
    joins the page below it. */
 ${any('.part.editor .title .tabs-container>.tab')}{
-margin:${TAB_GAP}px 4px 0 0!important;--arc-tab-height:calc(var(--editor-group-tab-height) - ${TAB_GAP}px);
-height:var(--arc-tab-height)!important;min-height:0!important;max-height:var(--arc-tab-height)!important;box-sizing:border-box!important;
+margin:${TAB_GAP}px 4px 0 0!important;box-sizing:border-box!important;
+height:${TAB_HEIGHT}px!important;min-height:${TAB_HEIGHT}px!important;max-height:${TAB_HEIGHT}px!important;
+--editor-group-tab-height:${TAB_HEIGHT - 2}px!important;
 border:1px solid!important;border-color:var(--arc-tab-edge) var(--arc-low) var(--arc-low) var(--arc-tab-edge)!important;
 background:var(--arc-face)!important;color:var(--arc-muted)!important;
 box-shadow:inset 1px 1px 0 var(--arc-high),inset -1px -1px 0 var(--arc-low)!important}
 ${any('.part.editor .title .tabs-container>.tab:first-child')}{margin-left:4px!important}
-/* Some of VS Code's tab modes add minimum heights or transparent borders; every tab bar keeps the same keys. */
+/* VS Code's tab height differs between its tab modes, so the keys have a fixed height of their own;
+   inside a tab, VS Code's height variable is set to match so icons and labels stay centred. */
 ${any('.part.editor .title .tabs-container')}{align-items:flex-end}
-${any('.part.editor .title .tabs-container>.tab :is(.tab-label,.monaco-icon-label)')}{line-height:calc(var(--arc-tab-height) - 2px)!important}
+${any('.part.editor .title .tabs-container>.tab :is(.tab-label,.monaco-icon-label)')}{line-height:${TAB_HEIGHT - 2}px!important}
 /* VS Code's modern tabs paint a second, bordered layer inside each tab; the tab itself is the key. */
 ${any('.part.editor .title .tabs-container>.tab>.tab-fill')}{display:none!important}
 ${any('.part.editor .title .tabs-container>.tab:not(.active):hover')}{filter:brightness(1.06);color:var(--arc-text)!important}
