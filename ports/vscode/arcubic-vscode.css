@@ -17,8 +17,8 @@
 --arc-text:#fff;--arc-muted:#b4b4b4;--arc-danger:#ff977d;
 --arc-selected:#0d2d2a;--arc-selected-hover:#023b37;--arc-selected-edge:#207e73;--arc-selected-text:#4ce2c6;
 }
-/* Square corners: VS Code sets these on .monaco-workbench, so this needs one more class. */
-.monaco-workbench:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json),:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-workbench{--vscode-cornerRadius-xSmall:0;--vscode-cornerRadius-small:0;--vscode-cornerRadius-medium:0;--vscode-cornerRadius-large:0;--vscode-cornerRadius-xLarge:0}
+/* Square corners. VS Code writes its corner sizes in a rule with three classes, so these need !important. */
+.monaco-workbench:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json),:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-workbench{--vscode-cornerRadius-xSmall:0!important;--vscode-cornerRadius-small:0!important;--vscode-cornerRadius-medium:0!important;--vscode-cornerRadius-large:0!important;--vscode-cornerRadius-xLarge:0!important;--vscode-panels-cornerRadius:0!important;--vscode-editorArea-cornerRadius:0!important;--vscode-primarySideBar-cornerRadius:0!important;--vscode-secondarySideBar-cornerRadius:0!important;--vscode-toolsPanel-cornerRadius:0!important;--vscode-activityBar-cornerRadius:0!important;--modern-ui-window-corner-radius:0!important;--modern-ui-connected-tab-radius:0!important}
 .monaco-workbench:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json){font-family:'Chakra Petch', ui-sans-serif,system-ui,sans-serif}
 
 /* Raised buttons: light top-left edge, dark bottom-right edge; pressing swaps them. */
