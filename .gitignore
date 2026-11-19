@@ -18,3 +18,5 @@ ports/obsidian/.local/
 .local/
 
 packages/react/dist/
+
+*.vsix

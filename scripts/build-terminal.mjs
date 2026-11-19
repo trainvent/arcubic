@@ -1,14 +1,10 @@
 import {writeFileSync} from 'node:fs';
-import Color from 'colorjs.io';
 import {defaults,themeTokens} from '../src/palette.ts';
-import {sageDark as sage,tealDark as teal,amberDark as amber,orangeDark as orange,greenDark as green,tomatoDark as tomato,blueDark as blue,purpleDark as purple} from '@radix-ui/colors';
+import {tealDark as teal} from '@radix-ui/colors';
+import {ansiColors} from './ansi.mjs';
 const tokens=themeTokens(defaults,'dark');
 const background=tokens['--gray-1'];
-const ratio=value=>Color.contrast(new Color(value),new Color(background),'WCAG21');
-const normal=(scale,name)=>ratio(scale[name+10])>=4.5?scale[name+10]:scale[name+11];
-const textColor=hue=>ratio(tokens[`--${hue}-11`])>=4.5?tokens[`--${hue}-11`]:tokens[`--${hue}-12`];
-const colors=[tokens['--gray-5'],normal(tomato,'tomato'),normal(green,'green'),textColor('amber'),normal(blue,'blue'),normal(purple,'purple'),textColor('teal'),tokens['--gray-11'],tokens['--gray-11'],textColor('orange'),green.green12,textColor('amber'),blue.blue11,purple.purple11,teal.teal11,tokens['--gray-12']];
+const colors=ansiColors(tokens,'dark');
 const text=['! Arcubic Dark — three accents on neutral charcoal surfaces','! Slots 0–7: normal ANSI; 8–15: bright ANSI','! Green and red are status colors; blue is for links; teal, amber and orange carry the identity.',`*.background: ${background}`,`*.foreground: ${tokens['--gray-12']}`,`*.cursorColor: ${teal.teal11}`,`*.selectionBackground: ${teal.teal4}`,`*.selectionForeground: ${teal.teal12}`,...colors.map((c,i)=>`*.color${i}: ${c}`)].join('\n').replace(/#([0-9a-f])([0-9a-f])([0-9a-f])(?=\n|$)/gi, '#$1$1$2$2$3$3')+'\n';
 writeFileSync(new URL('../ports/terminal/arcubic-dark.Xresources',import.meta.url),text);
-for(let i=1;i<16;i++)if(ratio(colors[i])<4.5)throw new Error(`ANSI ${i} fails text contrast`);
 console.log(text);

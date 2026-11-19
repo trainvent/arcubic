@@ -9,10 +9,11 @@
     "preview": "vite preview --host 0.0.0.0",
     "build:terminal": "node scripts/build-terminal.mjs",
     "build:gpui": "node scripts/build-gpui.mjs",
+    "build:vscode": "node scripts/build-vscode.mjs",
     "build:core": "node scripts/build-core.mjs",
     "build:obsidian": "node scripts/build-obsidian.mjs",
-    "build:themes": "npm run build:core && npm run build:obsidian && npm run build:terminal && npm run build:gpui && npm run build:brand",
-    "package:release": "npm run pack:react && python3 scripts/package-release.py",
+    "build:themes": "npm run build:core && npm run build:obsidian && npm run build:terminal && npm run build:gpui && npm run build:vscode && npm run build:brand",
+    "package:release": "npm run pack:react && npm run pack:vscode && python3 scripts/package-release.py",
     "lint:obsidian": "stylelint theme.css --config .stylelintrc.obsidian.mjs",
     "test:obsidian": "node --test tests/obsidian-*.test.mjs",
     "build:brand": "node scripts/build-brand.mjs",
@@ -20,7 +21,8 @@
     "test:obsidian:browser": "node tests/obsidian-color-browser.mjs",
     "test:obsidian:typography": "node tests/obsidian-typography-browser.mjs",
     "build:react": "npm run build:core && node scripts/build-react.mjs",
-    "pack:react": "npm run build:react && npm pack ./packages/react --pack-destination dist"
+    "pack:react": "npm run build:react && npm pack ./packages/react --pack-destination dist",
+    "pack:vscode": "npm run build:vscode && cd ports/vscode && vsce package --no-dependencies --out ../../dist/arcubic-vscode-$npm_package_version.vsix"
   },
   "dependencies": {
     "@fontsource-variable/lora": "^5.3.0",
@@ -37,6 +39,7 @@
   "devDependencies": {
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@vscode/vsce": "^4.1.1",
     "esbuild": "^0.25.12",
     "playwright-core": "^1.64.1",
     "stylelint": "^17.16.0",

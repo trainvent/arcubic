@@ -1,0 +1,40 @@
+{
+  "name": "arcubic",
+  "displayName": "Arcubic",
+  "description": "Teal, amber and burnt orange on neutral grayscale surfaces.",
+  "version": "0.3.2",
+  "publisher": "trainvent",
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trainvent/arcubic"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark",
+    "light",
+    "teal",
+    "arcubic"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Arcubic Light",
+        "uiTheme": "vs",
+        "path": "./themes/arcubic-light-color-theme.json"
+      },
+      {
+        "label": "Arcubic Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/arcubic-dark-color-theme.json"
+      }
+    ]
+  }
+}

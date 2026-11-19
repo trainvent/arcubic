@@ -34,3 +34,11 @@ export const bevel = {
  dark: {high: {gray: 7}, low: {gray: 1}, face: {gray: 4}, accentHigh: 11, accentLow: 7},
  light: {high: '#fff', low: {gray: 8}, face: {gray: 3}, accentHigh: 6, accentLow: 10},
 } as const;
+/** Triangle portion of the Le Logo continuous fuse route (no enclosing circle), traced by every
+ * Arcubic loader. The fuse is a dash of `fuseDash` out of a path length of 100. */
+export const loader = {
+ viewBox: '20 -40 860 760',
+ route: 'M450 9.45 L548.3474 179.7927 L831.5275 670.275 L634.8327 670.275 L68.4725 670.275 L166.8199 499.9323 L514.1917 626.3653 L634.8327 670.275 L570.641 306.2257 L548.3474 179.7927 L265.1673 417.409 L343.9101 388.749 L570.641 306.2257 L556.0899 388.749 L514.1917 626.3653 L450 572.502 L556.0899 388.749 L343.9101 388.749 L450 572.502 L265.1673 417.409 L166.8199 499.9323 L450 9.45',
+ fuseDash: 26,
+ durationSeconds: 1.8,
+} as const;

@@ -37,5 +37,10 @@ web_package = root / 'dist' / f'trainvent-arcubic-{version}.tgz'
 if not web_package.exists():
     raise SystemExit('Build the React archive with npm run pack:react first.')
 shutil.copy2(web_package, out / web_package.name)
+vscode_package = root / 'dist' / f'arcubic-vscode-{version}.vsix'
+if not vscode_package.exists():
+    raise SystemExit('Build the VS Code extension with npm run pack:vscode first.')
+shutil.copy2(vscode_package, out / vscode_package.name)
+shutil.copy2(root / 'ports/vscode/arcubic-vscode.css', out / 'arcubic-vscode.css')
 assets = sorted(p for p in out.iterdir() if p.is_file())
 print(f'Packaged {archive.name} and {len(assets)-1} companion assets in {out}')

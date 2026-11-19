@@ -50,6 +50,10 @@ Consumers commit an exact package version and its lockfile. The personal website
 
 Use the [latest GitHub release](https://github.com/trainvent/arcubic/releases/latest) for the Obsidian ZIP or terminal palette. The separate `theme.css` and `manifest.json` downloads support Obsidian's automatic installer. Shared web tokens are included in the npm package as `@trainvent/arcubic/tokens.css`.
 
+## VS Code
+
+The same release has `arcubic-vscode-<version>.vsix` with Arcubic Light and Dark, and an optional `arcubic-vscode.css` for raised buttons and the triangle loader. See the [VS Code guide](ports/vscode/README.md).
+
 See the [Obsidian guide](ports/obsidian/README.md), [terminal guide](ports/terminal/README.md), and [release notes](docs/alpha-release.md). Arcubic remains an alpha release. Its code is [MIT licensed](LICENSE); bundled fonts retain their OFL licenses.
 
 ## Styling guidelines
@@ -80,6 +84,7 @@ The guiding principle is restraint: geometry gives Arcubic its character, while 
 | Web preview | `src/main.tsx` | Colors, terminal, interface and component examples |
 | Obsidian | `ports/obsidian/` | Standalone native theme, built from the shared core |
 | Terminal | `ports/terminal/` | ANSI palette and terminal exports |
+| VS Code | `ports/vscode/` | Colour themes and optional UI stylesheet, built from the shared core |
 
 App-specific selectors stay in their adapters. Obsidian does not introduce a dependency into the web components.
 
@@ -95,7 +100,7 @@ npm run build:themes
 npm run build:react
 ```
 
-The preview has Web, Terminal, Interface and Components pages, with light and dark modes. `build:themes` regenerates the plain CSS tokens, Obsidian theme and terminal palette; `build:react` builds the npm package. `pack:react` creates its installable archive, and `package:release` assembles the GitHub downloads.
+The preview has Web, Terminal, Interface and Components pages, with light and dark modes. `build:themes` regenerates the plain CSS tokens, Obsidian theme, terminal palette, GPUI and VS Code themes; `pack:vscode` builds the VS Code extension; `build:react` builds the npm package. `pack:react` creates its installable archive, and `package:release` assembles the GitHub downloads.
 
 The root `manifest.json`, `theme.css` and `versions.json` are generated Obsidian distribution files. Native source stays in `ports/obsidian/`; web components stay independent.
 
