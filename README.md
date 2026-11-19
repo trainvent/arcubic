@@ -1,4 +1,4 @@
-<img src="public/logo.png" alt="Arcubic logo" width="80" align="right"/>
+<img src="public/logo.svg" alt="Arcubic logo" width="80" align="right"/>
 
 # Arcubic
 

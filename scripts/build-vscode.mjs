@@ -1,4 +1,5 @@
 import {copyFileSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
+import {Resvg} from '@resvg/resvg-js';
 import Color from 'colorjs.io';
 import {defaults, themeTokens} from '../src/palette.ts';
 import {accentTextColors} from '../src/core/text-colors.ts';
@@ -28,6 +29,7 @@ const squareCorners = cornerSizes.map(name => `${name}:0!important`).join(';');
 // Document tabs: their height including the 1px edges, and the space above them.
 const TAB_HEIGHT = 28;
 const TAB_GAP = 5;
+const ICON_SIZE = 256;
 
 const contrast = (a, b) => Color.contrast(new Color(a), new Color(b), 'WCAG21');
 const TRANSPARENT = '#00000000';
@@ -603,6 +605,7 @@ mkdirSync(new URL('themes/', out), {recursive: true});
 for (const mode of modes) writeFileSync(new URL(themeFile(mode), out), JSON.stringify(colorTheme(mode), null, 2) + '\n');
 writeFileSync(new URL('arcubic-vscode.css', out), uiStylesheet());
 writeFileSync(new URL('package.json', out), JSON.stringify(extensionManifest, null, 2) + '\n');
-copyFileSync(new URL('public/logo.png', root), new URL('icon.png', out));
+const logo = new Resvg(readFileSync(new URL('public/logo.svg', root)), {fitTo: {mode: 'width', value: ICON_SIZE}});
+writeFileSync(new URL('icon.png', out), logo.render().asPng());
 copyFileSync(new URL('LICENSE', root), new URL('LICENSE', out));
 console.log('Built ports/vscode (themes, arcubic-vscode.css, package.json)');
