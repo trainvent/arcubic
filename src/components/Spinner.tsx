@@ -1,6 +1,6 @@
 import {forwardRef,type ComponentProps} from 'react';
 import {Box} from '@radix-ui/themes';
-import {loader} from '../core/design.ts';
+import {loader} from '../core/design';
 import type {Spinner as RadixSpinner} from '@radix-ui/themes';
 export type SpinnerProps=ComponentProps<typeof RadixSpinner>;
 /** Continuous triangle fuse, shared by standalone and button loading states. */
