@@ -510,11 +510,13 @@ ${any('.part.editor .title .tabs-container>.tab')}{
 margin:5px 4px 0 0;height:calc(var(--editor-group-tab-height) - 5px)!important;
 border:1px solid!important;border-color:var(--arc-tab-edge) var(--arc-low) var(--arc-low) var(--arc-tab-edge)!important;
 background:var(--arc-face)!important;color:var(--arc-muted)!important;
-box-shadow:inset 1px 1px 0 var(--arc-high),inset -1px -1px 0 var(--arc-low)}
+box-shadow:inset 1px 1px 0 var(--arc-high),inset -1px -1px 0 var(--arc-low)!important}
 ${any('.part.editor .title .tabs-container>.tab:first-child')}{margin-left:4px}
+/* VS Code's modern tabs paint a second, bordered layer inside each tab; the tab itself is the key. */
+${any('.part.editor .title .tabs-container>.tab>.tab-fill')}{display:none!important}
 ${any('.part.editor .title .tabs-container>.tab:not(.active):hover')}{filter:brightness(1.06);color:var(--arc-text)!important}
 ${any('.part.editor .title .tabs-container>.tab.active')}{
-z-index:1;background:var(--arc-page)!important;color:var(--arc-selected-text)!important;box-shadow:none;
+z-index:1;background:var(--arc-page)!important;color:var(--arc-selected-text)!important;box-shadow:none!important;
 border-color:var(--arc-line) var(--arc-line) var(--arc-page) var(--arc-line)!important}
 ${any('.part.editor .title .tabs-container>.tab :is(.tab-border-top-container,.tab-border-bottom-container)')}{display:none!important}
 ${any('.part.editor .title .tabs-container>.tab .tab-actions .action-label:hover')}{background:transparent!important;color:var(--arc-danger)!important}
