@@ -515,10 +515,10 @@ ${any(':is(.monaco-button,.monaco-text-button).disabled')}{box-shadow:none!impor
 ${any(':is(.monaco-button,.monaco-text-button,.extension-action.label):not(.disabled):hover')}{filter:brightness(1.06)}
 ${any(':is(.monaco-button,.monaco-text-button,.extension-action.label):not(.disabled):active')}{transform:translateY(1px)}
 
-/* Document tabs as in Obsidian: inactive tabs are raised keys a little apart; the active tab
+/* Document tabs as in Obsidian: inactive tabs are raised keys side by side; the active tab
    joins the page below it. */
 ${any('.part.editor .title .tabs-container>.tab')}{
-margin:${TAB_GAP}px 4px 0 0!important;box-sizing:border-box!important;
+margin:${TAB_GAP}px 0 0 0!important;box-sizing:border-box!important;
 height:${TAB_HEIGHT}px!important;min-height:${TAB_HEIGHT}px!important;max-height:${TAB_HEIGHT}px!important;
 --editor-group-tab-height:${TAB_HEIGHT - 2}px!important;
 border:1px solid!important;border-color:var(--arc-tab-edge) var(--arc-low) var(--arc-low) var(--arc-tab-edge)!important;

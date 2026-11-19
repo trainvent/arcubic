@@ -38,10 +38,10 @@ box-shadow:inset 1px 1px 0 var(--arc-edge-br),inset -1px -1px 0 var(--arc-edge-t
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) :is(.monaco-button,.monaco-text-button,.extension-action.label):not(.disabled):hover{filter:brightness(1.06)}
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) :is(.monaco-button,.monaco-text-button,.extension-action.label):not(.disabled):active{transform:translateY(1px)}
 
-/* Document tabs as in Obsidian: inactive tabs are raised keys a little apart; the active tab
+/* Document tabs as in Obsidian: inactive tabs are raised keys side by side; the active tab
    joins the page below it. */
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab{
-margin:5px 4px 0 0!important;box-sizing:border-box!important;
+margin:5px 0 0 0!important;box-sizing:border-box!important;
 height:28px!important;min-height:28px!important;max-height:28px!important;
 --editor-group-tab-height:26px!important;
 border:1px solid!important;border-color:var(--arc-tab-edge) var(--arc-low) var(--arc-low) var(--arc-tab-edge)!important;
