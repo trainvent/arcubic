@@ -134,7 +134,7 @@ The three stops sample positions `0, 0.5, 1`. The default profile uses the estab
 hue(i) = 17.79 + (1 − i)³ × 152.09,  0 ≤ i ≤ 1
 ```
 
-See [hue curves](docs/hue-curves.md) for how the profiles and curve samples relate. `npm run build:brand` regenerates the three-dot curve, three-color triangle and title banner from the shared defaults. SVGs are the canonical assets; PNG compatibility exports can be refreshed with `node scripts/build-brand.mjs --png` when Sharp is available.
+See [hue curves](docs/hue-curves.md) for how the profiles and curve samples relate. `npm run build:brand` regenerates the three-dot curve and title banner from the shared defaults.
 
 ## Typography
 

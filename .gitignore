@@ -6,11 +6,6 @@ dist/
 
 __pycache__/
 
-# Local typography preview asset
-public/fonts/*.otf
-public/fonts/*.woff2
-public/fonts/*.ttf
-
 # Personal Obsidian build may embed the locally supplied interface font.
 ports/obsidian/.local/
 
