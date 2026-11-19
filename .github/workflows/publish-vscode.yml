@@ -35,7 +35,7 @@ jobs:
         run: node --input-type=module -e 'import fs from "node:fs"; const version = JSON.parse(fs.readFileSync("package.json", "utf8")).version; if (version !== process.env.RELEASE_VERSION) throw new Error("Tag must match package.json version");'
       - run: npm ci
       - run: npm run test:palette
-      - run: npm run pack:vscode
+      - run: mkdir -p dist && npm run pack:vscode
       - name: Publish to the VS Code Marketplace through trusted publishing
         run: npx vsce publish --oidc --skip-duplicate --packagePath "dist/arcubic-vscode-${RELEASE_VERSION}.vsix"
       # Open VSX uses the OVSX_PAT token while it is set, and trusted publishing once it is removed.
