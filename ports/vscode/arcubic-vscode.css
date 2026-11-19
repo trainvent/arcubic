@@ -41,11 +41,15 @@ box-shadow:inset 1px 1px 0 var(--arc-edge-br),inset -1px -1px 0 var(--arc-edge-t
 /* Document tabs as in Obsidian: inactive tabs are raised keys a little apart; the active tab
    joins the page below it. */
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab{
-margin:5px 4px 0 0;height:calc(var(--editor-group-tab-height) - 5px)!important;
+margin:5px 4px 0 0!important;--arc-tab-height:calc(var(--editor-group-tab-height) - 5px);
+height:var(--arc-tab-height)!important;min-height:0!important;max-height:var(--arc-tab-height)!important;box-sizing:border-box!important;
 border:1px solid!important;border-color:var(--arc-tab-edge) var(--arc-low) var(--arc-low) var(--arc-tab-edge)!important;
 background:var(--arc-face)!important;color:var(--arc-muted)!important;
 box-shadow:inset 1px 1px 0 var(--arc-high),inset -1px -1px 0 var(--arc-low)!important}
-:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab:first-child{margin-left:4px}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab:first-child{margin-left:4px!important}
+/* Some of VS Code's tab modes add minimum heights or transparent borders; every tab bar keeps the same keys. */
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container{align-items:flex-end}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab :is(.tab-label,.monaco-icon-label){line-height:calc(var(--arc-tab-height) - 2px)!important}
 /* VS Code's modern tabs paint a second, bordered layer inside each tab; the tab itself is the key. */
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab>.tab-fill{display:none!important}
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab:not(.active):hover{filter:brightness(1.06);color:var(--arc-text)!important}
