@@ -137,6 +137,13 @@
           "link": "#0e67b9",
           "link_hover": "#113264"
         },
+        "bevel": {
+          "face": "#f0f0f0",
+          "high": "#fff",
+          "low": "#bbbbbb",
+          "accent_high": "#a1ded2",
+          "accent_low": "#0d9b8a"
+        },
         "switch": {
           "height": 22,
           "width_ratio": 1.9090909090909092,
@@ -310,6 +317,13 @@
           "active": "#4ce2c6",
           "link": "#70b8ff",
           "link_hover": "#c2e6ff"
+        },
+        "bevel": {
+          "face": "#2a2a2a",
+          "high": "#484848",
+          "low": "#111111",
+          "accent_high": "#0bd8b6",
+          "accent_low": "#1c6961"
         },
         "switch": {
           "height": 22,

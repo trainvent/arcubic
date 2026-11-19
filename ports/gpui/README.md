@@ -13,4 +13,5 @@ Each theme also has an `arcubic` section with what GPUI Kit's format can't hold;
 - `type` and `leading`: the caption, UI, body and heading sizes and line heights.
 - `border`: the border width.
 - `text`: the text roles (`title`, `section`, `detail`, `active`, `secondary`, `link`, …).
+- `bevel`: the raised controls' face and edge colours (`face`, `high`, `low`, and `accent_high`/`accent_low` for primary buttons). Raised buttons draw `high` on the top and left edge and `low` on the bottom and right; pressed, the edges swap.
 - `switch`: the triangle switch, with its height, ratios of that height, and the off and on colours (rim gradient high → mid → low, chamber top → bottom, triangle light → dark). The bevel roles come from `bevel` in `src/core/design.ts`.

@@ -169,6 +169,13 @@ function arcubicExtras(t, mode) {
       link: t['--arc-text-link'],
       link_hover: t['--arc-text-link-hover'],
     },
+    bevel: {
+      face: role(b.face),
+      high: role(b.high),
+      low: role(b.low),
+      accent_high: s(accent, b.accentHigh),
+      accent_low: s(accent, b.accentLow),
+    },
     switch: {
       height: geometry.switchHeight,
       width_ratio: geometry.switchWidthRatio,
