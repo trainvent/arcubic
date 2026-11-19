@@ -153,7 +153,7 @@ function workbenchColors(mode) {
     'activityBarTop.inactiveForeground': s('gray', 11),
     'activityBarTop.activeBorder': s('teal', 9),
     'sideBar.background': s('gray', 2),
-    'sideBar.foreground': s('gray', 12),
+    'sideBar.foreground': text.muted,
     'sideBar.border': s('gray', 6),
     'sideBarTitle.foreground': s('gray', 12),
     'sideBarSectionHeader.background': s('gray', 2),
@@ -161,11 +161,12 @@ function workbenchColors(mode) {
     'sideBarSectionHeader.border': s('gray', 6),
     'sideBar.dropBackground': s('teal', 'a4'),
 
-    'list.activeSelectionBackground': s('teal', 'a5'),
-    'list.activeSelectionForeground': s('gray', 12),
-    'list.activeSelectionIconForeground': s('gray', 12),
+    // As in the Obsidian file tree: the selected row is a gray step up with teal text.
+    'list.activeSelectionBackground': s('gray', 4),
+    'list.activeSelectionForeground': text.teal,
+    'list.activeSelectionIconForeground': text.teal,
     'list.inactiveSelectionBackground': s('gray', 4),
-    'list.inactiveSelectionForeground': s('gray', 12),
+    'list.inactiveSelectionForeground': text.teal,
     'list.hoverBackground': s('gray', 3),
     'list.hoverForeground': s('gray', 12),
     'list.focusOutline': s('teal', 8),
@@ -376,6 +377,7 @@ function workbenchColors(mode) {
     ['statusBarItem.warningForeground', 'statusBarItem.warningBackground'],
     ['tab.inactiveForeground', 'tab.inactiveBackground'], ['textLink.foreground', 'editor.background'],
     ['input.placeholderForeground', 'input.background'], ['list.highlightForeground', 'sideBar.background'],
+    ['sideBar.foreground', 'sideBar.background'], ['list.activeSelectionForeground', 'list.activeSelectionBackground'],
   ]) {
     const ratio = contrast(colors[text], colors[background]);
     if (ratio < MIN_TEXT_CONTRAST) throw new Error(`${mode}: ${text} on ${background} is ${ratio.toFixed(2)}:1`);
@@ -462,11 +464,12 @@ function fuseSvg({animated}) {
  * and the interface font. Loaded by a CSS loader extension; see ports/vscode/README.md. */
 function uiStylesheet() {
   const tokens = modes.map(mode => {
-    const {s, bevel} = palette(mode);
+    const {s, bevel, text} = palette(mode);
     return `.${themeClass(mode)}{
 --arc-face:${bevel.face};--arc-high:${bevel.high};--arc-low:${bevel.low};
 --arc-accent-high:${bevel.accentHigh};--arc-accent-low:${bevel.accentLow};
 --arc-inset-face:${s('gray', 1)};--arc-focus:${s('teal', 8)};
+--arc-tree-guide:${s('gray', 6)};--arc-tree-marker:${text.muted};
 }`;
   }).join('\n');
   const scope = modes.map(mode => `.${themeClass(mode)}`).join(',');
@@ -499,6 +502,13 @@ ${any('.monaco-inputbox.synthetic-focus,.monaco-select-box:focus')}{outline:1px 
 
 /* Square corners everywhere else Arcubic draws a control or panel. */
 ${any(':is(.monaco-custom-toggle,.quick-input-widget,.monaco-hover,.suggest-widget,.notification-toast,.notifications-center,.monaco-menu-container,.monaco-menu,.context-view .monaco-menu,.keybinding-label>.monaco-keybinding-key,.badge-content,.command-center-center)')}{border-radius:0!important}
+
+/* File trees as in Obsidian: a bar marks each folder (thick when open, thin when closed)
+   and the guide lines between levels stay visible. */
+${any('.monaco-tl-twistie.collapsible:not(.codicon-tree-item-loading)::before')}{
+content:''!important;width:3px;height:12px;background:var(--arc-tree-marker);border-radius:0;transform:none!important}
+${any('.monaco-tl-twistie.collapsible.collapsed:not(.codicon-tree-item-loading)::before')}{width:1px}
+${any('.monaco-tl-indent>.indent-guide')}{opacity:1!important;border-left-color:var(--arc-tree-guide)!important}
 
 /* Loader: every spinning icon becomes the triangle fuse. */
 ${any(':is(.codicon-modifier-spin,.codicon-loading,.codicon-tree-item-loading)')}{animation:none!important}

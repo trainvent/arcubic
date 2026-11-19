@@ -3,11 +3,13 @@
 --arc-face:#f0f0f0;--arc-high:#fff;--arc-low:#bbbbbb;
 --arc-accent-high:#a1ded2;--arc-accent-low:#0d9b8a;
 --arc-inset-face:#fcfcfc;--arc-focus:#53b9ab;
+--arc-tree-guide:#d9d9d9;--arc-tree-marker:#646464;
 }
 .trainvent-arcubic-themes-arcubic-dark-color-theme-json{
 --arc-face:#2a2a2a;--arc-high:#484848;--arc-low:#111111;
 --arc-accent-high:#0bd8b6;--arc-accent-low:#1c6961;
 --arc-inset-face:#111111;--arc-focus:#207e73;
+--arc-tree-guide:#3a3a3a;--arc-tree-marker:#b4b4b4;
 }
 .monaco-workbench:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json){font-family:'Chakra Petch', ui-sans-serif,system-ui,sans-serif}
 
@@ -34,6 +36,13 @@ border-color:var(--arc-low) var(--arc-high) var(--arc-high) var(--arc-low)!impor
 
 /* Square corners everywhere else Arcubic draws a control or panel. */
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) :is(.monaco-custom-toggle,.quick-input-widget,.monaco-hover,.suggest-widget,.notification-toast,.notifications-center,.monaco-menu-container,.monaco-menu,.context-view .monaco-menu,.keybinding-label>.monaco-keybinding-key,.badge-content,.command-center-center){border-radius:0!important}
+
+/* File trees as in Obsidian: a bar marks each folder (thick when open, thin when closed)
+   and the guide lines between levels stay visible. */
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-tl-twistie.collapsible:not(.codicon-tree-item-loading)::before{
+content:''!important;width:3px;height:12px;background:var(--arc-tree-marker);border-radius:0;transform:none!important}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-tl-twistie.collapsible.collapsed:not(.codicon-tree-item-loading)::before{width:1px}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-tl-indent>.indent-guide{opacity:1!important;border-left-color:var(--arc-tree-guide)!important}
 
 /* Loader: every spinning icon becomes the triangle fuse. */
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) :is(.codicon-modifier-spin,.codicon-loading,.codicon-tree-item-loading){animation:none!important}
