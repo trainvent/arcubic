@@ -13,11 +13,18 @@ The tag starts two workflows:
 | Workflow | Publishes |
 | --- | --- |
 | [`publish-npm.yml`](../.github/workflows/publish-npm.yml) | The compiled React package to npm, using GitHub OIDC |
-| [`release.yml`](../.github/workflows/release.yml) | Obsidian, terminal and alternative web-package downloads to GitHub Releases |
+| [`publish-vscode.yml`](../.github/workflows/publish-vscode.yml) | The VS Code extension to the VS Code Marketplace and Open VSX |
+| [`release.yml`](../.github/workflows/release.yml) | Obsidian, terminal, VS Code and alternative web-package downloads to GitHub Releases |
 
-Both build from the tagged source. The npm workflow checks the tag against package.json, runs the palette tests, builds the package and publishes it. No local npm login or stored GitHub npm token is needed for routine releases.
+All three build from the tagged source. The npm workflow checks the tag against package.json, runs the palette tests, builds the package and publishes it. No local npm login or stored GitHub npm token is needed for routine releases.
 
 For an interrupted npm publication, use **Actions → Publish Arcubic to npm → Run workflow** and select the existing release tag. npm versions cannot be overwritten; check the registry before retrying an accepted publish. A newly accepted package can take a few minutes to become available for installation.
+
+## VS Code extension stores
+
+The extension is `trainvent.arcubic`. The Marketplace publishes through trusted publishing: a policy on the `trainvent` publisher trusts `trainvent/arcubic` and `publish-vscode.yml`, so no token is stored. Open VSX uses the `OVSX_PAT` secret until its trusted publisher is registered; the workflow switches to trusted publishing as soon as that secret is deleted.
+
+For the one-time setup (publisher, policy, Eclipse account, Open VSX token and namespace), run `scripts/setup-vscode-publishing.sh` from the repository root. Both publish steps skip a version that is already in the store, so **Actions → Publish Arcubic to VS Code extension stores → Run workflow** safely retries a release.
 
 ## Consumer projects
 

@@ -4,7 +4,7 @@ Arcubic Light and Arcubic Dark: teal, amber and burnt orange on neutral grayscal
 
 ## Install the theme
 
-Download `arcubic-vscode-<version>.vsix` from the [latest release](https://github.com/trainvent/arcubic/releases/latest), then:
+Search for **Arcubic** in the Extensions view; it's on the VS Code Marketplace and Open VSX. Or download `arcubic-vscode-<version>.vsix` from the [latest release](https://github.com/trainvent/arcubic/releases/latest), then:
 
 ```sh
 code --install-extension arcubic-vscode-<version>.vsix
