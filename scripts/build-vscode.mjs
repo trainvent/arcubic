@@ -603,6 +603,6 @@ mkdirSync(new URL('themes/', out), {recursive: true});
 for (const mode of modes) writeFileSync(new URL(themeFile(mode), out), JSON.stringify(colorTheme(mode), null, 2) + '\n');
 writeFileSync(new URL('arcubic-vscode.css', out), uiStylesheet());
 writeFileSync(new URL('package.json', out), JSON.stringify(extensionManifest, null, 2) + '\n');
-copyFileSync(new URL('public/logo.png', root), new URL('icon.png', out));
+copyFileSync(new URL('public/logo-256.png', root), new URL('icon.png', out));
 copyFileSync(new URL('LICENSE', root), new URL('LICENSE', out));
 console.log('Built ports/vscode (themes, arcubic-vscode.css, package.json)');
