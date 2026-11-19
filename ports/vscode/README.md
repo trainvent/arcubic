@@ -16,8 +16,11 @@ Choose **Arcubic Dark** or **Arcubic Light** with *Preferences: Color Theme*. Fo
 
 A colour theme can only set colours. `arcubic-vscode.css` (in the same release) adds what it can't do:
 
-- raised buttons that press in, and inset input fields
-- square corners on controls and popups
+- raised buttons that press in, inset input fields, and option toggles that stay pressed while on
+- document tabs as in Obsidian: inactive tabs are raised keys, the active tab joins the page
+- a file tree as in Obsidian: folder bars instead of arrows, guide lines always shown
+- panel tabs as in Obsidian's side docks
+- square corners everywhere
 - the triangle fuse in place of every spinning loading icon
 - Chakra Petch as the interface font, when it is installed on your system
 
