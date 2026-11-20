@@ -61,7 +61,10 @@ border-color:var(--arc-line) var(--arc-line) var(--arc-page) var(--arc-line)!imp
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab :is(.tab-border-top-container,.tab-border-bottom-container){display:none!important}
 /* VS Code's connected tabs leave 1px under the tab row for a border, which would show between the active tab and the page. */
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container{padding-bottom:0!important}
-:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab .tab-actions .action-label:hover{background:transparent!important;color:var(--arc-danger)!important}
+/* As in Obsidian: the close button stays dim until the pointer is on it, then turns red.
+   VS Code's modern tabs colour it with !important on a long selector, so this one spells out the full path. */
+.monaco-workbench:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor>.content .editor-group-container>.title .tabs-and-actions-container .tabs-container>.tab>.tab-actions .action-item>.action-label{color:var(--arc-muted)!important;opacity:0.5!important}
+.monaco-workbench:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor>.content .editor-group-container>.title .tabs-and-actions-container .tabs-container>.tab>.tab-actions .action-item>.action-label:hover{background:transparent!important;color:var(--arc-danger)!important;opacity:1!important}
 
 /* Panel and side bar view tabs as in Obsidian's side docks: a flat key with a light top edge;
    the open view is teal with a teal base line. */
