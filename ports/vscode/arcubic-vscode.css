@@ -95,10 +95,13 @@ border-color:var(--arc-low) var(--arc-high) var(--arc-high) var(--arc-low)!impor
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) :is(.monaco-custom-toggle,.quick-input-widget,.monaco-hover,.suggest-widget,.notification-toast,.notifications-center,.monaco-menu-container,.monaco-menu,.context-view .monaco-menu,.keybinding-label>.monaco-keybinding-key,.badge-content,.command-center-center){border-radius:0!important}
 
 /* File trees as in Obsidian: a bar marks each folder (thick when open, thin when closed)
-   and the guide lines between levels stay visible. */
+   and the guide lines between levels stay visible. Each bar is centred on the guide line its
+   children draw, which VS Code places a fixed distance into the twistie. */
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-tl-twistie.collapsible:not(.codicon-tree-item-loading){justify-content:flex-start!important}
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-tl-twistie.collapsible:not(.codicon-tree-item-loading)::before{
-content:''!important;width:3px;height:12px;background:var(--arc-tree-marker);border-radius:0;transform:none!important}
-:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-tl-twistie.collapsible.collapsed:not(.codicon-tree-item-loading)::before{width:1px}
+content:''!important;width:3px;height:12px;margin-left:4px;
+background:var(--arc-tree-marker);border-radius:0;transform:none!important}
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-tl-twistie.collapsible.collapsed:not(.codicon-tree-item-loading)::before{width:1px;margin-left:5px}
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .monaco-tl-indent>.indent-guide{opacity:1!important;border-left-color:var(--arc-tree-guide)!important}
 
 /* Loader: every spinning icon becomes the triangle fuse. */

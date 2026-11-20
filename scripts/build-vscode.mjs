@@ -30,6 +30,10 @@ const cornerSizes = ['xSmall', 'small', 'medium', 'large', 'xLarge'].map(size =>
 const squareCorners = cornerSizes.map(name => `${name}:0!important`).join(';');
 
 const TAB_HEIGHT = documentTabs.tabHeight;
+// File tree folder bars: the open bar's width, and where VS Code draws the indent guide below a
+// folder, measured from the start of the folder's twistie content.
+const TREE_OPEN_BAR = 3;
+const TREE_GUIDE_OFFSET = 5;
 const CLOSE_BUTTON_DIM_OPACITY = 0.5;
 const ICON_SIZE = 256;
 
@@ -577,10 +581,13 @@ ${any('.monaco-inputbox.synthetic-focus,.monaco-select-box:focus')}{outline:1px 
 ${any(':is(.monaco-custom-toggle,.quick-input-widget,.monaco-hover,.suggest-widget,.notification-toast,.notifications-center,.monaco-menu-container,.monaco-menu,.context-view .monaco-menu,.keybinding-label>.monaco-keybinding-key,.badge-content,.command-center-center)')}{border-radius:0!important}
 
 /* File trees as in Obsidian: a bar marks each folder (thick when open, thin when closed)
-   and the guide lines between levels stay visible. */
+   and the guide lines between levels stay visible. Each bar is centred on the guide line its
+   children draw, which VS Code places a fixed distance into the twistie. */
+${any('.monaco-tl-twistie.collapsible:not(.codicon-tree-item-loading)')}{justify-content:flex-start!important}
 ${any('.monaco-tl-twistie.collapsible:not(.codicon-tree-item-loading)::before')}{
-content:''!important;width:3px;height:12px;background:var(--arc-tree-marker);border-radius:0;transform:none!important}
-${any('.monaco-tl-twistie.collapsible.collapsed:not(.codicon-tree-item-loading)::before')}{width:1px}
+content:''!important;width:${TREE_OPEN_BAR}px;height:12px;margin-left:${TREE_GUIDE_OFFSET - Math.floor(TREE_OPEN_BAR / 2)}px;
+background:var(--arc-tree-marker);border-radius:0;transform:none!important}
+${any('.monaco-tl-twistie.collapsible.collapsed:not(.codicon-tree-item-loading)::before')}{width:1px;margin-left:${TREE_GUIDE_OFFSET}px}
 ${any('.monaco-tl-indent>.indent-guide')}{opacity:1!important;border-left-color:var(--arc-tree-guide)!important}
 
 /* Loader: every spinning icon becomes the triangle fuse. */
