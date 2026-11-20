@@ -22,7 +22,8 @@
     "test:obsidian:typography": "node tests/obsidian-typography-browser.mjs",
     "build:react": "npm run build:core && node scripts/build-react.mjs",
     "pack:react": "npm run build:react && npm pack ./packages/react --pack-destination dist",
-    "pack:vscode": "npm run build:vscode && mkdir -p dist && cd ports/vscode && vsce package --no-dependencies --out ../../dist/arcubic-vscode-$npm_package_version.vsix"
+    "pack:vscode": "npm run build:vscode && mkdir -p dist && cd ports/vscode && vsce package --no-dependencies --out ../../dist/arcubic-vscode-$npm_package_version.vsix",
+    "dev:vscode": "node scripts/build-vscode.mjs --dev && cd dist/vscode-dev && vsce package --no-dependencies --out ../arcubic-vscode-dev.vsix && code --install-extension ../arcubic-vscode-dev.vsix --force && mkdir -p ~/.config/arcubic && cp arcubic-vscode.css ~/.config/arcubic/arcubic-vscode-dev.css"
   },
   "dependencies": {
     "@fontsource/chakra-petch": "^5.3.0",

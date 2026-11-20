@@ -59,6 +59,8 @@ box-shadow:inset 1px 1px 0 var(--arc-high),inset -1px -1px 0 var(--arc-low)!impo
 z-index:1;background:var(--arc-page)!important;color:var(--arc-selected-text)!important;box-shadow:none!important;
 border-color:var(--arc-line) var(--arc-line) var(--arc-page) var(--arc-line)!important}
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab :is(.tab-border-top-container,.tab-border-bottom-container){display:none!important}
+/* VS Code's connected tabs leave 1px under the tab row for a border, which would show between the active tab and the page. */
+:is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container{padding-bottom:0!important}
 :is(.trainvent-arcubic-themes-arcubic-light-color-theme-json,.trainvent-arcubic-themes-arcubic-dark-color-theme-json) .part.editor .title .tabs-container>.tab .tab-actions .action-label:hover{background:transparent!important;color:var(--arc-danger)!important}
 
 /* Panel and side bar view tabs as in Obsidian's side docks: a flat key with a light top edge;

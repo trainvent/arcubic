@@ -7,13 +7,16 @@ import {bevel, loader, typography} from '../src/core/design.ts';
 import {ansiColors} from './ansi.mjs';
 
 const root = new URL('../', import.meta.url);
-const out = new URL('ports/vscode/', root);
+// --dev builds a separate extension, installable next to the released one, for trying changes.
+const DEV = process.argv.includes('--dev');
+const out = new URL(DEV ? 'dist/vscode-dev/' : 'ports/vscode/', root);
 const pkg = JSON.parse(readFileSync(new URL('package.json', root), 'utf8'));
 const MIN_TEXT_CONTRAST = 4.5;
 const PUBLISHER = 'trainvent';
-const NAME = 'arcubic';
+const NAME = DEV ? 'arcubic-dev' : 'arcubic';
+const DISPLAY_NAME = DEV ? 'Arcubic Dev' : 'Arcubic';
 const modes = ['light', 'dark'];
-const label = mode => `Arcubic ${mode === 'light' ? 'Light' : 'Dark'}`;
+const label = mode => `Arcubic ${mode === 'light' ? 'Light' : 'Dark'}${DEV ? ' Dev' : ''}`;
 const themeFile = mode => `themes/arcubic-${mode}-color-theme.json`;
 // VS Code adds this class to .monaco-workbench while the theme is active (extension id + path,
 // non-word characters replaced by '-'), so the UI stylesheet only applies to Arcubic.
@@ -538,6 +541,8 @@ ${any('.part.editor .title .tabs-container>.tab.active')}{
 z-index:1;background:var(--arc-page)!important;color:var(--arc-selected-text)!important;box-shadow:none!important;
 border-color:var(--arc-line) var(--arc-line) var(--arc-page) var(--arc-line)!important}
 ${any('.part.editor .title .tabs-container>.tab :is(.tab-border-top-container,.tab-border-bottom-container)')}{display:none!important}
+/* VS Code's connected tabs leave 1px under the tab row for a border, which would show between the active tab and the page. */
+${any('.part.editor .title .tabs-container')}{padding-bottom:0!important}
 ${any('.part.editor .title .tabs-container>.tab .tab-actions .action-label:hover')}{background:transparent!important;color:var(--arc-danger)!important}
 
 /* Panel and side bar view tabs as in Obsidian's side docks: a flat key with a light top edge;
@@ -586,7 +591,7 @@ ${any('.monaco-progress-container.infinite .progress-bit')}{animation:none!impor
 
 const extensionManifest = {
   name: NAME,
-  displayName: 'Arcubic',
+  displayName: DISPLAY_NAME,
   description: 'Teal, amber and burnt orange on neutral grayscale surfaces.',
   version: pkg.version,
   publisher: PUBLISHER,
@@ -608,4 +613,4 @@ writeFileSync(new URL('package.json', out), JSON.stringify(extensionManifest, nu
 const logo = new Resvg(readFileSync(new URL('public/logo.svg', root)), {fitTo: {mode: 'width', value: ICON_SIZE}});
 writeFileSync(new URL('icon.png', out), logo.render().asPng());
 copyFileSync(new URL('LICENSE', root), new URL('LICENSE', out));
-console.log('Built ports/vscode (themes, arcubic-vscode.css, package.json)');
+console.log(`Built ${DEV ? 'dist/vscode-dev' : 'ports/vscode'} (themes, arcubic-vscode.css, package.json)`);
