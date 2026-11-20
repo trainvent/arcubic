@@ -557,9 +557,10 @@ ${any('.pane-composite-part>:is(.title,.header-or-footer)>.composite-bar-contain
 background:var(--arc-selected);box-shadow:inset 0 -1px 0 var(--arc-selected-edge)}
 ${any('.pane-composite-part>:is(.title,.header-or-footer)>.composite-bar-container .action-item.checked:not(.icon) .action-label')}{color:var(--arc-selected-text)!important}
 /* The menu bar title whose menu is open takes the same selected-tab marker. */
+${any('.menubar>.menubar-menu-button .menubar-menu-title')}{border-radius:0!important}
 ${any('.menubar>.menubar-menu-button.open .menubar-menu-title')}{
 background:var(--arc-selected)!important;color:var(--arc-selected-text)!important;
-box-shadow:inset 0 -1px 0 var(--arc-selected-edge);border-radius:0!important;outline:none!important}
+box-shadow:inset 0 -1px 0 var(--arc-selected-edge);outline:none!important}
 ${any('.pane-composite-part>:is(.title,.header-or-footer)>.composite-bar-container .action-item:not(.icon) .active-item-indicator')}{display:none}
 
 /* Option toggles (match case, regex, …) press in while on. */
