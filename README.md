@@ -139,10 +139,10 @@ See [hue curves](docs/hue-curves.md) for how the profiles and curve samples rela
 ## Typography
 
 - Interface: Chakra Petch Regular.
-- Reading: Lora, including real bold and italic faces.
+- Reading: Lora, including real bold and italic faces. In Obsidian, a similar system serif unless Lora is installed.
 - Code and terminal: Geist Mono.
 
-Chakra Petch, Lora and Geist Mono are installed through Fontsource and included under their OFL licenses. The Obsidian theme embeds all three; no separate font download is needed.
+Chakra Petch, Lora and Geist Mono are installed through Fontsource and included under their OFL licenses. The Obsidian theme embeds Chakra Petch and Geist Mono; no separate font download is needed.
 
 ## Framework-free use
 

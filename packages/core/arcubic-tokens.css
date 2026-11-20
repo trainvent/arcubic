@@ -25,7 +25,7 @@ SOFTWARE.
 */
 .arcubic-theme {
   --arc-font-interface: 'Chakra Petch', ui-sans-serif, sans-serif;
-  --arc-font-reading: 'Lora', Georgia, serif;
+  --arc-font-reading: 'Lora', Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
   --arc-font-code: 'Geist Mono', ui-monospace, monospace;
   --arc-type-caption: 11px;
   --arc-type-ui: 13px;

@@ -21,7 +21,7 @@ Then select **Arcubic** under **Settings → Appearance → Themes**. Alternativ
 
 The installer backs up the existing Arcubic theme and appearance settings under `.obsidian/arcubic-backups/`. It does not activate the theme or modify notes.
 
-Chakra Petch Regular (interface), Lora regular and italic (reading), and Geist Mono (code) are embedded in the public theme. Their OFL copyright notices and licenses are included in the stylesheet and `licenses/`. No personal build or separate font installation is required. Obsidian's font overrides can still replace these defaults. Font sizes come from Obsidian, including its reading-size setting and mobile scale; compact web-preview sizes are not applied to this adapter.
+Chakra Petch Regular (interface) and Geist Mono (code) are embedded in the public theme. Reading text uses Lora if it is installed, otherwise a similar system serif (Charter on macOS and Linux, Sitka or Cambria on Windows). The embedded fonts' OFL copyright notices and licenses are included in the stylesheet and `licenses/`. No personal build or separate font installation is required. Obsidian's font overrides can still replace these defaults. Font sizes come from Obsidian, including its reading-size setting and mobile scale; compact web-preview sizes are not applied to this adapter.
 
 ## Source
 
@@ -46,8 +46,8 @@ unsupported; this theme does not use that syntax. See the
 [upstream compatibility notes](https://github.com/Fyrd/caniuse/blob/main/features-json/css-clip-path.json).
 Keep the polygon geometry unless testing reveals a rendering issue.
 
-Fonts remain embedded for offline use. Only Lora's Latin regular and italic faces
-are embedded to keep `theme.css` small; Obsidian synthesizes bold.
+Interface and code fonts remain embedded for offline use. Lora is not embedded:
+its two faces alone would push `theme.css` past Obsidian's size recommendation.
 All font copyright notices and the shared OFL license are embedded in the CSS;
 individual license files are also copied into the theme directory.
 

@@ -1,7 +1,8 @@
 /** Platform-independent Arcubic defaults. Adapters map these roles to their UI. */
 export const typography = {
  interface: "'Chakra Petch', ui-sans-serif, sans-serif",
- reading: "'Lora', Georgia, serif",
+ /** Lora where it is loaded or installed, otherwise the closest system serif on each platform. */
+ reading: "'Lora', Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif",
  code: "'Geist Mono', ui-monospace, monospace",
  caption: 11, ui: 13, body: 15, noteHeading: 24,
  uiLineHeight: 1.4, bodyLineHeight: 1.65,
