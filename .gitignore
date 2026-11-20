@@ -15,3 +15,8 @@ ports/obsidian/.local/
 packages/react/dist/
 
 *.vsix
+
+# Local editor and tool folders.
+.vscode/
+managed_context/
+test_suite_analysis/
