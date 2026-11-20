@@ -42,7 +42,24 @@ body { font-weight: 400; }
 .cm-s-obsidian .cm-inline-code, .cm-s-obsidian .HyperMD-codeblock, code, pre { font-family:var(--font-monospace); }
 .workspace, .workspace-split, .workspace-leaf, .view-content { border-radius:0; }
 .workspace-ribbon { border-right:1px solid var(--gray-6); background:var(--gray-2); }
-.workspace-tab-header-container { padding-top:5px; gap:4px; }
+/* Shared tab strip geometry: Obsidian sizes every header row, the window buttons and the ribbon
+   offset from --header-height; tabs leave the same gap above them and before the first one.
+   The side panels have their own, more specific spacing rules, so these selectors match their weight. */
+body { --header-height:var(--arc-tab-strip-height); }
+body .workspace-tabs .workspace-tab-header-container { padding-block:0; padding-inline-start:0; gap:var(--arc-tab-inset); align-items:flex-end; }
+body .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner {
+  margin:0; padding:0 0 0 var(--arc-tab-inset); align-self:stretch; align-items:flex-end;
+}
+body .workspace-tabs .workspace-tab-header-container .workspace-tab-header { box-sizing:border-box; height:var(--arc-tab-height); }
+/* Buttons in a tab strip start level with the tabs and keep the same gap below, clear of the page. */
+body .workspace-tab-header-container :is(.workspace-tab-header-new-tab,.workspace-tab-header-tab-list),
+body .sidebar-toggle-button {
+  box-sizing:border-box; height:var(--arc-tab-strip-height); padding-block:var(--arc-tab-inset); align-items:stretch;
+}
+body .workspace-tab-header-container .workspace-tab-header-new-tab { margin-inline-start:0; }
+body :is(.workspace-tab-header-new-tab,.workspace-tab-header-tab-list,.sidebar-toggle-button) .clickable-icon {
+  box-sizing:border-box; height:auto; padding-block:0; display:flex; align-items:center;
+}
 .workspace-tab-header {
   border:1px solid; border-color:var(--arc-edge-high) var(--arc-edge-low) var(--arc-edge-low) var(--arc-edge-high);
   background:var(--arc-control-face); box-shadow:var(--arc-raised); border-radius:0;
@@ -208,6 +225,10 @@ body .mod-sidedock .workspace-tab-header.is-active {
 body .mod-sidedock .workspace-tab-header:hover { background:var(--gray-4);filter:none; }
 body .mod-sidedock .workspace-tab-header.is-active:hover { background:var(--arc-obs-primary-4); }
 body .mod-sidedock .workspace-tab-header-inner { height:100%; }
+/* Side panels and the ribbon keep a divider under the header row, drawn on what lies below
+   so the strip keeps the shared height. */
+body .mod-sidedock .workspace-tab-container,
+body .workspace-ribbon.mod-primary { border-top:1px solid var(--divider-color); }
 
 /* Native surfaces and semantic content found during the in-app consistency pass. */
 body .suggestion-hotkey, body .setting-hotkey, body .hotkey, body kbd {
@@ -266,7 +287,7 @@ body input.prompt-input::placeholder { font-family:inherit; font-weight:inherit;
 /* Document tabs join the page; compact sidebar tabs keep their own treatment. */
 body .mod-root .workspace-tab-header-container {
   --tab-inner-background-hover:transparent; --tab-inner-background-active:transparent;
-  border-bottom:0; box-shadow:none; padding-bottom:0; align-items:flex-end;
+  border-bottom:0; box-shadow:none;
 }
 body .mod-root .workspace-tab-header.is-active {
   position:relative; z-index:1;
@@ -313,12 +334,12 @@ body .mod-root .workspace-tab-header:focus-visible {
   outline:1px solid var(--arc-obs-primary-8); outline-offset:-2px;
 }
 
-/* Give the document tab strip enough height for a comfortable selected tab. */
-body .mod-root .workspace-tab-header {
-  min-height:32px;
+/* Obsidian pads document tabs 1px above and 4px below, which would lift the centred title. */
+body .workspace .mod-root .workspace-tab-header {
+  min-height:0; padding-block:0;
 }
 body .mod-root .workspace-tab-header-inner {
-  min-height:30px; padding-block:4px; align-items:center;
+  height:100%; min-height:0; padding-block:0; align-items:center;
 }
 
 /* Search focus uses one colored border, without a stacked outer focus ring. */

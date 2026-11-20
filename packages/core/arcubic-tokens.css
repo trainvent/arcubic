@@ -33,6 +33,9 @@ SOFTWARE.
   --arc-type-heading: 24px;
   --arc-leading-ui: 1.4;
   --arc-leading-body: 1.65;
+  --arc-tab-strip-height: 31px;
+  --arc-tab-height: 28px;
+  --arc-tab-inset: 3px;
   --arc-radius: 0px;
   --arc-border-width: 1px;
   --arc-switch-height: 22px;

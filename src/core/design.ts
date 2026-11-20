@@ -18,11 +18,16 @@ export const geometry = {
  switchTriangleHeightRatio: 16/22*Math.sqrt(3)/2,
  switchSlantRatio: Math.tan(Math.PI/6),
 };
+/** Document tab strip, shared by every app adapter. VS Code fixes the strip height itself; the
+ * tabs leave the same gap above them and before the first tab. */
+export const documentTabs = {stripHeight: 31, tabHeight: 28};
+export const documentTabInset = documentTabs.stripHeight - documentTabs.tabHeight;
 export function designTokens(): Record<string,string> {
  return {
   '--arc-font-interface':typography.interface,'--arc-font-reading':typography.reading,'--arc-font-code':typography.code,
   '--arc-type-caption':`${typography.caption}px`,'--arc-type-ui':`${typography.ui}px`,'--arc-type-body':`${typography.body}px`,'--arc-type-heading':`${typography.noteHeading}px`,
   '--arc-leading-ui':String(typography.uiLineHeight),'--arc-leading-body':String(typography.bodyLineHeight),
+  '--arc-tab-strip-height':`${documentTabs.stripHeight}px`,'--arc-tab-height':`${documentTabs.tabHeight}px`,'--arc-tab-inset':`${documentTabInset}px`,
   '--arc-radius':`${geometry.radius}px`,'--arc-border-width':`${geometry.border}px`,'--arc-switch-height':`${geometry.switchHeight}px`,
   ...Object.fromEntries(Object.entries(geometry).filter(([key])=>key.endsWith('Ratio')).map(([key,value])=>[`--arc-${key.replace(/[A-Z]/g,letter=>'-'+letter.toLowerCase())}`,String(value)])),
  };

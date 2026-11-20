@@ -3,7 +3,7 @@ import {Resvg} from '@resvg/resvg-js';
 import Color from 'colorjs.io';
 import {defaults, themeTokens} from '../src/palette.ts';
 import {accentTextColors} from '../src/core/text-colors.ts';
-import {bevel, loader, typography} from '../src/core/design.ts';
+import {bevel, documentTabInset, documentTabs, loader, typography} from '../src/core/design.ts';
 import {ansiColors} from './ansi.mjs';
 
 const root = new URL('../', import.meta.url);
@@ -29,9 +29,7 @@ const cornerSizes = ['xSmall', 'small', 'medium', 'large', 'xLarge'].map(size =>
   .concat(['--modern-ui-window-corner-radius', '--modern-ui-connected-tab-radius']);
 const squareCorners = cornerSizes.map(name => `${name}:0!important`).join(';');
 
-// Document tabs: their height including the 1px edges, and the space above them.
-const TAB_HEIGHT = 28;
-const TAB_GAP = 5;
+const TAB_HEIGHT = documentTabs.tabHeight;
 const CLOSE_BUTTON_DIM_OPACITY = 0.5;
 const ICON_SIZE = 256;
 
@@ -525,13 +523,13 @@ ${any(':is(.monaco-button,.monaco-text-button,.extension-action.label):not(.disa
 /* Document tabs as in Obsidian: inactive tabs are raised keys side by side; the active tab
    joins the page below it. */
 ${any('.part.editor .title .tabs-container>.tab')}{
-margin:${TAB_GAP}px 0 0 0!important;box-sizing:border-box!important;
+margin:0!important;box-sizing:border-box!important;
 height:${TAB_HEIGHT}px!important;min-height:${TAB_HEIGHT}px!important;max-height:${TAB_HEIGHT}px!important;
 --editor-group-tab-height:${TAB_HEIGHT - 2}px!important;
 border:1px solid!important;border-color:var(--arc-tab-edge) var(--arc-low) var(--arc-low) var(--arc-tab-edge)!important;
 background:var(--arc-face)!important;color:var(--arc-muted)!important;
 box-shadow:inset 1px 1px 0 var(--arc-high),inset -1px -1px 0 var(--arc-low)!important}
-${any('.part.editor .title .tabs-container>.tab:first-child')}{margin-left:4px!important}
+${any('.part.editor .title .tabs-container>.tab:first-child')}{margin-left:${documentTabInset}px!important}
 /* VS Code's tab height differs between its tab modes, so the keys have a fixed height of their own;
    inside a tab, VS Code's height variable is set to match so icons and labels stay centred. */
 ${any('.part.editor .title .tabs-container')}{align-items:flex-end}
