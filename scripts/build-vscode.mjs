@@ -3,7 +3,7 @@ import {Resvg} from '@resvg/resvg-js';
 import Color from 'colorjs.io';
 import {defaults, themeTokens} from '../src/palette.ts';
 import {accentTextColors} from '../src/core/text-colors.ts';
-import {bevel, documentTabInset, documentTabs, loader, typography} from '../src/core/design.ts';
+import {bevel, documentTabInset, documentTabs, loader, selectedTab, typography} from '../src/core/design.ts';
 import {ansiColors} from './ansi.mjs';
 
 const root = new URL('../', import.meta.url);
@@ -490,7 +490,7 @@ function uiStylesheet() {
 --arc-tree-guide:${s('gray', 6)};--arc-tree-marker:${text.muted};
 --arc-page:${s('gray', 1)};--arc-line:${s('gray', 6)};--arc-tab-edge:${s('gray', 7)};
 --arc-text:${text.body};--arc-muted:${text.muted};--arc-danger:${s('tomato', 11)};
---arc-selected:${s('teal', 3)};--arc-selected-hover:${s('teal', 4)};--arc-selected-edge:${s('teal', 8)};--arc-selected-text:${text.teal};
+--arc-selected:${s('teal', selectedTab.fill)};--arc-selected-hover:${s('teal', selectedTab.hoverFill)};--arc-selected-edge:${s('teal', selectedTab.edge)};--arc-selected-text:${text.teal};
 }`;
   }).join('\n');
   const scope = modes.map(mode => `.${themeClass(mode)}`).join(',');
@@ -556,6 +556,10 @@ ${any('.pane-composite-part>:is(.title,.header-or-footer)>.composite-bar-contain
 ${any('.pane-composite-part>:is(.title,.header-or-footer)>.composite-bar-container .action-item.checked:not(.icon)')}{
 background:var(--arc-selected);box-shadow:inset 0 -1px 0 var(--arc-selected-edge)}
 ${any('.pane-composite-part>:is(.title,.header-or-footer)>.composite-bar-container .action-item.checked:not(.icon) .action-label')}{color:var(--arc-selected-text)!important}
+/* The menu bar title whose menu is open takes the same selected-tab marker. */
+${any('.menubar>.menubar-menu-button.open .menubar-menu-title')}{
+background:var(--arc-selected)!important;color:var(--arc-selected-text)!important;
+box-shadow:inset 0 -1px 0 var(--arc-selected-edge);border-radius:0!important;outline:none!important}
 ${any('.pane-composite-part>:is(.title,.header-or-footer)>.composite-bar-container .action-item:not(.icon) .active-item-indicator')}{display:none}
 
 /* Option toggles (match case, regex, …) press in while on. */

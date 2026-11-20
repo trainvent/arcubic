@@ -219,11 +219,11 @@ body .mod-sidedock .workspace-tab-header {
   box-shadow:inset 0 1px 0 var(--arc-edge-high);
 }
 body .mod-sidedock .workspace-tab-header.is-active {
-  background:var(--arc-obs-primary-3);
-  box-shadow:inset 0 -1px 0 var(--arc-obs-primary-8);
+  background:var(--arc-selected);
+  box-shadow:inset 0 -1px 0 var(--arc-selected-edge);
 }
 body .mod-sidedock .workspace-tab-header:hover { background:var(--gray-4);filter:none; }
-body .mod-sidedock .workspace-tab-header.is-active:hover { background:var(--arc-obs-primary-4); }
+body .mod-sidedock .workspace-tab-header.is-active:hover { background:var(--arc-selected-hover); }
 body .mod-sidedock .workspace-tab-header-inner { height:100%; }
 /* Side panels and the ribbon keep a divider under the header row, drawn on what lies below
    so the strip keeps the shared height. */

@@ -18,6 +18,9 @@ export const geometry = {
  switchTriangleHeightRatio: 16/22*Math.sqrt(3)/2,
  switchSlantRatio: Math.tan(Math.PI/6),
 };
+/** Selected-tab marker for narrow tabs and menu bar titles: an accent tint with a base line in the
+ * accent. Values are steps of the accent scale. */
+export const selectedTab = {fill: 3, hoverFill: 4, edge: 8} as const;
 /** Document tab strip, shared by every app adapter. VS Code fixes the strip height itself; the
  * tabs leave the same gap above them and before the first tab. */
 export const documentTabs = {stripHeight: 31, tabHeight: 28};

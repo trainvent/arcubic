@@ -1,7 +1,7 @@
 import {readFileSync,writeFileSync,mkdirSync,copyFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {defaults,themeTokens} from '../src/palette.ts';
-import {designTokens} from '../src/core/design.ts';
+import {designTokens,selectedTab} from '../src/core/design.ts';
 import {obsidianColors} from '../ports/obsidian/colors.ts';
 import {transformSync} from 'esbuild';
 const root=fileURLToPath(new URL('../',import.meta.url));
@@ -51,6 +51,8 @@ for(const mode of ['light','dark']){
  css+=block(`.theme-${mode}`,adapterTokens({
  ...tokens,...obsidianColors(tokens),
  '--arc-control-face':'var(--gray-3)',
+ '--arc-selected':`var(--arc-obs-primary-${selectedTab.fill})`,'--arc-selected-hover':`var(--arc-obs-primary-${selectedTab.hoverFill})`,
+ '--arc-selected-edge':`var(--arc-obs-primary-${selectedTab.edge})`,
  '--arc-edge-high':mode==='dark'?'var(--gray-7)':'#ffffff',
  '--arc-edge-low':mode==='dark'?'#070a09':'#a8b5af',
  '--arc-inset-high':mode==='dark'?'#070a09':'#a8b5af',
