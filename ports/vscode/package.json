@@ -23,6 +23,17 @@
     "teal",
     "arcubic"
   ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "files": [
+    "themes",
+    "arcubic-vscode.css",
+    "extension.js",
+    "icon.png",
+    "LICENSE"
+  ],
   "contributes": {
     "themes": [
       {

@@ -29,13 +29,15 @@ It only applies while an Arcubic theme is active.
 VS Code has no supported way to load custom CSS, so this needs the [Custom UI Style](https://marketplace.visualstudio.com/items?itemName=subframe7536.custom-ui-style) extension, which patches VS Code's own files:
 
 1. Install Custom UI Style.
-2. Save `arcubic-vscode.css`, for example to `~/.config/arcubic/arcubic-vscode.css`, and add to your settings:
+2. Add to your settings:
 
    ```json
    "custom-ui-style.external.imports": ["file://${userHome}/.config/arcubic/arcubic-vscode.css"]
    ```
 
-3. Run *Custom UI Style: Reload*, then fully quit and restart VS Code.
+3. Restart VS Code. Arcubic writes the stylesheet to that path and asks to apply it; choose *Apply*, then fully quit and restart VS Code.
+
+Whenever the Arcubic extension updates, it refreshes that file and asks again. The file can live anywhere, as long as it is named `arcubic-vscode.css`.
 
 Run it again after each VS Code update. *Custom UI Style: Rollback* removes the patch.
 
