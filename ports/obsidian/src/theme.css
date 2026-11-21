@@ -206,6 +206,14 @@ body .checkbox-container input { position:absolute; opacity:0; width:100%; heigh
 .arcubic-native-preview .setting-item { padding:14px 0; }
 .arcubic-native-preview h3 { font-family:var(--font-text); font-weight:400; }
 .arcubic-native-preview .arcubic-preview-code { font-family:var(--font-monospace); background:var(--gray-1); border:1px solid var(--gray-6); padding:12px; }
+/***** Loaders: Obsidian's spinners become the triangle fuse *****/
+body { --arc-loader-size:48px; --arc-loader-button-size:20px; }
+.loader-spinner, .loader-cube { width:var(--arc-loader-size); height:var(--arc-loader-size); background:var(--interactive-accent); -webkit-mask:var(--arc-loader) center/contain no-repeat; }
+.loader-spinner svg, .loader-cube .sk-cube { visibility:hidden; animation:none; }
+/* Beats the raised-button rule, which would otherwise show the label through the loader. */
+body:is(.theme-light,.theme-dark) button.mod-loading:not(.clickable-icon):not(.checkbox-container) { color:transparent; }
+button.mod-loading::after { width:var(--arc-loader-button-size); height:var(--arc-loader-button-size); border:0; border-radius:0; background:var(--text-normal); -webkit-mask:var(--arc-loader) center/contain no-repeat; animation:none; }
+@media(prefers-reduced-motion:reduce) { .loader-spinner, .loader-cube, button.mod-loading::after { -webkit-mask-image:var(--arc-loader-still); } }
 /***** Responsive and print modes *****/
 .is-mobile .checkbox-container { --arc-switch-height:26px; }
 /* Intentional accessibility overrides: also stop more-specific native/plugin animations. */

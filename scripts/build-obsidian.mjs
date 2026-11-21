@@ -1,7 +1,7 @@
 import {readFileSync,writeFileSync,mkdirSync,copyFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {defaults,themeTokens} from '../src/palette.ts';
-import {designTokens,selectedTab} from '../src/core/design.ts';
+import {designTokens,loaderMask,selectedTab} from '../src/core/design.ts';
 import {obsidianColors} from '../ports/obsidian/colors.ts';
 import {transformSync} from 'esbuild';
 const root=fileURLToPath(new URL('../',import.meta.url));
@@ -43,7 +43,7 @@ function font(family,path,weight,style='normal',format='woff2') {
 // Reading text uses the system serif fallback: embedding Lora pushes theme.css past Obsidian's size recommendation.
 font('Geist Mono','node_modules/@fontsource/geist-mono/files/geist-mono-latin-400-normal.woff2',400);
 font('Chakra Petch','node_modules/@fontsource/chakra-petch/files/chakra-petch-latin-400-normal.woff2',400);
-css+=block('body',sharedDesign);
+css+=block('body',{...sharedDesign,'--arc-loader':loaderMask({animated:true}),'--arc-loader-still':loaderMask({animated:false})});
 for(const mode of ['light','dark']){
  const tokens=themeTokens(defaults,mode);
  css+=block(`.theme-${mode}`,adapterTokens({

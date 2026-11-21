@@ -3,7 +3,7 @@ import {Resvg} from '@resvg/resvg-js';
 import Color from 'colorjs.io';
 import {defaults, themeTokens} from '../src/palette.ts';
 import {accentTextColors} from '../src/core/text-colors.ts';
-import {bevel, documentTabInset, documentTabs, loader, selectedTab, typography} from '../src/core/design.ts';
+import {bevel, documentTabInset, documentTabs, loaderMask, selectedTab, typography} from '../src/core/design.ts';
 import {ansiColors} from './ansi.mjs';
 
 const root = new URL('../', import.meta.url);
@@ -471,17 +471,6 @@ function colorTheme(mode) {
   };
 }
 
-/** The triangle fuse as an SVG image. The guide is the faint route, the fuse a dash travelling
- * along it. Used as a mask, so the loader takes the colour of the icon it replaces. */
-function fuseSvg({animated}) {
-  const dash = loader.fuseDash;
-  const fuse = animated
-    ? `<path d='${loader.route}' pathLength='100' stroke-width='60' stroke-dasharray='${dash} ${100 - dash}' stroke-dashoffset='100'><animate attributeName='stroke-dashoffset' from='100' to='0' dur='${loader.durationSeconds}s' repeatCount='indefinite'/></path>`
-    : `<path d='${loader.route}' stroke-width='60'/>`;
-  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='${loader.viewBox}' fill='none' stroke='#000' stroke-linecap='round' stroke-linejoin='round'><path d='${loader.route}' stroke-width='44' opacity='.35'/>${fuse}</svg>`;
-  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
-}
-
 /** What a colour theme can't do: raised and inset bevels, square controls, the triangle loader
  * and the interface font. Loaded by a CSS loader extension; see ports/vscode/README.md. */
 function uiStylesheet() {
@@ -594,11 +583,11 @@ ${any('.monaco-tl-indent>.indent-guide')}{opacity:1!important;border-left-color:
 ${any(':is(.codicon-modifier-spin,.codicon-loading,.codicon-tree-item-loading)')}{animation:none!important}
 ${any(':is(.codicon-modifier-spin,.codicon-loading,.codicon-tree-item-loading)::before')}{
 content:''!important;display:inline-block;width:1em;height:1em;vertical-align:-.125em;animation:none!important;
-background:currentColor;-webkit-mask:${fuseSvg({animated: true})} center/contain no-repeat}
+background:currentColor;-webkit-mask:${loaderMask({animated: true})} center/contain no-repeat}
 /* The thin progress bar under view titles keeps its place; its moving part becomes a square-ended fuse. */
 ${any('.monaco-progress-container.infinite .progress-bit')}{width:6%;height:2px}
 @media (prefers-reduced-motion:reduce){
-${any(':is(.codicon-modifier-spin,.codicon-loading,.codicon-tree-item-loading)::before')}{-webkit-mask-image:${fuseSvg({animated: false})}}
+${any(':is(.codicon-modifier-spin,.codicon-loading,.codicon-tree-item-loading)::before')}{-webkit-mask-image:${loaderMask({animated: false})}}
 ${any('.monaco-progress-container.infinite .progress-bit')}{animation:none!important;width:100%;opacity:.5}
 }
 `;

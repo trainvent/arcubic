@@ -51,3 +51,14 @@ export const loader = {
  fuseDash: 26,
  durationSeconds: 1.8,
 } as const;
+/** The triangle fuse as a CSS `url()`: the faint route plus a dash travelling along it. Used as a
+ * mask, so the loader takes the colour of whatever it replaces. `animated: false` keeps the
+ * whole route lit, for reduced motion. */
+export function loaderMask({animated}: {animated: boolean}) {
+ const dash = loader.fuseDash;
+ const fuse = animated
+  ? `<path d='${loader.route}' pathLength='100' stroke-width='60' stroke-dasharray='${dash} ${100 - dash}' stroke-dashoffset='100'><animate attributeName='stroke-dashoffset' from='100' to='0' dur='${loader.durationSeconds}s' repeatCount='indefinite'/></path>`
+  : `<path d='${loader.route}' stroke-width='60'/>`;
+ const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='${loader.viewBox}' fill='none' stroke='#000' stroke-linecap='round' stroke-linejoin='round'><path d='${loader.route}' stroke-width='44' opacity='.35'/>${fuse}</svg>`;
+ return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+}
