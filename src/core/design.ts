@@ -49,6 +49,7 @@ export const loader = {
  viewBox: '20 -40 860 760',
  route: 'M450 9.45 L548.3474 179.7927 L831.5275 670.275 L634.8327 670.275 L68.4725 670.275 L166.8199 499.9323 L514.1917 626.3653 L634.8327 670.275 L570.641 306.2257 L548.3474 179.7927 L265.1673 417.409 L343.9101 388.749 L570.641 306.2257 L556.0899 388.749 L514.1917 626.3653 L450 572.502 L556.0899 388.749 L343.9101 388.749 L450 572.502 L265.1673 417.409 L166.8199 499.9323 L450 9.45',
  fuseDash: 26,
+ strokeWidth: 60,
  durationSeconds: 1.8,
 } as const;
 /** The triangle fuse as a CSS `url()`: a dash travelling along the route. Used as a
@@ -57,8 +58,8 @@ export const loader = {
 export function loaderMask({animated}: {animated: boolean}) {
  const dash = loader.fuseDash;
  const fuse = animated
-  ? `<path d='${loader.route}' pathLength='100' stroke-width='60' stroke-dasharray='${dash} ${100 - dash}' stroke-dashoffset='100'><animate attributeName='stroke-dashoffset' from='100' to='0' dur='${loader.durationSeconds}s' repeatCount='indefinite'/></path>`
-  : `<path d='${loader.route}' stroke-width='60'/>`;
+  ? `<path d='${loader.route}' pathLength='100' stroke-width='${loader.strokeWidth}' stroke-dasharray='${dash} ${100 - dash}' stroke-dashoffset='100'><animate attributeName='stroke-dashoffset' from='100' to='0' dur='${loader.durationSeconds}s' repeatCount='indefinite'/></path>`
+  : `<path d='${loader.route}' stroke-width='${loader.strokeWidth}'/>`;
  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='${loader.viewBox}' fill='none' stroke='#000' stroke-linecap='round' stroke-linejoin='round'>${fuse}</svg>`;
  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
 }

@@ -1,7 +1,7 @@
 import {mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import Color from 'colorjs.io';
 import {defaults, themeTokens} from '../src/palette.ts';
-import {bevel, geometry, typography} from '../src/core/design.ts';
+import {bevel, geometry, loader, typography} from '../src/core/design.ts';
 
 const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
 const out = new URL('../ports/gpui/', import.meta.url);
@@ -149,7 +149,8 @@ function gpuiColors(t) {
 }
 
 /** What GPUI Kit's theme format has no place for. Apps that know Arcubic read it; GPUI Kit
- * ignores it. Sizes are in pixels; the switch's sizes are ratios of its height. */
+ * ignores it. Sizes are in pixels; the switch's sizes are ratios of its height; the loader's are in
+ * its view box. */
 function arcubicExtras(t, mode) {
   const s = (family, step) => t[`--${family}-${step}`];
   const role = value => typeof value === 'string' ? value : s('gray', value.gray);
@@ -194,6 +195,13 @@ function arcubicExtras(t, mode) {
         thumb: [s(accent, 11), s(accent, 9)],
       },
       focus: s(accent, 9),
+    },
+    loader: {
+      view_box: loader.viewBox.split(' ').map(Number),
+      route: loader.route.replace(/[ML]/g, '').trim().split(/\s+/).map(Number),
+      stroke_width: loader.strokeWidth,
+      fuse_ratio: loader.fuseDash / 100,
+      duration: loader.durationSeconds,
     },
   };
 }
