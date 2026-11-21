@@ -32,7 +32,8 @@
     "arcubic-vscode.css",
     "extension.js",
     "icon.png",
-    "LICENSE"
+    "LICENSE",
+    "TRADEMARKS.md"
   ],
   "contributes": {
     "themes": [

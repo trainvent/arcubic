@@ -22,6 +22,7 @@ writeFileSync(`${out}/fonts.css`,fonts);
 const tokens=readFileSync(`${out}/tokens.css`,'utf8').replaceAll('.arcubic-theme[data-mode="light"]','.arcubic-theme.light').replaceAll('.arcubic-theme[data-mode="dark"]','.arcubic-theme.dark');
 writeFileSync(`${out}/styles.css`,['@import "./fonts.css";',readFileSync('node_modules/@radix-ui/themes/styles.css','utf8'),tokens,readFileSync('src/components/base.css','utf8'),readFileSync('src/components/arcubic.css','utf8')].join('\n'));
 copyFileSync('LICENSE','packages/react/LICENSE');
+copyFileSync('TRADEMARKS.md','packages/react/TRADEMARKS.md');
 const root=JSON.parse(readFileSync('package.json','utf8'));
 const pkg=JSON.parse(readFileSync('packages/react/package.json','utf8'));
 pkg.version=root.version;

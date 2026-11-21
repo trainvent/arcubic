@@ -19,6 +19,7 @@ files = {
     'Arcubic/manifest.json': source / 'manifest.json',
     'Arcubic/README.md': source / 'README.md',
     'Arcubic/LICENSE': root / 'LICENSE',
+    'Arcubic/TRADEMARKS.md': root / 'TRADEMARKS.md',
     'Arcubic/ALPHA.md': root / 'docs/alpha-release.md',
     'Arcubic/THIRD_PARTY_NOTICES.md': root / 'THIRD_PARTY_NOTICES.md',
 }

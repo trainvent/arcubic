@@ -661,7 +661,7 @@ const extensionManifest = {
   keywords: ['theme', 'dark', 'light', 'teal', 'arcubic'],
   main: './extension.js',
   activationEvents: ['onStartupFinished'],
-  files: ['themes', 'arcubic-vscode.css', 'extension.js', 'icon.png', 'LICENSE'],
+  files: ['themes', 'arcubic-vscode.css', 'extension.js', 'icon.png', 'LICENSE', 'TRADEMARKS.md'],
   contributes: {
     themes: modes.map(mode => ({label: label(mode), uiTheme: mode === 'light' ? 'vs' : 'vs-dark', path: `./${themeFile(mode)}`})),
   },
@@ -675,4 +675,5 @@ writeFileSync(new URL('extension.js', out), extensionScript());
 const logo = new Resvg(readFileSync(new URL('public/logo.svg', root)), {fitTo: {mode: 'width', value: ICON_SIZE}});
 writeFileSync(new URL('icon.png', out), logo.render().asPng());
 copyFileSync(new URL('LICENSE', root), new URL('LICENSE', out));
+copyFileSync(new URL('TRADEMARKS.md', root), new URL('TRADEMARKS.md', out));
 console.log(`Built ${DEV ? 'dist/vscode-dev' : 'ports/vscode'} (themes, arcubic-vscode.css, package.json)`);
