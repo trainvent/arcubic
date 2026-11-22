@@ -38,5 +38,6 @@
     "url": "git+https://github.com/trainvent/arcubic.git",
     "directory": "packages/react"
   },
-  "homepage": "https://github.com/trainvent/arcubic/tree/main/packages/react"
+  "homepage": "https://github.com/trainvent/arcubic/tree/main/packages/react",
+  "funding": "https://github.com/sponsors/leonmarq"
 }

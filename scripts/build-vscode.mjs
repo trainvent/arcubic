@@ -656,6 +656,7 @@ const extensionManifest = {
   license: 'MIT',
   icon: 'icon.png',
   repository: {type: 'git', url: 'https://github.com/trainvent/arcubic'},
+  sponsor: {url: 'https://github.com/sponsors/leonmarq'},
   engines: {vscode: '^1.90.0'},
   categories: ['Themes'],
   keywords: ['theme', 'dark', 'light', 'teal', 'arcubic'],
