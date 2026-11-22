@@ -2,7 +2,7 @@
   "$schema": "https://github.com/longbridge/gpui-kit/raw/refs/heads/main/.theme-schema.json",
   "name": "Arcubic",
   "author": "Trainvent",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "themes": [
     {
       "name": "Arcubic Light",
