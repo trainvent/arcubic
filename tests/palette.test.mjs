@@ -15,3 +15,18 @@ for(const mode of ['light','dark'])test(`${mode}: all three scales export readab
   for(const [surface,index] of [['page',0],['panel',1]])assert.ok(contrast(tokens[`--${key}-text-on-${surface}`],palette.neutrals[index])>=4.5);
  }
 });
+
+for(const mode of ['light','dark'])test(`${mode}: six graph colors stay distinct and chart-ready`,async()=>{
+ const {default:Color}=await import('colorjs.io');
+ const tokens=themeTokens(defaults,mode);
+ const colors=[1,2,3,4,5,6].map(i=>tokens[`--color-graph-${i}`]);
+ assert.equal(new Set(colors).size,6);
+ const [low,high]=mode==='light'?[.43,.77]:[.48,.67];
+ for(const value of colors){
+  const [l,c]=new Color(value).to('oklch').coords;
+  assert.ok(l>=low&&l<=high,`${value} lightness ${l}`);assert.ok(c>=.1,`${value} chroma ${c}`);
+ }
+ // Neighbours in the Sports plugin's stacked sport chart, plus the actual/comparison pair.
+ const stack=[4,5,1,2,3,6].map(i=>colors[i-1]);
+ for(let i=1;i<stack.length;i++)assert.ok(new Color(stack[i-1]).deltaE(stack[i],'OK')*100>=15,`${stack[i-1]} vs ${stack[i]}`);
+});

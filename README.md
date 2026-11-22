@@ -126,6 +126,8 @@ Special cases use a separate RGB rule:
 
 Use strong, recognizable hues with readable shades for each appearance, rather than literal pure RGB values for text. Tags stay teal. These functional colors do not add stops to the identity curve.
 
+Charts use six graph colors, `--color-graph-1` to `--color-graph-6`: teal, burnt orange, cyan, amber, plum and pink, in that order. The three family colors follow the seeds; cyan, plum and pink are fixed hues. Each mode has its own chart-ready lightness, and neighbours stay apart for colour-blind readers. Red, green and blue stay out, so a chart never looks like a status. The Obsidian port passes them on to the Sports plugin's charts.
+
 Backgrounds and ordinary text stay achromatic: charcoal `#111111` and white body text in dark mode, with neutral grayscale surfaces and text in light mode. Foreground roles check contrast against their actual surfaces.
 
 The three stops sample positions `0, 0.5, 1`. The default profile uses the established Radix anchors. The original profile retains the cubic formula:

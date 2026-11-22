@@ -269,6 +269,12 @@ SOFTWARE.
   --color-error-text: #5c271f;
   --color-error-solid: #e54d2e;
   --color-selection-background: #b8eae0;
+  --color-graph-1: #00b7a2;
+  --color-graph-2: #ab4400;
+  --color-graph-3: #00afd6;
+  --color-graph-4: #c38e00;
+  --color-graph-5: #834ba8;
+  --color-graph-6: #a73b6d;
   --color-selection-text: #0d3d38;
   --color-overlay: #00000066;
   --color-panel-solid: #f9f9f9;
@@ -505,6 +511,12 @@ SOFTWARE.
   --color-error-text: #ff977d;
   --color-error-solid: #e54d2e;
   --color-selection-background: #084843;
+  --color-graph-1: #00a995;
+  --color-graph-2: #b24b0a;
+  --color-graph-3: #00a2c6;
+  --color-graph-4: #bd8800;
+  --color-graph-5: #8951af;
+  --color-graph-6: #ae4273;
   --color-selection-text: #0bd8b6;
   --color-overlay: #00000099;
   --color-panel-solid: #191919;

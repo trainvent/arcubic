@@ -24,3 +24,10 @@
 .sports-dashboard .sports-dash-day-button strong { color:var(--arc-obs-emphasis); }
 .sports-dashboard .sports-dash-day-selected strong { color:var(--arc-obs-primary); }
 .sports-dashboard .sports-dash-muted { color:var(--arc-obs-muted); }
+
+/* Sports charts use Arcubic's graph colors one to one. */
+body {
+  --sports-graph-color-1:var(--color-graph-1); --sports-graph-color-2:var(--color-graph-2);
+  --sports-graph-color-3:var(--color-graph-3); --sports-graph-color-4:var(--color-graph-4);
+  --sports-graph-color-5:var(--color-graph-5); --sports-graph-color-6:var(--color-graph-6);
+}

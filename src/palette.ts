@@ -80,6 +80,26 @@ function alphaColor(value: string, background: string) {
   const rgb = fg.map((v,i)=>Math.round(Math.max(0,Math.min(1,(v-bg[i]*(1-a))/a))*255).toString(16).padStart(2,'0'));
   return `#${rgb.join('')}${Math.ceil(a*255).toString(16).padStart(2,'0')}`;
 }
+/**
+ * Six chart series colors: the three identity hues plus cyan, plum and pink. Red, green and
+ * blue stay functional. Lightness alternates so neighbours in a stacked chart stay apart for
+ * colour-blind readers; checked in both modes in stack order 4-5-1-2-3-6 (the Sports plugin's
+ * alphabetical sport stack) and for the 1-2 pair.
+ */
+const graphSeries: ({seed: keyof Seeds} | {hue: number})[] = [
+  {seed: 'teal'}, {seed: 'orange'}, {hue: 218}, {seed: 'amber'}, {hue: 310}, {hue: 355},
+];
+const graphLightness: Record<Mode, number[]> = {
+  light: [.69, .52, .69, .68, .52, .52],
+  dark: [.65, .54, .65, .66, .54, .54],
+};
+const GRAPH_CHROMA = .15;
+export function graphColors(seeds: Seeds, mode: Mode): string[] {
+  return graphSeries.map((series, i) => {
+    const hue = 'seed' in series ? new Color(seeds[series.seed]).to('oklch').coords[2] : series.hue;
+    return hex(new Color('oklch', [graphLightness[mode][i], GRAPH_CHROMA, hue]));
+  });
+}
 export function themeTokens(seeds: Seeds, mode: Mode) {
   const p = createPalette(seeds,mode);
   const tokens: Record<string,string> = {'--color-background':p.neutrals[0]};
@@ -111,6 +131,7 @@ export function themeTokens(seeds: Seeds, mode: Mode) {
     tokens[`--color-${role}-solid`] = scale[8];
   }
   tokens['--color-selection-background'] = p.scales.teal[4];
+  graphColors(seeds, mode).forEach((value, i) => { tokens[`--color-graph-${i + 1}`] = value; });
   tokens['--color-selection-text'] = contrast(p.scales.teal[10],p.scales.teal[4]) >= 4.5 ? p.scales.teal[10] : p.scales.teal[11];
   tokens['--color-overlay'] = mode === 'dark' ? '#00000099' : '#00000066';
   tokens['--color-panel-solid']=p.neutrals[1];
