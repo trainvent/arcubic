@@ -3,6 +3,33 @@
 .sports-dashboard :is(.sports-dash-workout,.sports-dash-review,.sports-performance) { border:1px solid var(--gray-6); }
 .sports-dashboard .sports-dash-daily { border-left:3px solid var(--arc-obs-primary-8); }
 .sports-dashboard .sports-dash-badge { font-family:var(--font-interface); }
+/* Dashboard Sync becomes an icon button like Settings: the sync trace's first frame at rest,
+   the running trace while syncing (disabled). Its label stays for screen readers. */
+.sports-dashboard .sports-dash-tools button.sports-dash-sync {
+  position:relative; width:30px; min-width:30px; height:30px; padding:0; overflow:hidden; white-space:nowrap;
+  border:1px solid; border-radius:0; border-color:var(--arc-edge-high) var(--arc-edge-low) var(--arc-edge-low) var(--arc-edge-high);
+  background:var(--arc-control-face); box-shadow:var(--arc-raised);
+}
+body:is(.theme-light,.theme-dark) .sports-dashboard .sports-dash-tools button.sports-dash-sync { color:transparent; }
+.sports-dashboard .sports-dash-tools button.sports-dash-sync:hover { background:var(--arc-control-face); filter:brightness(1.06); }
+.sports-dashboard .sports-dash-tools button.sports-dash-sync:active { transform:translateY(1px); box-shadow:var(--arc-pressed); }
+.sports-dashboard .sports-dash-tools button.sports-dash-sync::after {
+  content:""; position:absolute; inset:0; margin:auto;
+  width:var(--arc-loader-button-size); height:var(--arc-loader-button-size); background:var(--text-normal);
+  -webkit-mask:var(--arc-sync-still) center/contain no-repeat; mask:var(--arc-sync-still) center/contain no-repeat;
+}
+.sports-dashboard .sports-dash-tools button.sports-dash-sync:disabled::after { -webkit-mask-image:var(--arc-sync); mask-image:var(--arc-sync); }
+@media(prefers-reduced-motion:reduce) { .sports-dashboard .sports-dash-tools button.sports-dash-sync:disabled::after { -webkit-mask-image:var(--arc-sync-still); mask-image:var(--arc-sync-still); } }
+/* The settings Sync button rests on the sync trace's first frame and runs it while syncing. */
+button.sports-sync-button { position:relative; }
+button.sports-sync-button svg { visibility:hidden; }
+button.sports-sync-button::after, button.sports-sync-button.mod-loading::after {
+  content:""; position:absolute; inset:0; margin:auto;
+  width:var(--arc-loader-button-size); height:var(--arc-loader-button-size); border:0; border-radius:0; background:var(--text-normal); animation:none;
+  -webkit-mask:var(--arc-sync-still) center/contain no-repeat; mask:var(--arc-sync-still) center/contain no-repeat;
+}
+button.sports-sync-button.mod-loading::after { -webkit-mask-image:var(--arc-sync); mask-image:var(--arc-sync); }
+@media(prefers-reduced-motion:reduce) { button.sports-sync-button.mod-loading::after { -webkit-mask-image:var(--arc-sync-still); mask-image:var(--arc-sync-still); } }
 /* Settings is a regular raised toolbar button, matching Sync. */
 .sports-dashboard button.sports-dash-settings {
   width:30px; min-width:30px; height:30px; padding:6px; border:1px solid; border-radius:0;
@@ -31,3 +58,14 @@ body {
   --sports-graph-color-3:var(--color-graph-3); --sports-graph-color-4:var(--color-graph-4);
   --sports-graph-color-5:var(--color-graph-5); --sports-graph-color-6:var(--color-graph-6);
 }
+
+/* Obsidian Git: Refresh rests on the sync trace's first frame and runs it while refreshing. */
+.git-view #refresh { position:relative; }
+.git-view #refresh > svg { visibility:hidden; animation:none; }
+.git-view #refresh::after {
+  content:""; position:absolute; inset:0; margin:auto;
+  width:var(--icon-size); height:var(--icon-size); background:currentColor;
+  -webkit-mask:var(--arc-sync-still) center/contain no-repeat; mask:var(--arc-sync-still) center/contain no-repeat;
+}
+.git-view #refresh.loading::after { -webkit-mask-image:var(--arc-sync); mask-image:var(--arc-sync); }
+@media(prefers-reduced-motion:reduce) { .git-view #refresh.loading::after { -webkit-mask-image:var(--arc-sync-still); mask-image:var(--arc-sync-still); } }
