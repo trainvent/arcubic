@@ -16,7 +16,7 @@ The tag starts two workflows:
 | [`publish-vscode.yml`](../.github/workflows/publish-vscode.yml) | The VS Code extension to the VS Code Marketplace and Open VSX |
 | [`release.yml`](../.github/workflows/release.yml) | Obsidian, terminal, VS Code and alternative web-package downloads to GitHub Releases |
 
-All three build from the tagged source. The npm workflow checks the tag against package.json, runs the palette tests, builds the package and publishes it. No local npm login or stored GitHub npm token is needed for routine releases.
+The GitHub release notes come from [`release-notes.md`](release-notes.md): its install text plus a *What's new* list of the commit subjects since the previous version tag, so write commit subjects for users. All three build from the tagged source. The npm workflow checks the tag against package.json, runs the palette tests, builds the package and publishes it. No local npm login or stored GitHub npm token is needed for routine releases.
 
 For an interrupted npm publication, use **Actions → Publish Arcubic to npm → Run workflow** and select the existing release tag. npm versions cannot be overwritten; check the registry before retrying an accepted publish. A newly accepted package can take a few minutes to become available for installation.
 

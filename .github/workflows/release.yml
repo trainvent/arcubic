@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -31,4 +33,4 @@ jobs:
       - name: Publish release artifacts
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" dist/releases/"$GITHUB_REF_NAME"/* --verify-tag --title "Arcubic $GITHUB_REF_NAME" --notes-file docs/alpha-release.md
+        run: gh release create "$GITHUB_REF_NAME" dist/releases/"$GITHUB_REF_NAME"/* --verify-tag --title "Arcubic $GITHUB_REF_NAME" --notes-file dist/releases/"$GITHUB_REF_NAME"-notes.md

@@ -54,7 +54,7 @@ Use the [latest GitHub release](https://github.com/trainvent/arcubic/releases/la
 
 Install **Arcubic** from the VS Code Marketplace or Open VSX, or use `arcubic-vscode-<version>.vsix` from the same release. It has Arcubic Light and Dark, and an optional `arcubic-vscode.css` for raised buttons and the triangle loader. See the [VS Code guide](ports/vscode/README.md).
 
-See the [Obsidian guide](ports/obsidian/README.md), [terminal guide](ports/terminal/README.md), and [release notes](docs/alpha-release.md). Arcubic remains an alpha release. Its code is [MIT licensed](LICENSE); bundled fonts retain their OFL licenses. The name, logo and triangle loader are Trainvent [trademarks](TRADEMARKS.md).
+See the [Obsidian guide](ports/obsidian/README.md), [terminal guide](ports/terminal/README.md), and [release notes](https://github.com/trainvent/arcubic/releases). Arcubic remains an alpha release. Its code is [MIT licensed](LICENSE); bundled fonts retain their OFL licenses. The name, logo and triangle loader are Trainvent [trademarks](TRADEMARKS.md).
 
 ## Styling guidelines
 

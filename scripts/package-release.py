@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Package explicitly allowlisted public artifacts; never the personal font build."""
-import json, pathlib, shutil, zipfile
+import json, pathlib, shutil, subprocess, zipfile
 root = pathlib.Path(__file__).resolve().parents[1]
 version = json.loads((root / 'manifest.json').read_text())['version']
 tag = version
@@ -9,6 +9,15 @@ out.mkdir(parents=True, exist_ok=True)
 # Drop obsolete duplicate downloads when rebuilding an existing output folder.
 for name in ('arcubic-tokens.css', 'SHA256SUMS'):
     (out / name).unlink(missing_ok=True)
+def git(*args):
+    return subprocess.run(['git', *args], cwd=root, capture_output=True, text=True, check=True).stdout.strip()
+# What's new: every commit since the previous version tag, without the version bumps.
+previous = git('describe', '--tags', '--abbrev=0', '--exclude', tag, '--match', '[0-9]*', 'HEAD')
+subjects = [s for s in git('log', '--format=%s', f'{previous}..HEAD').splitlines() if not s.startswith('Release ')]
+changes = '\n'.join(f'- {s}' for s in reversed(subjects)) or '- Maintenance release.'
+notes = (root / 'docs/release-notes.md').read_text().replace('{version}', version).replace('{changes}', changes)
+# Outside the asset folder, which is uploaded as a whole.
+(root / 'dist/releases' / f'{version}-notes.md').write_text(notes)
 source = root / 'ports/obsidian'
 css = (source / 'theme.css').read_text()
 if 'font/opentype;base64' in css or "font-family:'Nippo';font-weight:200 700" in css:
@@ -20,7 +29,6 @@ files = {
     'Arcubic/README.md': source / 'README.md',
     'Arcubic/LICENSE': root / 'LICENSE',
     'Arcubic/TRADEMARKS.md': root / 'TRADEMARKS.md',
-    'Arcubic/ALPHA.md': root / 'docs/alpha-release.md',
     'Arcubic/THIRD_PARTY_NOTICES.md': root / 'THIRD_PARTY_NOTICES.md',
 }
 for font_license in sorted((source / 'licenses').glob('*OFL.txt')):
@@ -31,6 +39,10 @@ with zipfile.ZipFile(archive, 'w', compression=zipfile.ZIP_DEFLATED) as z:
         info.compress_type = zipfile.ZIP_DEFLATED
         info.external_attr = 0o100644 << 16
         z.writestr(info, path.read_bytes())
+    info = zipfile.ZipInfo('Arcubic/RELEASE.md', (2026, 10, 28, 0, 0, 0))
+    info.compress_type = zipfile.ZIP_DEFLATED
+    info.external_attr = 0o100644 << 16
+    z.writestr(info, notes)
 for file in [source / 'theme.css', source / 'manifest.json', root / 'ports/terminal/arcubic-dark.Xresources']:
     shutil.copy2(file, out / file.name)
 # Ship the independently installable React package with the same release.
