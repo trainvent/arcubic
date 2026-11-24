@@ -101,3 +101,13 @@
 /* Placeholders use the same Chakra Petch face and weight as entered text. */
 .arcubic-ui .rt-TextFieldInput::placeholder,
 .arcubic-ui .rt-TextArea::placeholder { font-family:inherit; font-size:inherit; font-weight:inherit; }
+.arc-sync-trace{display:block;flex:none;overflow:visible;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.arc-sync-full{display:none}
+@media(prefers-reduced-motion:reduce){.arc-sync-running .arc-sync-moving{display:none}.arc-sync-running .arc-sync-full{display:inline}}
+.arc-fuse-progress{display:inline-flex;flex:none;width:var(--fuse-size);height:var(--fuse-size);vertical-align:middle;color:inherit}
+.arc-fuse-progress svg{display:block;width:100%;height:100%;overflow:visible;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.arc-fuse-sizzles{stroke:var(--amber-10)}
+.arc-fuse-sizzle{animation:arcubic-sizzle 230ms steps(1) infinite}
+.arc-fuse-sizzle-tip{stroke:var(--amber-12);animation-duration:170ms;animation-direction:reverse}
+@keyframes arcubic-sizzle{0%{opacity:.9;stroke-width:64}20%{opacity:.55;stroke-width:48}45%{opacity:1;stroke-width:80}70%{opacity:.45;stroke-width:52}85%{opacity:.8;stroke-width:70}}
+@media(prefers-reduced-motion:reduce){.arc-fuse-sizzle{animation:none;opacity:.8}}
