@@ -26,7 +26,7 @@ archive = out / f'arcubic-obsidian-{tag}.zip'
 files = {
     'Arcubic/theme.css': source / 'theme.css',
     'Arcubic/manifest.json': source / 'manifest.json',
-    'Arcubic/README.md': source / 'README.md',
+    'Arcubic/README.md': root / 'README.md',
     'Arcubic/LICENSE': root / 'LICENSE',
     'Arcubic/TRADEMARKS.md': root / 'TRADEMARKS.md',
     'Arcubic/THIRD_PARTY_NOTICES.md': root / 'THIRD_PARTY_NOTICES.md',
