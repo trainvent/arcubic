@@ -67,7 +67,7 @@ if(compact.warnings.length)throw new Error(compact.warnings.map(warning=>warning
 css=compact.code;
 writeFileSync(output+'theme.css',css);
 const version=JSON.parse(readFileSync(root+'package.json','utf8')).version;
-const manifest={name:'Arcubic',version,minAppVersion:'1.8.0',author:'Trainvent',authorUrl:'https://github.com/Trainvent'};
+const manifest={name:'Arcubic',version,minAppVersion:'1.8.0',author:'Trainvent',authorUrl:'https://github.com/Trainvent',fundingUrl:'https://github.com/sponsors/leonmarq'};
 writeFileSync(output+'manifest.json',JSON.stringify(manifest,null,2)+'\n');
 // Obsidian's community directory reads these from the repository root.
 writeFileSync(root+'manifest.json',JSON.stringify(manifest,null,2)+'\n');
