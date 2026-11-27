@@ -3,7 +3,7 @@ import {Resvg} from '@resvg/resvg-js';
 import Color from 'colorjs.io';
 import {defaults, themeTokens} from '../src/palette.ts';
 import {accentTextColors} from '../src/core/text-colors.ts';
-import {bevel, documentTabInset, documentTabs, loaderMask, selectedTab, typography} from '../src/core/design.ts';
+import {bevel, codeSurface, documentTabInset, documentTabs, loaderMask, selectedTab, typography} from '../src/core/design.ts';
 import {ansiColors} from './ansi.mjs';
 
 const root = new URL('../', import.meta.url);
@@ -93,7 +93,7 @@ function workbenchColors(mode) {
     'textBlockQuote.border': s('teal', 8),
     'textCodeBlock.background': s('gray', 3),
     'textPreformat.foreground': text.orange,
-    'textPreformat.background': s('gray', 3),
+    'textPreformat.background': s('gray', codeSurface.inlineFill),
     'textSeparator.foreground': s('gray', 6),
 
     'button.background': primary,

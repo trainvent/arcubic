@@ -36,6 +36,9 @@ SOFTWARE.
   --arc-tab-strip-height: 31px;
   --arc-tab-height: 28px;
   --arc-tab-inset: 3px;
+  --arc-code-fill: var(--gray-3);
+  --arc-code-block-fill: var(--gray-2);
+  --arc-code-edge: var(--gray-6);
   --arc-radius: 0px;
   --arc-border-width: 1px;
   --arc-switch-height: 22px;

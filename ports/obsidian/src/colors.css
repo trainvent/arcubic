@@ -60,7 +60,7 @@ body.theme-light, body.theme-dark {
   --tab-text-color-focused-active: var(--arc-obs-primary);
   --tab-text-color-focused-active-current: var(--arc-obs-primary);
   --tab-divider-color: transparent;
-  --code-background: var(--gray-2);
+  --code-background: var(--arc-code-block-fill);
   --code-normal: var(--gray-12);
   --code-comment: var(--gray-11);
   --code-function: var(--arc-obs-emphasis);

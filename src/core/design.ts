@@ -26,12 +26,16 @@ export const selectedTab = {fill: 3, hoverFill: 4, edge: 8} as const;
  * tabs leave the same gap above them and before the first tab. */
 export const documentTabs = {stripHeight: 31, tabHeight: 28};
 export const documentTabInset = documentTabs.stripHeight - documentTabs.tabHeight;
+/** Code surfaces, as steps of the neutral scale. Inline code sits a step above the block fill so it
+ * stays visible on the near-white light background; both share the block edge. */
+export const codeSurface = {inlineFill: 3, blockFill: 2, edge: 6} as const;
 export function designTokens(): Record<string,string> {
  return {
   '--arc-font-interface':typography.interface,'--arc-font-reading':typography.reading,'--arc-font-code':typography.code,
   '--arc-type-caption':`${typography.caption}px`,'--arc-type-ui':`${typography.ui}px`,'--arc-type-body':`${typography.body}px`,'--arc-type-heading':`${typography.noteHeading}px`,
   '--arc-leading-ui':String(typography.uiLineHeight),'--arc-leading-body':String(typography.bodyLineHeight),
   '--arc-tab-strip-height':`${documentTabs.stripHeight}px`,'--arc-tab-height':`${documentTabs.tabHeight}px`,'--arc-tab-inset':`${documentTabInset}px`,
+  '--arc-code-fill':`var(--gray-${codeSurface.inlineFill})`,'--arc-code-block-fill':`var(--gray-${codeSurface.blockFill})`,'--arc-code-edge':`var(--gray-${codeSurface.edge})`,
   '--arc-radius':`${geometry.radius}px`,'--arc-border-width':`${geometry.border}px`,'--arc-switch-height':`${geometry.switchHeight}px`,
   ...Object.fromEntries(Object.entries(geometry).filter(([key])=>key.endsWith('Ratio')).map(([key,value])=>[`--arc-${key.replace(/[A-Z]/g,letter=>'-'+letter.toLowerCase())}`,String(value)])),
  };

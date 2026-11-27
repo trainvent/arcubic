@@ -181,8 +181,9 @@ body .checkbox-container input { position:absolute; opacity:0; width:100%; heigh
 .menu,.modal,.prompt,.suggestion-container { border-radius:0; border:1px solid var(--gray-7); background:var(--gray-2); }
 .menu-item,.suggestion-item,.search-result-file-title { border-radius:0; }
 .menu-item.selected:not(.is-disabled),.suggestion-item.is-selected { background:var(--arc-obs-primary-3); color:var(--arc-obs-primary); }
-.markdown-rendered pre { border:1px solid var(--gray-6); border-radius:0; background:var(--gray-2); }
+.markdown-rendered pre { border:var(--arc-border-width) solid var(--arc-code-edge); border-radius:0; background:var(--arc-code-block-fill); }
 .markdown-rendered code { border-radius:0; }
+.markdown-rendered :not(pre)>code, .cm-s-obsidian span.cm-inline-code { border:var(--arc-border-width) solid var(--arc-code-edge); background:var(--arc-code-fill); }
 .markdown-rendered a { color:var(--link-color); }
 .markdown-rendered a.external-link { color:var(--link-external-color); }
 .markdown-rendered a:hover { color:var(--link-color-hover); }
