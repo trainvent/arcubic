@@ -1,10 +1,8 @@
-# Arcubic
+A quiet reading surface with tactile controls. This paragraph uses **bold**, *italic*, ==highlighted== and regular text. The interface uses Chakra Petch and code uses Geist Mono.
 
-A quiet reading surface with tactile controls. This paragraph uses **bold**, *italic* and regular text. The interface uses Chakra Petch and code uses Geist Mono.
+## Compact palette
 
-## A small palette
-
-[External link](https://github.com/Trainvent/arcubic) · [[Arcubic Preview]] · #arcubic
+[External link](https://github.com/Trainvent/arcubic) · [[Arcubic Structure]] · #arcubic
 
 > A clear hierarchy leaves room for the content.
 
@@ -19,30 +17,3 @@ A quiet reading surface with tactile controls. This paragraph uses **bold**, *it
 
 > [!failure] Try again
 > A semantic error message.
-
-### Code
-
-```ts
-const theme = {
-  name: 'Arcubic',
-  hue: (i: number) => 17.79 + 152.09 * (1 - i) ** 3,
-};
-```
-
-Inline `code` uses a fixed-pitch font.
-
-| Role | Typeface |
-| --- | --- |
-| Interface | Chakra Petch |
-| Reading | Lora or system serif |
-| Code | Geist Mono |
-
-- [x] Shared tokens
-- [x] Light and dark themes
-- [ ] Continue testing real workflows
-
----
-
-1. Square panels
-2. Raised controls
-3. Inset tracks

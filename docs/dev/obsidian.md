@@ -39,7 +39,7 @@ Chakra Petch Regular (interface) and Geist Mono (code) are embedded in the publi
 - `ports/obsidian/src/colors.css`: native color-role mapping.
 - `ports/obsidian/src/theme.css`: native Obsidian selectors.
 - `ports/obsidian/src/plugins.css`: optional plugin-specific integrations (currently Sports).
-- `ports/obsidian/fixtures/Arcubic Preview.md`: visual test note.
+- `ports/obsidian/fixtures/`: visual test notes. Open `Arcubic Preview` and `Arcubic Structure` side by side for a full-screen screenshot.
 
 Rebuild after changing sources. The compiled stylesheet is a standalone theme and does not require React, a plugin or a running web server.
 
