@@ -673,7 +673,7 @@ for (const mode of modes) writeFileSync(new URL(themeFile(mode), out), JSON.stri
 writeFileSync(new URL('arcubic-vscode.css', out), uiStylesheet());
 writeFileSync(new URL('package.json', out), JSON.stringify(extensionManifest, null, 2) + '\n');
 writeFileSync(new URL('extension.js', out), extensionScript());
-const logo = new Resvg(readFileSync(new URL('public/logo.svg', root)), {fitTo: {mode: 'width', value: ICON_SIZE}});
+const logo = new Resvg(readFileSync(new URL('public/logo-trainvent.svg', root)), {fitTo: {mode: 'width', value: ICON_SIZE}});
 writeFileSync(new URL('icon.png', out), logo.render().asPng());
 copyFileSync(new URL('LICENSE', root), new URL('LICENSE', out));
 copyFileSync(new URL('TRADEMARKS.md', root), new URL('TRADEMARKS.md', out));
