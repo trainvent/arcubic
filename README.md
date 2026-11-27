@@ -61,7 +61,7 @@ Download the terminal palette from the [latest release](https://github.com/train
 
 Surfaces and body text stay neutral gray. Teal is the primary accent and marks tags; amber and burnt orange add secondary emphasis. Green, red and blue are reserved for success, errors and links. Depth shows what you can press or type into, and triangles show direction, state and progress.
 
-The [project guide](docs/dev/arcubic.md) has the full styling guidelines, the color system and how to build Arcubic for a new app.
+The [project guide](docs/dev/general.md) has the full styling guidelines, the color system and how to build Arcubic for a new app.
 
 ## Feedback
 
