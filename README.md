@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/trainvent/arcubic/main/public/logo-trainvent.svg" alt="Arcubic logo" width="32" align="right"/>
+<img src="https://raw.githubusercontent.com/trainvent/arcubic/main/public/logo-trainvent.svg" alt="Arcubic logo" width="48" align="right"/>
 
 # Arcubic
 
