@@ -128,7 +128,7 @@ desktop/mobile CSS contexts, at 16px and 22px reading settings.
 
 ## Community listing
 
-The community directory reads the repository's root `README.md`, so it stays focused on using the Obsidian theme. The general design-system guide lives in [arcubic.md](arcubic.md). Obsidian release ZIPs include the root README too.
+The community directory shows the repository's root `README.md`, so the README keeps the Obsidian section first, before the other editions. Images in it use absolute GitHub URLs, because Obsidian release ZIPs include the README too.
 
 The short listing description is edited separately in the [Obsidian Community directory](https://community.obsidian.md/themes/arcubic). Use:
 

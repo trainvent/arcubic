@@ -1,44 +1,6 @@
-<img src="../../public/logo-trainvent.svg" alt="Arcubic logo" width="32" align="right"/>
+# Developing Arcubic
 
-# Arcubic
-
-<img src="../../public/title.svg" alt="Arcubic — three colors, one curve" width="1200"/>
-
-Teal, amber and burnt orange on neutral grayscale surfaces. A reusable design system with square panels, raised controls, inset fields and a sliding triangle switch.
-
-## React and Next.js
-
-Install the public [npm package](https://www.npmjs.com/package/@trainvent/arcubic):
-
-```sh
-npm install --save-exact @trainvent/arcubic
-```
-
-Import the stylesheet once in your application layout:
-
-```tsx
-import '@trainvent/arcubic/styles.css';
-```
-
-Use the components inside an Arcubic theme:
-
-```tsx
-'use client';
-
-import { Theme, Button } from '@trainvent/arcubic';
-
-export default function Example() {
-  return (
-    <Theme appearance="dark">
-      <Button variant="outline">Get started</Button>
-    </Theme>
-  );
-}
-```
-
-The package includes React 19 components, TypeScript declarations, light/dark tokens and bundled Chakra Petch, Lora and Geist Mono fonts. In Next.js, put a site-wide `Theme` in a client provider rendered by the root layout. See the [package guide](../../packages/react/README.md) for exports and integration details.
-
-[leonmarq.com](https://leonmarq.com) uses the published npm package; its [source](https://github.com/leonmarq/website) shows the layout, appearance provider and component imports.
+How the design system is built: styling guidelines, the shared core and its adapters, colors, typography and releases. For what Arcubic is and how to install each edition, see the [README](../../README.md).
 
 ## Releases and updates
 
@@ -46,15 +8,7 @@ Matching numeric version tags automatically publish the package to npm through G
 
 Consumers commit an exact package version and its lockfile. The personal website uses Dependabot to propose new Arcubic versions daily; its PR checks build the site, and merging deploys it. Other projects can use the same Dependabot setup.
 
-## Obsidian and terminal
-
-Use the [latest GitHub release](https://github.com/trainvent/arcubic/releases/latest) for the Obsidian ZIP or terminal palette. The separate `theme.css` and `manifest.json` downloads support Obsidian's automatic installer. Shared web tokens are included in the npm package as `@trainvent/arcubic/tokens.css`.
-
-## VS Code
-
-Install **Arcubic** from the VS Code Marketplace or Open VSX, or use `arcubic-vscode-<version>.vsix` from the same release. It has Arcubic Light and Dark, and an optional `arcubic-vscode.css` for raised buttons and the triangle loader. See the [VS Code guide](../../ports/vscode/README.md).
-
-See the [Obsidian guide](../../README.md), [terminal guide](../../ports/terminal/README.md), and [release notes](https://github.com/trainvent/arcubic/releases). Arcubic remains an alpha release. Its code is [MIT licensed](../../LICENSE); bundled fonts retain their OFL licenses. The name, logo and triangle loader are Trainvent [trademarks](../../TRADEMARKS.md).
+The Obsidian release also has separate `theme.css` and `manifest.json` downloads for Obsidian's automatic installer.
 
 ## Styling guidelines
 
